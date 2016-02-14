@@ -13,7 +13,7 @@ import egov.entities.User;
 
 import sessionbeans.IUserManagementRemote;
 
-public class Test_gestion_egov {
+public class Test_GestionEgov {
 
 	@Test
 	public void test() {

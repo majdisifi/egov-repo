@@ -26,7 +26,7 @@ public class Test_GestionEgov {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
-			user.setIdUser(92);
+			user.setIdUser(1);
 			user.setFirstName("Sakly");
 			user.setLastName("azziz");
 			user.setJob("7a77ay");

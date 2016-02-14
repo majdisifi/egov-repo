@@ -35,7 +35,11 @@ public class User implements Serializable{
      private B3 b3;
      @OneToOne (mappedBy="user")
      private Cin cin;
-     
+     @OneToMany(mappedBy="user")
+     private List<Inscription> inscription;
+     @OneToMany(mappedBy="user")
+     private List<Claims> claims;
+    
      
      
 

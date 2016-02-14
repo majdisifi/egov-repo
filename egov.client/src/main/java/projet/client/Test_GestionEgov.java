@@ -26,7 +26,7 @@ public class Test_GestionEgov {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
-
+			user.setIdUser(92);
 			user.setFirstName("Sakly");
 			user.setLastName("azziz");
 			user.setJob("7a77ay");
@@ -50,8 +50,10 @@ public class Test_GestionEgov {
 			IUserManagementRemote ge = (IUserManagementRemote) context
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
-			List<User> users = (List<User>) ge.findById(1);
-			for (User users1 : users) {
+	
+
+				List<User> users = (List<User>) ge.findById(99);
+				for (User users1 : users) {
 
 				System.out.println(users1.getFirstName());
 

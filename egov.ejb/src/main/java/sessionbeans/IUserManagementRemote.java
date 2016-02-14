@@ -21,4 +21,6 @@ public interface IUserManagementRemote {
 
 	List<User> findAll();
 
+	List<User> findById1(int id);
+
 }

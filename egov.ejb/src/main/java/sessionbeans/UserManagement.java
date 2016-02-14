@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import egov.entities.User;
 
 
+
 @Stateless
 public class UserManagement implements IUserManagementRemote {
 	@PersistenceContext
@@ -46,5 +47,12 @@ public class UserManagement implements IUserManagementRemote {
 		List<User> users = new ArrayList<>();
 		users = (List<User>) Us.createQuery("select u from User u").getResultList();
 		return users;
+	}
+	@Override
+	public List<User> findById1(int id) {
+		Query query = Us.createQuery("select e from User e where e.user.idUser=:id");
+		query.setParameter("idUser",id);
+		
+		return query.getResultList();
 	}
 }

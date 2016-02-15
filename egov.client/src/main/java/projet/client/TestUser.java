@@ -10,9 +10,10 @@ import javax.naming.NamingException;
 import org.junit.Test;
 
 import egov.entities.User;
+
 import sessionbeans.IUserManagementRemote;
 
-public class Test_GestionEgov {
+public class TestUser {
 
 	@Test
 	public void test() {
@@ -25,7 +26,7 @@ public class Test_GestionEgov {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
-
+		
 			user.setFirstName("Sakly");
 			user.setLastName("azziz");
 			user.setJob("7a77ay");
@@ -49,38 +50,14 @@ public class Test_GestionEgov {
 			IUserManagementRemote ge = (IUserManagementRemote) context
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
-			List<User> users = (List<User>) ge.findById(99);
-			for (User users1 : users) {
+	
+
+				List<User> users = (List<User>) ge.findById(99);
+				for (User users1 : users) {
 
 				System.out.println(users1.getFirstName());
 
 			}
-
-		} catch (NamingException e) {
-
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	@Test
-	public void Test_affect_user() {
-		Context context;
-
-		try {
-
-			context = new InitialContext();
-			IUserManagementRemote ge = (IUserManagementRemote) context
-					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
-
-			
-			User user1 = ge.findById(3);
-			user1.setFirstName("abelsatarooo");
-			user1.setLastName("Trimechin");
-			user1.setJob("Mraméjinoo");
-
-			ge.update(user1);
 
 		} catch (NamingException e) {
 

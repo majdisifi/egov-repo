@@ -27,27 +27,22 @@ public class Test_GestionEgov {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
-			User user2 = new User();
-			Date date =new Date(06,02,2015);
-			Date date1 =new Date(01,12,3000);
+			
+			//Date date =new Date(06,02,2015);
+			//Date date1 =new Date(01,12,3000);
 			
 			user.setFirstName("Zribi");
 			user.setLastName("Ines");
-			user.setBirthDate(date);
+			//user.setBirthDate(date);
 			user.setJob("ingenieur");
-			user.setDeathDate(date1);
+			//user.setDeathDate(date1);
 			//user.setPhoto();
 			//user.setFingerPrint();
 			
-			
-			
-			
-			user.setFirstName("Zribi");
-			user.setLastName("Iméne");
-			user.setJob("hello");
-			
 
 			ge.addUser(user);
+			
+			
 			
 
 		} catch (NamingException e) {
@@ -56,9 +51,10 @@ public class Test_GestionEgov {
 			e.printStackTrace();
 		}
 
-	}
+	}}
+	
 
-	@Test
+	/*@Test
 	public void Test_find_query() {
 		Context context;
 
@@ -84,4 +80,4 @@ public class Test_GestionEgov {
 
 	}
 	
-}
+}*/

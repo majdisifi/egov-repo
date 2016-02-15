@@ -1,18 +1,23 @@
 package egov.entities;
 
 import java.io.Serializable;
+
 import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 @Entity
+
 public class User implements Serializable{
 @Id
+@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idUser;
 	private String firstName;
 	private String lastName;
@@ -35,7 +40,11 @@ public class User implements Serializable{
      private B3 b3;
      @OneToOne (mappedBy="user")
      private Cin cin;
-     
+     @OneToMany(mappedBy="user")
+     private List<Inscription> inscription;
+     @OneToMany(mappedBy="user")
+     private List<Claims> claims;
+    
      
      
 

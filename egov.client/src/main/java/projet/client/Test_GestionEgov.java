@@ -1,5 +1,6 @@
 package projet.client;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +27,28 @@ public class Test_GestionEgov {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
-			user.setIdUser(1);
-			user.setFirstName("Sakly");
-			user.setLastName("azziz");
-			user.setJob("7a77ay");
+			User user2 = new User();
+			Date date =new Date(06,02,2015);
+			Date date1 =new Date(01,12,3000);
+			
+			user.setFirstName("Zribi");
+			user.setLastName("Ines");
+			user.setBirthDate(date);
+			user.setJob("ingenieur");
+			user.setDeathDate(date1);
+			//user.setPhoto();
+			//user.setFingerPrint();
+			
+			
+			
+			
+			user.setFirstName("Zribi");
+			user.setLastName("Iméne");
+			user.setJob("hello");
+			
 
 			ge.addUser(user);
+			
 
 		} catch (NamingException e) {
 
@@ -66,4 +83,5 @@ public class Test_GestionEgov {
 		}
 
 	}
+	
 }

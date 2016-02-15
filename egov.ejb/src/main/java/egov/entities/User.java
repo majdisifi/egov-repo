@@ -147,10 +147,10 @@ public class User implements Serializable{
 	public void setIdF(int idF) {
 		this.idF = idF;
 	}
-	public User(int idUser, String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
+	public User( String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
 			Blob fingerPrint, int idF) {
 		super();
-		this.idUser = idUser;
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		BirthDate = birthDate;

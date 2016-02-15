@@ -15,6 +15,7 @@ public interface ICinManagementRemote {
 	
 	void update(Cin cin);
 	
+	
 	void remove(Cin cin);
 
 }

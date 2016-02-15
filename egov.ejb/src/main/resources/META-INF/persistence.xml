@@ -2,6 +2,16 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="ejb-sample">
 	<jta-data-source>java:/egov</jta-data-source>
+	<class>egov.entities.Account</class>
+	<class>egov.entities.B3</class>
+	<class>egov.entities.Bills_fines</class>
+	<class>egov.entities.Car</class>
+	<class>egov.entities.Cin</class>
+	<class>egov.entities.Claims</class>
+	<class>egov.entities.DriveLicence</class>
+	<class>egov.entities.GreyCard</class>
+	<class>egov.entities.Inscription</class>
+	<class>egov.entities.Job</class>
 	<class>egov.entities.User</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

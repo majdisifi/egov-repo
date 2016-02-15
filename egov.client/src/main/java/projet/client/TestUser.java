@@ -66,4 +66,34 @@ public class TestUser {
 		}
 
 	}
+	
+
+@Test
+public boolean TestRemove() {
+	Context context;
+	 Boolean b = false; 
+
+	try {
+		context = new InitialContext();
+		IUserManagementRemote ge = (IUserManagementRemote) context
+				.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
+
+		User user = new User();
+  			
+		 try {   					
+			 ge.remove(user);  
+		 
+		 b = true; 
+		 } catch (Exception e) {   
+			 System.err.println("ouups ..."); 
+			 }   				return b; 
+
+	} catch (NamingException e) {
+
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return b;
+
+}
 }

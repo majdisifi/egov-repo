@@ -3,6 +3,9 @@
 	<persistence-unit name="ejb-sample">
 	<jta-data-source>java:/egov</jta-data-source>
 	<class>egov.entities.User</class>
+	<class>egov.entities.Account</class>
+	<class>egov.entities.B3</class>
+	
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true"/>

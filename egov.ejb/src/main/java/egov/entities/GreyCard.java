@@ -12,7 +12,7 @@ public class GreyCard implements Serializable{
 	 @Id
 	 @GeneratedValue(strategy=GenerationType.AUTO)
 	 private int idGreyCard;
-	 private String categorie;
+	 private String category;
 	 private String constructor;
 	 private int numImmatriculation;
 	 @OneToOne
@@ -23,11 +23,11 @@ public class GreyCard implements Serializable{
 	public void setIdGreyCard(int idGreyCard) {
 		this.idGreyCard = idGreyCard;
 	}
-	public String getCategorie() {
-		return categorie;
+	public String getCategory() {
+		return category;
 	}
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getConstructor() {
 		return constructor;
@@ -51,7 +51,7 @@ public class GreyCard implements Serializable{
 	public GreyCard(int idGreyCard, String categorie, String constructor, int numImmatriculation) {
 		super();
 		this.idGreyCard = idGreyCard;
-		this.categorie = categorie;
+		this.category = category;
 		this.constructor = constructor;
 		this.numImmatriculation = numImmatriculation;
 	}

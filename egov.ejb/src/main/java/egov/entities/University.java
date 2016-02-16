@@ -47,6 +47,15 @@ public class University implements Serializable{
 	public University() {
 		super();
 	}
+	public List<Establishment> getEstablishment() {
+		return establishment;
+	}
+	public void setEstablishment(List<Establishment> establishment) {
+		this.establishment = establishment;
+	}
+	public void setNameUniversity(String nameUniversity) {
+		this.nameUniversity = nameUniversity;
+	}
 	
 
 	

@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 @Entity
 public class Car implements Serializable{
 	@Id
@@ -15,10 +15,12 @@ public class Car implements Serializable{
 	private int numImmatriculation;
 	private String color;
 	private String type;
+	 private String category;
+	 private String constructor;
+	 
 	@ManyToOne
 	private User user;    
-	@OneToOne (mappedBy="car")
-	private GreyCard greyCard;
+	
 	
 	public int getImmatriculation() {
 		return numImmatriculation;
@@ -52,17 +54,31 @@ public class Car implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public GreyCard getGreyCard() {
-		return greyCard;
+
+	
+	
+	public String getCategory() {
+		return category;
 	}
-	public void setGreyCard(GreyCard greyCard) {
-		this.greyCard = greyCard;
+	public void setCategory(String category) {
+		this.category = category;
 	}
-	public Car(int numImmatriculation, String color, String type) {
+	public String getConstructor() {
+		return constructor;
+	}
+	public void setConstructor(String constructor) {
+		this.constructor = constructor;
+	}
+	
+
+	public Car(int numImmatriculation, String color, String type, String category, String constructor, User user) {
 		super();
 		this.numImmatriculation = numImmatriculation;
 		this.color = color;
 		this.type = type;
+		this.category = category;
+		this.constructor = constructor;
+		this.user = user;
 	}
 	public Car() {
 		super();

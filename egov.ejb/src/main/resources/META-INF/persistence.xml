@@ -9,7 +9,6 @@
 	<class>egov.entities.Cin</class>
 	<class>egov.entities.Claims</class>
 	<class>egov.entities.DriveLicence</class>
-	<class>egov.entities.GreyCard</class>
 	<class>egov.entities.Inscription</class>
 	<class>egov.entities.Job</class>
 	<class>egov.entities.User</class>

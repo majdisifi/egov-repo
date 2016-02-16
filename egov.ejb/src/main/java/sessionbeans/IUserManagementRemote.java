@@ -11,8 +11,6 @@ public interface IUserManagementRemote {
 
 	Boolean addUser(User u);
 
-	
-
 	Boolean update(User u);
 
 	void flush();
@@ -20,6 +18,7 @@ public interface IUserManagementRemote {
 	Boolean remove(User u);
 
 	List<User> findAll();
+
 	User findUserById(int id);
 
 }

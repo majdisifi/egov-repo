@@ -41,144 +41,94 @@ public class User implements Serializable {
 	private List<Bills_fines> bills;
 	@OneToMany(mappedBy = "user")
 	private List<Case> case1;
-	private int idF;
-
-
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-
 	public int getIdUser() {
 		return idUser;
 	}
-
-	public List<Car> getCars() {
-		return cars;
-	}
-
-	public void setCars(List<Car> cars) {
-		this.cars = cars;
-	}
-
-	public List<Bills_fines> getBills() {
-		return bills;
-	}
-
-	public void setBills(List<Bills_fines> bills) {
-		this.bills = bills;
-	}
-
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
-
 	public String getFirstName() {
 		return firstName;
 	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 	public String getLastName() {
 		return lastName;
 	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 	public Date getBirthDate() {
 		return BirthDate;
 	}
-
 	public void setBirthDate(Date birthDate) {
 		BirthDate = birthDate;
 	}
-
 	public String getJob() {
 		return job;
 	}
-
 	public void setJob(String job) {
 		this.job = job;
 	}
-
 	public Date getDeathDate() {
 		return deathDate;
 	}
-
 	public void setDeathDate(Date deathDate) {
 		this.deathDate = deathDate;
 	}
-
 	public Blob getPhoto() {
 		return photo;
 	}
-
 	public void setPhoto(Blob photo) {
 		this.photo = photo;
 	}
-
 	public Blob getFingerPrint() {
 		return fingerPrint;
 	}
-
 	public void setFingerPrint(Blob fingerPrint) {
 		this.fingerPrint = fingerPrint;
 	}
-
-	public int getIdF() {
-		return idF;
+	public List<Establishment> getEstablishment() {
+		return establishment;
 	}
-
-	public void setIdF(int idF) {
-		this.idF = idF;
+	public void setEstablishment(List<Establishment> establishment) {
+		this.establishment = establishment;
 	}
-
-	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
-			Blob fingerPrint, int idF) {
-		super();
-
-		this.firstName = firstName;
-		this.lastName = lastName;
-		BirthDate = birthDate;
-		this.job = job;
-		this.deathDate = deathDate;
-		this.photo = photo;
-		this.fingerPrint = fingerPrint;
-		this.idF = idF;
-	}
-
-	public User() {
-		super();
-	}
-
 	public List<Work> getWork() {
 		return work;
 	}
-
 	public void setWork(List<Work> work) {
 		this.work = work;
 	}
-
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+	public List<Car> getCars() {
+		return cars;
+	}
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+	public List<Bills_fines> getBills() {
+		return bills;
+	}
+	public void setBills(List<Bills_fines> bills) {
+		this.bills = bills;
+	}
 	public List<Case> getCase1() {
 		return case1;
 	}
-
 	public void setCase1(List<Case> case1) {
 		this.case1 = case1;
 	}
-
-	public User( String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
-			Blob fingerPrint, List<Work> work, List<Company> company, List<Account> accounts, List<Car> cars,
-			List<Bills_fines> bills, List<Case> case1, int idF) {
+	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
+			Blob fingerPrint, List<Establishment> establishment, List<Work> work, List<Account> accounts,
+			List<Car> cars, List<Bills_fines> bills, List<Case> case1) {
 		super();
-		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		BirthDate = birthDate;
@@ -186,21 +136,17 @@ public class User implements Serializable {
 		this.deathDate = deathDate;
 		this.photo = photo;
 		this.fingerPrint = fingerPrint;
+		this.establishment = establishment;
 		this.work = work;
 		this.accounts = accounts;
 		this.cars = cars;
 		this.bills = bills;
 		this.case1 = case1;
-		this.idF = idF;
 	}
-
-	public List<Establishment> getEstablishment() {
-		return establishment;
+	public User() {
+		super();
 	}
-
-	public void setEstablishment(List<Establishment> establishment) {
-		this.establishment = establishment;
-	}
+	
 	
 
 }

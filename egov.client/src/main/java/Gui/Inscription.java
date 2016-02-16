@@ -79,32 +79,25 @@ public class Inscription extends JFrame {
 		JLabel lblBirthDate = new JLabel("Birth Date");
 		
 		JLabel lblPicture = new JLabel("Picture");
-		
-		JButton btnImport = new JButton("Import");
-		btnImport.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(109, Short.MAX_VALUE)
+					.addContainerGap(112, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblFirstName)
 						.addComponent(lblLastName)
 						.addComponent(lblJob, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblBirthDate)
 						.addComponent(lblPicture))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnSubmit, Alignment.LEADING)
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnSubmit)
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(38)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnImport))))
+								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addGap(137))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(164)
@@ -129,9 +122,7 @@ public class Inscription extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblBirthDate)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblPicture)
-						.addComponent(btnImport, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addComponent(lblPicture)
 					.addGap(19)
 					.addComponent(btnSubmit)
 					.addGap(19))

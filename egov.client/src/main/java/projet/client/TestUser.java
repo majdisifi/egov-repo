@@ -21,10 +21,10 @@ public class TestUser {
 
 	public static void testAjout(IUserManagementRemote remote) {
 		User user = new User();
-		user.setIdUser(65);
-		user.setFirstName("Aslemma");
-		user.setLastName("Saluut !");
-		user.setJob("7a77ay");
+		
+		user.setFirstName("Sakly");
+		user.setLastName("Abdelaziz !");
+		user.setJob("Ingenieur");
 		if (remote.addUser(user)) {
 			System.out.println("ajout avec succes");
 		} else
@@ -57,7 +57,7 @@ public class TestUser {
 			remote = (IUserManagementRemote) context
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 		testAjout(remote);
-			// testUpdate(remote);
+		// testUpdate(remote);
 	
 			//testDelete(remote);
 		} catch (NamingException e) {

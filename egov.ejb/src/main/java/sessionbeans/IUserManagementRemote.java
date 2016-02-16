@@ -9,18 +9,17 @@ import egov.entities.User;
 @Remote
 public interface IUserManagementRemote {
 
-	void addUser(User u);
+	Boolean addUser(User u);
 
-	User findById(int id);
+	
 
-	void update(User u);
+	Boolean update(User u);
 
 	void flush();
 
-	void remove(User u);
+	Boolean remove(User u);
 
 	List<User> findAll();
-
-	List<User> findById1(int id);
+	User findUserById(int id);
 
 }

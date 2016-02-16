@@ -57,6 +57,7 @@ public class TestUser {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 			// testAjout(remote);
 			// testUpdate(remote);
+	
 			testDelete(remote);
 		} catch (NamingException e) {
 

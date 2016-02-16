@@ -27,20 +27,24 @@ public class Test_GestionEgov {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
+			user.setFirstName("Zribi");
+			user.setLastName("Ines");
+			user.setJob("ingenieur");
+			ge.addUser(user);
 			
 			//Date date =new Date(06,02,2015);
 			//Date date1 =new Date(01,12,3000);
 			
-			user.setFirstName("Zribi");
-			user.setLastName("Ines");
+			
+			
 			//user.setBirthDate(date);
-			user.setJob("ingenieur");
+			
 			//user.setDeathDate(date1);
 			//user.setPhoto();
 			//user.setFingerPrint();
 			
 
-			ge.addUser(user);
+			
 			
 			
 			

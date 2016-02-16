@@ -36,9 +36,15 @@ public class User implements Serializable{
       @OneToMany(mappedBy="user")
     private List<Bills_fines> bills;
      @OneToOne (mappedBy="user")
+     
      private DriveLicence driveLicence;
-     @OneToOne (mappedBy="user")
-     private B3 b3;
+    
+     @OneToMany (mappedBy="user")
+    
+     private List<Case> case1;
+     
+
+     
      @OneToOne (mappedBy="user")
      private Cin cin;
      @OneToMany(mappedBy="user")
@@ -86,12 +92,6 @@ public class User implements Serializable{
 	}
 	public void setDriveLicence(DriveLicence driveLicence) {
 		this.driveLicence = driveLicence;
-	}
-	public B3 getB3() {
-		return b3;
-	}
-	public void setB3(B3 b3) {
-		this.b3 = b3;
 	}
 	public Cin getCin() {
 		return cin;

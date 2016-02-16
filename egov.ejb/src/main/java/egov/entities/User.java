@@ -31,13 +31,10 @@ public class User implements Serializable{
 	private List<Account> accounts;
     @OneToMany (mappedBy="user")
 	private List<Car> cars;
-     @OneToMany(mappedBy="user")
-    private List<Job> jobs;
+   
       @OneToMany(mappedBy="user")
     private List<Bills_fines> bills;
-     @OneToOne (mappedBy="user")
      
-     private DriveLicence driveLicence;
     
      @OneToMany (mappedBy="user")
     
@@ -45,12 +42,8 @@ public class User implements Serializable{
      
 
      
-     @OneToOne (mappedBy="user")
-     private Cin cin;
-     @OneToMany(mappedBy="user")
-     private List<Inscription> inscription;
-     @OneToMany(mappedBy="user")
-     private List<Claims> claims;
+     
+
  
      
     
@@ -75,30 +68,15 @@ public class User implements Serializable{
 	public void setCars(List<Car> cars) {
 		this.cars = cars;
 	}
-	public List<Job> getJobs() {
-		return jobs;
-	}
-	public void setJobs(List<Job> jobs) {
-		this.jobs = jobs;
-	}
+
 	public List<Bills_fines> getBills() {
 		return bills;
 	}
 	public void setBills(List<Bills_fines> bills) {
 		this.bills = bills;
 	}
-	public DriveLicence getDriveLicence() {
-		return driveLicence;
-	}
-	public void setDriveLicence(DriveLicence driveLicence) {
-		this.driveLicence = driveLicence;
-	}
-	public Cin getCin() {
-		return cin;
-	}
-	public void setCin(Cin cin) {
-		this.cin = cin;
-	}
+	
+
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}

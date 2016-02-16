@@ -7,11 +7,6 @@
 		<class>egov.entities.B3</class>
 		<class>egov.entities.Bills_fines</class>
 		<class>egov.entities.Car</class>
-		<class>egov.entities.Cin</class>
-		<class>egov.entities.Claims</class>
-		<class>egov.entities.DriveLicence</class>
-		<class>egov.entities.Inscription</class>
-		<class>egov.entities.Job</class>
 		<class>egov.entities.User</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

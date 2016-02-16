@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 public class DriveLicence implements Serializable{
 	 @Id
 	 private int numDrL;
-	 private String categorie;
+	 private String category;
 	 private Date deliveryDate;
 	 private Date deadlineDate;
 	
@@ -24,11 +24,11 @@ public class DriveLicence implements Serializable{
 	public void setNumDrL(int numDrL) {
 		this.numDrL = numDrL;
 	}
-	public String getCategorie() {
-		return categorie;
+	public String getCategory() {
+		return category;
 	}
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
+	public void setCategory(String categorie) {
+		this.category = categorie;
 	}
 	public Date getDeliveryDate() {
 		return deliveryDate;
@@ -46,7 +46,7 @@ public class DriveLicence implements Serializable{
 	public DriveLicence(int numDrL, String categorie, Date deliveryDate, Date deadlineDate) {
 		super();
 		this.numDrL = numDrL;
-		this.categorie = categorie;
+		this.category = categorie;
 		this.deliveryDate = deliveryDate;
 		this.deadlineDate = deadlineDate;
 	}

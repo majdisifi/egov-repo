@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+
 @Entity
 
 public class User implements Serializable{
@@ -27,6 +29,11 @@ public class User implements Serializable{
 	private Date deathDate;
 	private Blob photo;
 	private Blob fingerPrint;
+	@ManyToMany(mappedBy="user")
+	private List<University>university ;
+	
+	@ManyToMany(mappedBy="user")
+	private List<Company>company ;
 	@OneToMany (mappedBy="user")
 	private List<Account> accounts;
     @OneToMany (mappedBy="user")

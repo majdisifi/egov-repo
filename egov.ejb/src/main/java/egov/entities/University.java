@@ -1,24 +1,30 @@
 package egov.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 @Entity
-public class University {
+public class University implements Serializable{
 	@Id
-	private String name;
+	private String nameUniversity;
 	private String adress;
 	private int phone;
 	
-	@ManyToMany
-	private List<User>user ;
-	public String getName() {
-		return name;
+	@OneToMany(mappedBy="university")
+	private List<Establishment>establishment ;
+	
+	
+	
+	public String getNameUniversity() {
+		return nameUniversity;
+		
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String nameUniversity) {
+		this.nameUniversity = nameUniversity;
 	}
 	public String getAdress() {
 		return adress;
@@ -32,9 +38,9 @@ public class University {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-	public University(String name, String adress, int phone) {
+	public University(String nameUniversity, String adress, int phone) {
 		super();
-		this.name = name;
+		this.nameUniversity = nameUniversity;
 		this.adress = adress;
 		this.phone = phone;
 	}

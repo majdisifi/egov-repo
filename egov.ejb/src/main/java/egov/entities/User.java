@@ -29,11 +29,15 @@ public class User implements Serializable{
 	private Date deathDate;
 	private Blob photo;
 	private Blob fingerPrint;
-	@ManyToMany(mappedBy="user")
-	private List<University>university ;
 	
-	@ManyToMany(mappedBy="user")
-	private List<Company>company ;
+	@OneToMany(mappedBy="user1")
+	private List<Establishment>establishment ;
+	
+	@OneToMany(mappedBy="user")
+	private List<Work>work ;
+	
+	
+	
 	@OneToMany (mappedBy="user")
 	private List<Account> accounts;
     @OneToMany (mappedBy="user")
@@ -150,6 +154,38 @@ public class User implements Serializable{
 	}
 	public User() {
 		super();
+	}
+	public List<Work> getWork() {
+		return work;
+	}
+	public void setWork(List<Work> work) {
+		this.work = work;
+	}
+
+	public List<Case> getCase1() {
+		return case1;
+	}
+	public void setCase1(List<Case> case1) {
+		this.case1 = case1;
+	}
+	public User(int idUser, String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
+			Blob fingerPrint, List<Work> work, List<Company> company, List<Account> accounts, List<Car> cars,
+			List<Bills_fines> bills, List<Case> case1, int idF) {
+		super();
+		this.idUser = idUser;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		BirthDate = birthDate;
+		this.job = job;
+		this.deathDate = deathDate;
+		this.photo = photo;
+		this.fingerPrint = fingerPrint;
+		this.work = work;
+		this.accounts = accounts;
+		this.cars = cars;
+		this.bills = bills;
+		this.case1 = case1;
+		this.idF = idF;
 	}
 	
 

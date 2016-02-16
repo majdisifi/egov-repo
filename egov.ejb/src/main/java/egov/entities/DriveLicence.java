@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 @Entity
 public class DriveLicence implements Serializable{
 	 @Id
+	 @GeneratedValue(strategy=GenerationType.AUTO)
 	 private int numDrL;
-	 private String categorie;
+	 private String category;
 	 private Date deliveryDate;
 	 private Date deadlineDate;
 	
@@ -24,11 +27,11 @@ public class DriveLicence implements Serializable{
 	public void setNumDrL(int numDrL) {
 		this.numDrL = numDrL;
 	}
-	public String getCategorie() {
-		return categorie;
+	public String getCategory() {
+		return category;
 	}
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
+	public void setCategory(String categorie) {
+		this.category = categorie;
 	}
 	public Date getDeliveryDate() {
 		return deliveryDate;
@@ -46,7 +49,7 @@ public class DriveLicence implements Serializable{
 	public DriveLicence(int numDrL, String categorie, Date deliveryDate, Date deadlineDate) {
 		super();
 		this.numDrL = numDrL;
-		this.categorie = categorie;
+		this.category = categorie;
 		this.deliveryDate = deliveryDate;
 		this.deadlineDate = deadlineDate;
 	}

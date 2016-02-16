@@ -3,9 +3,12 @@ package projet.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Remote;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.junit.Test;
 
@@ -14,86 +17,52 @@ import egov.entities.User;
 import sessionbeans.IUserManagementRemote;
 
 public class TestUser {
+	static IUserManagementRemote remote;
 
-	@Test
-	public void test() {
-		Context context;
-
-		try {
-			context = new InitialContext();
-
-			IUserManagementRemote ge = (IUserManagementRemote) context
-					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
-
-			User user = new User();
-		
-			user.setFirstName("Sakly");
-			user.setLastName("azziz");
-			user.setJob("7a77ay");
-
-			ge.addUser(user);
-
-		} catch (NamingException e) {
-
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	@Test
-	public void Test_find_query() {
-		Context context;
-
-		try {
-			context = new InitialContext();
-			IUserManagementRemote ge = (IUserManagementRemote) context
-					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
-
-	
-
-				List<User> users = (List<User>) ge.findById(99);
-				for (User users1 : users) {
-
-				System.out.println(users1.getFirstName());
-
-			}
-
-		} catch (NamingException e) {
-
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-	
-
-@Test
-public boolean TestRemove() {
-	Context context;
-	 Boolean b = false; 
-
-	try {
-		context = new InitialContext();
-		IUserManagementRemote ge = (IUserManagementRemote) context
-				.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
-
+	public static void testAjout(IUserManagementRemote remote) {
 		User user = new User();
-  			
-		 try {   					
-			 ge.remove(user);  
-		 
-		 b = true; 
-		 } catch (Exception e) {   
-			 System.err.println("ouups ..."); 
-			 }   				return b; 
-
-	} catch (NamingException e) {
-
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		user.setFirstName("Sakly");
+		user.setLastName("Abdelaziz");
+		user.setJob("Etudiant");
+		if (remote.addUser(user)) {
+			System.out.println("ajout avec succes");
+		} else
+			System.out.println("Erreur d'ajout");
 	}
-	return b;
 
-}
+	public static void testUpdate(IUserManagementRemote remote) {
+		User user = remote.findUserById(4);
+		user.setFirstName("abir");
+		user.setLastName("boughanmi");
+		user.setJob("la7ama");
+		if (remote.update(user)) {
+			System.out.println("modification avec succes");
+		} else
+			System.out.println("Erreur de modification");
+	}
+
+	public static void testDelete(IUserManagementRemote remote) {
+		User user = remote.findUserById(6);
+
+		if (remote.remove(user)) {
+			System.out.println("Supréssion avec succes");
+		} else
+			System.out.println("Erreur de Supression");
+	}
+
+	public static void main(String[] args) {
+		try {
+			Context context = new InitialContext();
+			remote = (IUserManagementRemote) context
+					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
+			// testAjout(remote);
+			// testUpdate(remote);
+			testDelete(remote);
+		} catch (NamingException e) {
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 }

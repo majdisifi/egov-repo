@@ -9,67 +9,73 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Car implements Serializable{
+public class Car implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int numImmatriculation;
 	private String color;
 	private String type;
-	 private String category;
-	 private String constructor;
-	 
+	private String category;
+	private String constructor;
+
 	@ManyToOne
-	private User user;    
-	
-	
+	private User user;
+
 	public int getImmatriculation() {
 		return numImmatriculation;
 	}
+
 	public void setImmatriculation(int numImmatriculation) {
 		this.numImmatriculation = numImmatriculation;
 	}
+
 	public String getColor() {
 		return color;
 	}
+
 	public void setColor(String color) {
 		this.color = color;
 	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
 
-	
 	public int getNumImmatriculation() {
 		return numImmatriculation;
 	}
+
 	public void setNumImmatriculation(int numImmatriculation) {
 		this.numImmatriculation = numImmatriculation;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	
-	
 	public String getCategory() {
 		return category;
 	}
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
 	public String getConstructor() {
 		return constructor;
 	}
+
 	public void setConstructor(String constructor) {
 		this.constructor = constructor;
 	}
-	
 
 	public Car(int numImmatriculation, String color, String type, String category, String constructor, User user) {
 		super();
@@ -80,10 +86,9 @@ public class Car implements Serializable{
 		this.constructor = constructor;
 		this.user = user;
 	}
+
 	public Car() {
 		super();
 	}
-	
-	
 
 }

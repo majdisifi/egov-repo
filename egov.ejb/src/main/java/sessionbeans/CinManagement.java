@@ -10,33 +10,35 @@ import egov.entities.Cin;
 
 
 
+
 @Stateless
 public class CinManagement {
 	
 	@PersistenceContext
-	EntityManager c;
+	EntityManager em;
 
 	public void addCin(Cin cin) {
-		c.persist(cin);
+		em.persist(cin);
 
 	}
 	public Cin findCin(Cin cin) {
-		return c.find(Cin.class,cin);
+		return em.find(Cin.class,cin);
 
 	}
+
 	
 	public void flush() {
-		c.flush();
+		em.flush();
 	}
 
 	public void update(Cin cin) {
-		c.merge(cin);
+		em.merge(cin);
 
 	}
 
 	public void remove(Cin cin) {
 
-		c.remove(c.merge(cin));
+		em.remove(em.merge(cin));
 
 	}
 

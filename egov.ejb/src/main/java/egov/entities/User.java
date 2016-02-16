@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -44,6 +45,8 @@ public class User implements Serializable{
      private List<Inscription> inscription;
      @OneToMany(mappedBy="user")
      private List<Claims> claims;
+ 
+     
     
      
      
@@ -147,10 +150,10 @@ public class User implements Serializable{
 	public void setIdF(int idF) {
 		this.idF = idF;
 	}
-	public User(int idUser, String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
+	public User( String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
 			Blob fingerPrint, int idF) {
 		super();
-		this.idUser = idUser;
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		BirthDate = birthDate;

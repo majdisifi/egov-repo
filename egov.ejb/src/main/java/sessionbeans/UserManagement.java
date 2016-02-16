@@ -17,42 +17,67 @@ public class UserManagement implements IUserManagementRemote {
 	@PersistenceContext
 	EntityManager Us;
 
-	public void addUser(User u) {
-		Us.persist(u);
+	public Boolean addUser(User u) {
+		
+		
+		try{
+			Us.persist(u);
+			return true;
+	}
+	catch (Exception e){
+		return false;
+	}
+
 	}
 
 	public void flush() {
 		Us.flush();
 	}
 
-	public void update(User u) {
-		Us.merge(u);
+	public Boolean update(User u) {
+	
+		try{
+			Us.merge(u);
+			return true;
+	}
+	catch (Exception e){
+		return false;
+	}
+
 
 	}
 
-	public void remove(User u) {
-
+	public Boolean remove(User u) {
+try{
 		Us.remove(Us.merge(u));
+		return true;
+}
+catch (Exception e){
+	return false;
+}
 
 	}
 
 	@Override
-	public User findById(int id) {
-		Us.find(User.class, id);
-		return null;
+	public User findUserById(int id) {
+		User user=null;
+		try{
+			user=Us.find(User.class,id);
+			
+	}
+	catch (Exception e){
+		
+	}
+		return user;
 	}
 
 	@Override
 	public List<User> findAll() {
 		List<User> users = new ArrayList<>();
-		users = (List<User>) Us.createQuery("select u from User u").getResultList();
-		return users;
-	}
-	@Override
-	public List<User> findById1(int id) {
-		Query query = Us.createQuery("select e from User e where e.user.idUser=:id");
-		query.setParameter("idUser",id);
-		
+		Query query= Us.createQuery("select u from User u");
 		return query.getResultList();
 	}
+	
+
+	
 }

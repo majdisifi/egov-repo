@@ -42,7 +42,7 @@ public class Test_GestionEgov {
 
 	}
 
-	@Test
+	/*@Test
 	public void Test_find_query() {
 		Context context;
 
@@ -66,7 +66,7 @@ public class Test_GestionEgov {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 	@Test
 	public void test1() {
 		Context context;

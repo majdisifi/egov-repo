@@ -34,13 +34,14 @@ public class User implements Serializable {
 	private List<Work> work;
 	@OneToMany(mappedBy = "user")
 	private List<Account> accounts;
-	@OneToMany(mappedBy = "user")
-	private List<Car> cars;
 	
 	@OneToMany(mappedBy = "user")
-	private List<Bills_fines> bills;
+	private List<Car> cars;
 	@OneToMany(mappedBy = "user")
-	private List<Case> case1;
+	private List<Bills_fines> bills;
+	@OneToMany(mappedBy ="user2")
+	private List<Case> case2;
+
 	public int getIdUser() {
 		return idUser;
 	}
@@ -119,15 +120,15 @@ public class User implements Serializable {
 	public void setBills(List<Bills_fines> bills) {
 		this.bills = bills;
 	}
-	public List<Case> getCase1() {
-		return case1;
+	public List<Case> getCase() {
+		return case2;
 	}
-	public void setCase1(List<Case> case1) {
-		this.case1 = case1;
+	public void setCase(List<Case> case2) {
+		this.case2 = case2;
 	}
 	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
 			Blob fingerPrint, List<Establishment> establishment, List<Work> work, List<Account> accounts,
-			List<Car> cars, List<Bills_fines> bills, List<Case> case1) {
+			List<Car> cars, List<Bills_fines> bills, List<Case> case2) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -141,7 +142,7 @@ public class User implements Serializable {
 		this.accounts = accounts;
 		this.cars = cars;
 		this.bills = bills;
-		this.case1 = case1;
+		this.case2 = case2;
 	}
 	public User() {
 		super();

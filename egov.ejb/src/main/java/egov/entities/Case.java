@@ -8,10 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Case implements Serializable {
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idCase;
@@ -19,7 +20,7 @@ public class Case implements Serializable {
 	private String judgment;
 	private Date dateCase;
 	@ManyToOne
-	private User user;  
+	private User user2;  
 
 	public int getIdB3() {
 		return idCase;
@@ -54,14 +55,25 @@ public class Case implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return user2;
 	}
 
-	public void setUser(User user) {
-		this.user	= user;
+	public void setUser(User user2) {
+		this.user2	= user2;
 	}
 
-	
+	public Case(int idCase, String nameCase, String judgment, Date dateCase, User user2) {
+		super();
+		this.idCase = idCase;
+		this.nameCase = nameCase;
+		this.judgment = judgment;
+		this.dateCase = dateCase;
+		this.user2 = user2;
+	}
+
+	public Case() {
+		super();
+	}
 
 	
 }

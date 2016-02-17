@@ -7,25 +7,25 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class EstablishmentPk implements Serializable{
 	private int idUser;
-	private int nameUniversity;
+	private int idUniversity;
 	public int getIdUser() {
 		return idUser;
 	}
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
-	public int getNameUniversity() {
-		return nameUniversity;
+	public int getIdUniversity() {
+		return idUniversity;
 	}
-	public void setNameUniversity(int nameUniversity) {
-		this.nameUniversity = nameUniversity;
+	public void setNameUniversity(int idUniversity) {
+		this.idUniversity = idUniversity;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idUser;
-		result = prime * result + nameUniversity;
+		result = prime * result + idUniversity;
 		return result;
 	}
 	@Override
@@ -39,14 +39,14 @@ public class EstablishmentPk implements Serializable{
 		EstablishmentPk other = (EstablishmentPk) obj;
 		if (idUser != other.idUser)
 			return false;
-		if (nameUniversity != other.nameUniversity)
+		if (idUniversity != other.idUniversity)
 			return false;
 		return true;
 	}
-	public EstablishmentPk(int idUser, int nameUniversity) {
+	public EstablishmentPk(int idUser, int idUniversity) {
 		super();
 		this.idUser = idUser;
-		this.nameUniversity = nameUniversity;
+		this.idUniversity = idUniversity;
 	}
 	public EstablishmentPk() {
 		super();

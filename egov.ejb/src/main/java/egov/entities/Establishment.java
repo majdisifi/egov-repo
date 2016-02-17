@@ -5,12 +5,17 @@ import java.util.Date;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
+
 public class Establishment implements Serializable {
 	@EmbeddedId
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	private EstablishmentPk pk;
 
 	private String level;
@@ -20,19 +25,19 @@ public class Establishment implements Serializable {
 
 	@JoinColumn(name = "idUser", insertable = false, updatable = false)
 	@ManyToOne
-	private User user;
+	private User user1;
 	@JoinColumn(name = "nameUniversity", insertable = false, updatable = false)
 	@ManyToOne
 	private University university;
 
-	public Establishment(String level, Date inscriptionDate, int inscriptionNumber, float fees, User user,
+	public Establishment(String level, Date inscriptionDate, int inscriptionNumber, float fees, User user1,
 			University university) {
 		super();
 		this.level = level;
 		this.inscriptionDate = inscriptionDate;
 		this.inscriptionNumber = inscriptionNumber;
 		this.fees = fees;
-		this.user = user;
+		this.user1 = user1;
 		this.university = university;
 	}
 
@@ -69,11 +74,11 @@ public class Establishment implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return user1;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		this.user1 = user1;
 	}
 
 	public University getUniversity() {

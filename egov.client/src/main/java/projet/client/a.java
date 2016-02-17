@@ -15,7 +15,7 @@ import sessionbeans.IUserManagementRemote;
 public class a {
 
 	@Test
-	public void Test_u() {
+	public void AddTest() {
 		Context context;
 
 		try {
@@ -30,6 +30,60 @@ public class a {
 			user.setJob("Ingenieur ");
 		
 			ge.addUser(user);
+
+		} catch (NamingException e) {
+
+	
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
+	public void updateTest() {
+		Context context;
+
+		try {
+			context = new InitialContext();
+
+			IUserManagementRemote ge = (IUserManagementRemote) context
+					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
+
+			User user = ge.findUserById(5);
+			user.setFirstName("			ZIZ !");
+			user.setLastName("Abdelaziz !");
+			user.setJob("Ingenieur ");
+		
+			if (ge.update(user)) {
+				System.out.println("modification avec succes");
+			} else
+				System.out.println("Erreur de modification");
+
+		} catch (NamingException e) {
+
+	
+			e.printStackTrace();
+		}
+
+	}
+	@Test
+	public void deleteTest() {
+		Context context;
+
+		try {
+			context = new InitialContext();
+
+			IUserManagementRemote ge = (IUserManagementRemote) context
+					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
+
+			User user = ge.findUserById(1);
+		
+			if (ge.remove(user)) {
+				System.out.println("Supréssion avec succes");
+			} else
+				System.out.println("Erreur de Supression");
+		
+			
 
 		} catch (NamingException e) {
 

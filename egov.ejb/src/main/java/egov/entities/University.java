@@ -12,14 +12,20 @@ import javax.persistence.OneToMany;
 @Entity
 public class University implements Serializable{
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int idUniversity;
+	public int getIdUniversity() {
+		return idUniversity;
+	}
+	public void setIdUniversity(int idUniversity) {
+		this.idUniversity = idUniversity;
+	}
 	private String nameUniversity;
 	private String adress;
 	private int phone;
 	
 	@OneToMany(mappedBy="university")
 	private List<Establishment>establishment ;
-	
-	
 	
 	public String getNameUniversity() {
 		return nameUniversity;

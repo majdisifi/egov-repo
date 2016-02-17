@@ -6,12 +6,16 @@ import java.util.Date;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 @Entity
 public class Work implements Serializable {
 	@EmbeddedId
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	private WorkPk pk;
 	private String jobType;
 	private Date assignmentDate;

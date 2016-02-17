@@ -19,7 +19,7 @@ import javax.persistence.OneToOne;
 
 public class User implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int idUser;
 	private String firstName;
 	private String lastName;
@@ -28,7 +28,7 @@ public class User implements Serializable {
 	private Date deathDate;
 	private Blob photo;
 	private Blob fingerPrint;
-	 @OneToMany(mappedBy = "user")
+	 @OneToMany(mappedBy = "user1")
 	private List<Establishment> establishment;
 	@OneToMany(mappedBy = "user")
 	private List<Work> work;
@@ -42,7 +42,7 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user")
 	private List<Kase> kase;
 
-	
+
 	public List<Kase> getKase() {
 		return kase;
 	}

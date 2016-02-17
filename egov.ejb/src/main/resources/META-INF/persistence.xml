@@ -5,16 +5,17 @@
 	<class>egov.entities.Account</class>
 	<class>egov.entities.Bills_fines</class>
 	<class>egov.entities.Car</class>
-	<class>egov.entities.Case</class>
 	<class>egov.entities.Company</class>
 	<class>egov.entities.Establishment</class>
 	<class>egov.entities.EstablishmentPk</class>
+	<class>egov.entities.Kase</class>
 	<class>egov.entities.University</class>
 	<class>egov.entities.User</class>
 	<class>egov.entities.Work</class>
 	<class>egov.entities.WorkPk</class>
+	
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 		</properties>

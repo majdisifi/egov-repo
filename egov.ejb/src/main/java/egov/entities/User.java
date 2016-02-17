@@ -28,7 +28,7 @@ public class User implements Serializable {
 	private Date deathDate;
 	private Blob photo;
 	private Blob fingerPrint;
-	 @OneToMany(mappedBy = "user1")
+	 @OneToMany(mappedBy = "user")
 	private List<Establishment> establishment;
 	@OneToMany(mappedBy = "user")
 	private List<Work> work;
@@ -42,7 +42,13 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user")
 	private List<Kase> kase;
 
-
+	
+	public List<Kase> getKase() {
+		return kase;
+	}
+	public void setKase(List<Kase> kase) {
+		this.kase = kase;
+	}
 	public int getIdUser() {
 		return idUser;
 	}

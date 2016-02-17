@@ -21,8 +21,8 @@ public class TestUser {
 
 	public static void testAjout(IUserManagementRemote remote) {
 		User user = new User();
-	
-		user.setFirstName(" l");
+	 user.setIdUser(5);
+		user.setFirstName(" ololilol");
 		user.setLastName("Abdelaziz !");
 		user.setJob("Ingenieur ");
 		if (remote.addUser(user)) {
@@ -32,7 +32,7 @@ public class TestUser {
 	}
 
 	public static void testUpdate(IUserManagementRemote remote) {
-		User user = remote.findUserById(4);
+		User user = remote.findUserById(3);
 		user.setFirstName("abir");
 		user.setLastName("boughanmi");
 		user.setJob("la7ama");
@@ -43,7 +43,7 @@ public class TestUser {
 	}
 
 	public static void testDelete(IUserManagementRemote remote) {
-		User user = remote.findUserById(6);
+		User user = remote.findUserById(1);
 
 		if (remote.remove(user)) {
 			System.out.println("Supréssion avec succes");
@@ -56,7 +56,7 @@ public class TestUser {
 			Context context = new InitialContext();
 			remote = (IUserManagementRemote) context
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
-			testAjout(remote);
+		testAjout(remote);
 			// testUpdate(remote);
 			// testDelete(remote);
 		} catch (NamingException e) {

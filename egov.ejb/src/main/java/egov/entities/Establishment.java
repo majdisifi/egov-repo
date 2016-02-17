@@ -20,19 +20,19 @@ public class Establishment implements Serializable {
 
 	@JoinColumn(name = "idUser", insertable = false, updatable = false)
 	@ManyToOne
-	private User user1;
+	private User user;
 	@JoinColumn(name = "nameUniversity", insertable = false, updatable = false)
 	@ManyToOne
 	private University university;
 
-	public Establishment(String level, Date inscriptionDate, int inscriptionNumber, float fees, User user1,
+	public Establishment(String level, Date inscriptionDate, int inscriptionNumber, float fees, User user,
 			University university) {
 		super();
 		this.level = level;
 		this.inscriptionDate = inscriptionDate;
 		this.inscriptionNumber = inscriptionNumber;
 		this.fees = fees;
-		this.user1 = user1;
+		this.user = user;
 		this.university = university;
 	}
 
@@ -69,11 +69,11 @@ public class Establishment implements Serializable {
 	}
 
 	public User getUser() {
-		return user1;
+		return user;
 	}
 
 	public void setUser(User user) {
-		this.user1 = user1;
+		this.user = user;
 	}
 
 	public University getUniversity() {

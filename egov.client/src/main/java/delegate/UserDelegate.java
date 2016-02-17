@@ -4,8 +4,8 @@ package delegate;
 import java.util.List;
 
 import egov.entities.User;
+import locator.ServiceLocator;
 import sessionbeans.IUserManagementRemote;
-import tn.esprit.bebetter.locator.ServiceLocator;
 
 
 

@@ -1,4 +1,4 @@
-package projet.client;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -12,7 +12,7 @@ import egov.entities.User;
 
 import sessionbeans.IUserManagementRemote;
 
-public class a {
+public class testUser2 {
 
 	@Test
 	public void AddTest() {

@@ -1,4 +1,4 @@
-package tn.esprit.bebetter.locator;
+package locator;
 
 import java.util.HashMap;
 import java.util.Map;

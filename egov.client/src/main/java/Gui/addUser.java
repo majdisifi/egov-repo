@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class DeathCertificate extends JFrame {
+public class addUser extends JFrame {
 
 	private JPanel contentPane;
 
@@ -18,7 +18,7 @@ public class DeathCertificate extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DeathCertificate frame = new DeathCertificate();
+					addUser frame = new addUser();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +30,7 @@ public class DeathCertificate extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DeathCertificate() {
+	public addUser() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

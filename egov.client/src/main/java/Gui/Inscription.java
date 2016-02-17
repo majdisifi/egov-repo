@@ -10,12 +10,14 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.TitledBorder;
 
+import delegate.UserDelegate;
 import egov.entities.User;
 
 import javax.swing.JTextField;
 import javax.swing.DropMode;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -79,7 +81,15 @@ public class Inscription extends JFrame {
 				user.setFirstName(user.getFirstName());
 				user.setFirstName(user.getFirstName());
 				user.setJob(user.getJob());
-				user.setDeathDate(new Date());
+				//user.setDeathDate(new Date());
+				if(UserDelegate.CreateUser(user))
+						{
+					JOptionPane.showMessageDialog(null," Ok Patron (y) ");
+					user.setFirstName("");
+					user.setLastName("");
+					user.setJob("");
+						}
+				else{}
 			}
 		});
 		

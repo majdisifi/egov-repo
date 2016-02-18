@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Car implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int numImmatriculation;
 	private String color;
 	private String type;

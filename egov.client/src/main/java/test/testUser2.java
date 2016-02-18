@@ -28,8 +28,12 @@ public class testUser2 {
 			user.setFirstName("			ZIZ !");
 			user.setLastName("Abdelaziz !");
 			user.setJob("Ingenieur ");
-		
-			ge.addUser(user);
+			
+			
+			if (ge.addUser(user)) {
+				System.out.println("ajout avec succes");
+			} else
+				System.out.println("Erreur d'ajout");
 
 		} catch (NamingException e) {
 

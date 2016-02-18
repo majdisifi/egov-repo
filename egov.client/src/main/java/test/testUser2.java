@@ -25,7 +25,7 @@ public class testUser2 {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
-			user.setFirstName("			ZIZ !");
+			user.setFirstName("  ZIZ !");
 			user.setLastName("Abdelaziz !");
 			user.setJob("Ingenieur ");
 			

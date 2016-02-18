@@ -14,11 +14,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 @Entity
 
-public class User implements Serializable{
-@Id
-@GeneratedValue(strategy=GenerationType.AUTO)
+public class User implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUser;
 	private String firstName;
 	private String lastName;
@@ -27,77 +28,23 @@ public class User implements Serializable{
 	private Date deathDate;
 	private Blob photo;
 	private Blob fingerPrint;
-	@OneToMany (mappedBy="user")
+	 @OneToMany(mappedBy = "user1")
+	private List<Establishment> establishment;
+	@OneToMany(mappedBy = "user")
+	private List<Work> work;
+	@OneToMany(mappedBy = "user")
 	private List<Account> accounts;
-    @OneToMany (mappedBy="user")
+	
+	@OneToMany(mappedBy = "user")
 	private List<Car> cars;
-     @OneToMany(mappedBy="user")
-    private List<Job> jobs;
-      @OneToMany(mappedBy="user")
-    private List<Bills_fines> bills;
-     @OneToOne (mappedBy="user")
-     private DriveLicence driveLicence;
-     @OneToOne (mappedBy="user")
-     private B3 b3;
-     @OneToOne (mappedBy="user")
-     private Cin cin;
-     @OneToMany(mappedBy="user")
-     private List<Inscription> inscription;
-     @OneToMany(mappedBy="user")
-     private List<Claims> claims;
- 
-     
-    
-     
-     
+	@OneToMany(mappedBy = "user")
+	private List<Bills_fines> bills;
+	@OneToMany(mappedBy = "user")
+	private List<Kase> kase;
 
-	private int idF;
 
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
 	public int getIdUser() {
 		return idUser;
-	}
-	
-	public List<Car> getCars() {
-		return cars;
-	}
-	public void setCars(List<Car> cars) {
-		this.cars = cars;
-	}
-	public List<Job> getJobs() {
-		return jobs;
-	}
-	public void setJobs(List<Job> jobs) {
-		this.jobs = jobs;
-	}
-	public List<Bills_fines> getBills() {
-		return bills;
-	}
-	public void setBills(List<Bills_fines> bills) {
-		this.bills = bills;
-	}
-	public DriveLicence getDriveLicence() {
-		return driveLicence;
-	}
-	public void setDriveLicence(DriveLicence driveLicence) {
-		this.driveLicence = driveLicence;
-	}
-	public B3 getB3() {
-		return b3;
-	}
-	public void setB3(B3 b3) {
-		this.b3 = b3;
-	}
-	public Cin getCin() {
-		return cin;
-	}
-	public void setCin(Cin cin) {
-		this.cin = cin;
 	}
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
@@ -144,16 +91,41 @@ public class User implements Serializable{
 	public void setFingerPrint(Blob fingerPrint) {
 		this.fingerPrint = fingerPrint;
 	}
-	public int getIdF() {
-		return idF;
+	public List<Establishment> getEstablishment() {
+		return establishment;
 	}
-	public void setIdF(int idF) {
-		this.idF = idF;
+	public void setEstablishment(List<Establishment> establishment) {
+		this.establishment = establishment;
 	}
-	public User( String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
-			Blob fingerPrint, int idF) {
+	public List<Work> getWork() {
+		return work;
+	}
+	public void setWork(List<Work> work) {
+		this.work = work;
+	}
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+	public List<Car> getCars() {
+		return cars;
+	}
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+	public List<Bills_fines> getBills() {
+		return bills;
+	}
+	public void setBills(List<Bills_fines> bills) {
+		this.bills = bills;
+	}
+	
+	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
+			Blob fingerPrint, List<Establishment> establishment, List<Work> work, List<Account> accounts,
+			List<Car> cars, List<Bills_fines> bills) {
 		super();
-		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		BirthDate = birthDate;
@@ -161,11 +133,18 @@ public class User implements Serializable{
 		this.deathDate = deathDate;
 		this.photo = photo;
 		this.fingerPrint = fingerPrint;
-		this.idF = idF;
+		this.establishment = establishment;
+		this.work = work;
+		this.accounts = accounts;
+		this.cars = cars;
+		this.bills = bills;
+	
 	}
 	public User() {
 		super();
 	}
+
+	
 	
 
 }

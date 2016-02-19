@@ -11,7 +11,7 @@ import sessionbeans.IUserManagementRemote;
 
 public class UserDelegate {
 	public static IUserManagementRemote remote;
-	public static final String jndi="bebetter-ejb/ManageUser!tn.esprit.bebetter.services.managemenent.user.ManageUserRemote";
+	public static final String jndi="egov.ejb/UserManagement!sessionbeans.IUserManagementRemote";
 	public static IUserManagementRemote getProxy(){
 		return (IUserManagementRemote) ServiceLocator.getInstance().getProxy(jndi);
 	}

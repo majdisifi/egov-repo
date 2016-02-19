@@ -8,6 +8,7 @@ import javax.naming.NamingException;
 
 import org.junit.Test;
 
+import egov.entities.Car;
 import egov.entities.User;
 
 import sessionbeans.IUserManagementRemote;
@@ -96,4 +97,5 @@ public class testUser2 {
 		}
 
 	}
+
 }

@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import egov.entities.Car;
 import egov.entities.User;
 
 @Stateless
@@ -67,6 +68,15 @@ public class UserManagement implements IUserManagementRemote {
 	public List<User> findAll() {
 		List<User> users = new ArrayList<>();
 		Query query = Us.createQuery("select u from User u");
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Car> findCarByIdUser(int id) {
+		User user = null;
+		user = Us.find(User.class, id);
+		List<Car> cars = new ArrayList<>();
+		Query query = Us.createQuery("select c from car c where c.idUser=:id");
 		return query.getResultList();
 	}
 

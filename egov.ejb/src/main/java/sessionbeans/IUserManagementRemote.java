@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import egov.entities.Car;
 import egov.entities.User;
 
 @Remote
@@ -15,5 +16,5 @@ void flush();
 Boolean remove(User u);
 List<User> findAll();
 User findUserById(int id);
-
+List<Car> findCarByIdUser(int id);
 }

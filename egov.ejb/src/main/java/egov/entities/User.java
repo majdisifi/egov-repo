@@ -28,6 +28,16 @@ public class User implements Serializable {
 	private Date deathDate;
 	private Blob photo;
 	private Blob fingerPrint;
+	private String birthPlace;
+	private String login;
+	private String email;
+	private String password;
+	private String status;
+	@ManyToOne
+	private User mere;
+	@ManyToOne
+	private User pere;
+	
 	 @OneToMany(mappedBy = "user1")
 	private List<Establishment> establishment;
 	@OneToMany(mappedBy = "user")
@@ -84,6 +94,21 @@ public class User implements Serializable {
 	}
 	public void setDeathDate(Date deathDate) {
 		this.deathDate = deathDate;
+		
+	}
+	
+	
+	public User getMere() {
+		return mere;
+	}
+	public void setMere(User mere) {
+		this.mere = mere;
+	}
+	public User getPere() {
+		return pere;
+	}
+	public void setPere(User pere) {
+		this.pere = pere;
 	}
 	public Blob getPhoto() {
 		return photo;
@@ -128,9 +153,12 @@ public class User implements Serializable {
 		this.bills = bills;
 	}
 	
+	
+	
 	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
-			Blob fingerPrint, List<Establishment> establishment, List<Work> work, List<Account> accounts,
-			List<Car> cars, List<Bills_fines> bills) {
+			Blob fingerPrint, String birthPlace, String login, String email, String password, String status,
+			List<Establishment> establishment, List<Work> work, List<Account> accounts, List<Car> cars,
+			List<Bills_fines> bills, List<Kase> kase) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -139,12 +167,47 @@ public class User implements Serializable {
 		this.deathDate = deathDate;
 		this.photo = photo;
 		this.fingerPrint = fingerPrint;
+		this.birthPlace = birthPlace;
+		this.login = login;
+		this.email = email;
+		this.password = password;
+		this.status = status;
 		this.establishment = establishment;
 		this.work = work;
 		this.accounts = accounts;
 		this.cars = cars;
 		this.bills = bills;
-	
+		this.kase = kase;
+	}
+	public String getBirthPlace() {
+		return birthPlace;
+	}
+	public void setBirthPlace(String birthPlace) {
+		this.birthPlace = birthPlace;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public User() {
 		super();

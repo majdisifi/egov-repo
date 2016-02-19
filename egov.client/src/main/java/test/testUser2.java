@@ -26,9 +26,13 @@ public class testUser2 {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
-			user.setFirstName("  ZIZ !");
-			user.setLastName("Abdelaziz !");
-			user.setJob("Ingenieur ");
+			
+			user.setFirstName("aaaaaaziz");
+			user.setLastName("saaaaaaaakly");
+			user.setJob("baya3 chrab ");
+			user.setGender("Male");
+			User u=ge.findUserById(1);
+			user.setPere(user);
 			
 			
 			if (ge.addUser(user)) {
@@ -84,6 +88,33 @@ public class testUser2 {
 			User user = ge.findUserById(1);
 		
 			if (ge.remove(user)) {
+				System.out.println("Supréssion avec succes");
+			} else
+				System.out.println("Erreur de Supression");
+		
+			
+
+		} catch (NamingException e) {
+
+	
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
+	public void deleteUserByIdTest() {
+		Context context;
+
+		try {
+			context = new InitialContext();
+
+			IUserManagementRemote ge = (IUserManagementRemote) context
+					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
+
+			
+		
+			if (ge.removeUserById(1)) {
 				System.out.println("Supréssion avec succes");
 			} else
 				System.out.println("Erreur de Supression");

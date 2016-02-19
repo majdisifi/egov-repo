@@ -12,12 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
 
 public class User implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int idUser;
@@ -31,8 +34,10 @@ public class User implements Serializable {
 	private String birthPlace;
 	private String login;
 	private String email;
-	private String password;
+	private String pwd;
 	private String status;
+	private String gender;
+	
 	@ManyToOne
 	private User mere;
 	@ManyToOne
@@ -156,7 +161,7 @@ public class User implements Serializable {
 	
 	
 	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
-			Blob fingerPrint, String birthPlace, String login, String email, String password, String status,
+			Blob fingerPrint, String birthPlace, String login, String email, String pwd, String status,
 			List<Establishment> establishment, List<Work> work, List<Account> accounts, List<Car> cars,
 			List<Bills_fines> bills, List<Kase> kase) {
 		super();
@@ -170,7 +175,7 @@ public class User implements Serializable {
 		this.birthPlace = birthPlace;
 		this.login = login;
 		this.email = email;
-		this.password = password;
+		this.pwd = pwd;
 		this.status = status;
 		this.establishment = establishment;
 		this.work = work;
@@ -197,14 +202,21 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPassword() {
-		return password;
+	public String getPwd() {
+		return pwd;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	public String getStatus() {
 		return status;
+	}
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public void setStatus(String status) {
 		this.status = status;

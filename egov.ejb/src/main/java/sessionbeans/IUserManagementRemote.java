@@ -14,6 +14,7 @@ Boolean addUser(User u);
 Boolean update(User u);
 void flush();
 Boolean remove(User u);
+Boolean removeUserById(int id);
 List<User> findAll();
 User findUserById(int id);
 List<Car> findCarByIdUser(int id);

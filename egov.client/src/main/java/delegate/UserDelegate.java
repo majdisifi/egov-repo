@@ -39,4 +39,8 @@ public class UserDelegate {
 		return getProxy().findAll();
 		
 	}
+	public static Boolean removeUserById(int id){
+		return getProxy().removeUserById(id);
+		
+	}
 }

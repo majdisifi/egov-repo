@@ -80,4 +80,19 @@ public class UserManagement implements IUserManagementRemote {
 		return query.getResultList();
 	}
 
+	@Override
+	public Boolean removeUserById(int id) {
+		User user=new User();
+		try {
+			user = Us.find(User.class, id);
+			Us.remove(Us.merge(user));
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+
+		
+		
+	}
+
 }

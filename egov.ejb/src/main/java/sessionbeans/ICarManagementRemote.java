@@ -1,0 +1,18 @@
+package sessionbeans;
+
+import java.util.List;
+
+import javax.ejb.Remote;
+
+import egov.entities.Car;
+import egov.entities.User;
+@Remote
+public interface ICarManagementRemote {
+	Boolean addCar(Car c);
+	Boolean update(Car c);
+	void flush();
+	Boolean remove(Car c);
+	List<User> findAll();
+	Car findCarByNumIm(int numImmatriculation);
+
+}

@@ -15,5 +15,6 @@ void flush();
 Boolean remove(User u);
 List<User> findAll();
 User findUserById(int id);
+User authentificate(String login,String pwd);
 
 }

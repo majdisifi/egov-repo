@@ -19,7 +19,7 @@ import javax.persistence.OneToOne;
 
 public class User implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int idUser;
 	private String firstName;
 	private String lastName;
@@ -28,6 +28,8 @@ public class User implements Serializable {
 	private Date deathDate;
 	private Blob photo;
 	private Blob fingerPrint;
+
+	
 	 @OneToMany(mappedBy = "user1")
 	private List<Establishment> establishment;
 	@OneToMany(mappedBy = "user")
@@ -43,6 +45,12 @@ public class User implements Serializable {
 	private List<Kase> kase;
 
 
+	public List<Kase> getKase() {
+		return kase;
+	}
+	public void setKase(List<Kase> kase) {
+		this.kase = kase;
+	}
 	public int getIdUser() {
 		return idUser;
 	}
@@ -122,6 +130,11 @@ public class User implements Serializable {
 		this.bills = bills;
 	}
 	
+	
+	
+
+	
+	
 	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
 			Blob fingerPrint, List<Establishment> establishment, List<Work> work, List<Account> accounts,
 			List<Car> cars, List<Bills_fines> bills) {
@@ -144,6 +157,8 @@ public class User implements Serializable {
 		super();
 	}
 
+
+	
 	
 	
 

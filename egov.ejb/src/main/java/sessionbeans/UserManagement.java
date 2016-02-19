@@ -23,7 +23,7 @@ public class UserManagement implements IUserManagementRemote {
 		} catch (Exception e) {
 			return false;
 		}
-
+		
 	}
 
 	public void flush() {
@@ -68,6 +68,20 @@ public class UserManagement implements IUserManagementRemote {
 		List<User> users = new ArrayList<>();
 		Query query = Us.createQuery("select u from User u");
 		return query.getResultList();
+	}
+
+	@Override
+	public User authentificate(String login, String pwd) {
+		User user= null;
+		Query query=Us.createQuery("Select u from User u where u.login=:login and u.pwd=:pwd");
+		query.setParameter("login", login).setParameter("pwd", pwd);
+		try {
+			user=(User) query.getSingleResult();
+			
+		} catch (Exception e) {
+			 user=null;
+		}
+		return user;
 	}
 
 }

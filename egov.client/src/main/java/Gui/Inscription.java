@@ -9,23 +9,29 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.TitledBorder;
+
+import delegate.UserDelegate;
+import egov.entities.User;
+
 import javax.swing.JTextField;
 import javax.swing.DropMode;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class Inscription extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField lastname;
+	private JTextField firstname;
+	private JTextField job;
+	private JTextField birthdate;
 
 	/**
 	 * Launch the application.
@@ -53,14 +59,14 @@ public class Inscription extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		firstname = new JTextField();
+		firstname.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		lastname = new JTextField();
+		lastname.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		job = new JTextField();
+		job.setColumns(10);
 		
 		JLabel lblFirstName = new JLabel("First Name");
 		
@@ -68,9 +74,22 @@ public class Inscription extends JFrame {
 		
 		JLabel lblJob = new JLabel("Job");
 		
-		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.addActionListener(new ActionListener() {
+		JButton ok = new JButton("Submit");
+		ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				User user=new User();
+				user.setFirstName(user.getFirstName());
+				user.setFirstName(user.getFirstName());
+				user.setJob(user.getJob());
+				//user.setDeathDate(new Date());
+				if(UserDelegate.CreateUser(user))
+						{
+					JOptionPane.showMessageDialog(null," Ok Patron (y) ");
+					user.setFirstName("");
+					user.setLastName("");
+					user.setJob("");
+						}
+				else{}
 			}
 		});
 		
@@ -81,8 +100,8 @@ public class Inscription extends JFrame {
 		
 		JLabel lblPicture = new JLabel("Picture");
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		birthdate = new JTextField();
+		birthdate.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -95,14 +114,14 @@ public class Inscription extends JFrame {
 						.addComponent(lblBirthDate)
 						.addComponent(lblPicture))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnSubmit)
+						.addComponent(ok)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(38)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(lastname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(job, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(firstname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(birthdate, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))))
 					.addGap(137))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(164)
@@ -114,24 +133,24 @@ public class Inscription extends JFrame {
 					.addComponent(lblCreatingAccount, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 					.addGap(29)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(firstname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblFirstName))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lastname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblLastName))
 					.addGap(11)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(job, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblJob))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblBirthDate)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(birthdate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblPicture)
 					.addGap(19)
-					.addComponent(btnSubmit)
+					.addComponent(ok)
 					.addGap(19))
 		);
 		contentPane.setLayout(gl_contentPane);

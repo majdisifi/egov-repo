@@ -85,7 +85,7 @@ public class testUser2 {
 			IUserManagementRemote ge = (IUserManagementRemote) context
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
-			User user = ge.findUserById(1);
+			User user = ge.findUserById(2);
 		
 			if (ge.remove(user)) {
 				System.out.println("Supréssion avec succes");

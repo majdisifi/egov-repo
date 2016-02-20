@@ -131,7 +131,7 @@ public class Register {
 				user.setFirstName(f);
 				user.setLastName(n);
 				user.setJob(j);
-				user.setDeathDate(d);
+				user.setBirthDate(d);
 				user.setEmail(em);
 				user.setBirthPlace(p);
 				user.setGender(g);
@@ -200,7 +200,7 @@ public class Register {
 
 					users = UserDelegate.doFindAllUsers();
 					System.out.println("done");
-					String[][] donnes = new String[users.size()][8];
+					donnes = new String[users.size()][8];
 					for (int i = 0; i < users.size(); i++) {
 						
 						
@@ -238,8 +238,9 @@ public class Register {
 
 				User us = new User();
 				int a = table.getSelectedRow();
-
+                  System.out.println(a);
 				int x = Integer.parseInt(donnes[a][0]);
+				System.out.println(x);
 
 				if (UserDelegate.removeUserById(x))
 					JOptionPane.showMessageDialog(null, "Added");

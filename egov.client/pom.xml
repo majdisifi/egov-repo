@@ -10,7 +10,9 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 
+
 	<dependencies>
+	
 		<dependency>
 			<groupId>tn.egov</groupId>
 			<artifactId>egov.ejb</artifactId>
@@ -38,6 +40,11 @@
 	<groupId>com.toedter</groupId>
 	<artifactId>jcalendar</artifactId>
 	<version>1.4</version>
+</dependency>
+<dependency>
+	<groupId>com.itextpdf</groupId>
+	<artifactId>itextpdf</artifactId>
+	<version>5.5.8</version>
 </dependency>
 	
 	</dependencies>

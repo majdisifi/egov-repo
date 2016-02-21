@@ -13,7 +13,7 @@ import javax.swing.RepaintManager;
 import delegate.UserDelegate;
 import egov.entities.User;
 
-import java.awt.Font;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -24,10 +24,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.demo.BirthdayEvaluator;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 public class ManageUser {
 
@@ -110,12 +117,12 @@ public class ManageUser {
 		label_3.setBounds(63, 100, 51, 14);
 		frame.getContentPane().add(label_3);
 
-		JLabel label_4 = new JLabel("Creating Account");
-		label_4.setFont(new Font("Source Sans Pro ExtraLight", Font.BOLD, 14));
+		JLabel label_4 = new JLabel("Managing User Account");
+		
 		label_4.setBounds(283, 11, 260, 23);
 		frame.getContentPane().add(label_4);
 
-		JButton button = new JButton("Submit");
+		JButton button = new JButton("Add");
 
 		button.addMouseListener(new MouseAdapter() {
 			@Override
@@ -217,7 +224,7 @@ public class ManageUser {
 		frame.getContentPane().add(lblGender);
 
 	
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("actualize");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -253,7 +260,7 @@ public class ManageUser {
 		btnNewButton.setBounds(471, 333, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnSupprimer = new JButton("Supprimer");
+		JButton btnSupprimer = new JButton("delete");
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -284,34 +291,39 @@ public class ManageUser {
 		btnUpdate.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			
+				int a = table.getSelectedRow();
+
+				int x = Integer.parseInt(donnes[a][0]);
+
+				User user = UserDelegate.doFindUserById(x);
+				String n = lastname.getText();
+				String f = firstname.getText();
+				String j = job.getText();
+				String p = birthPlace.getText();
+				String g = gender.getText();
+				Date d = dato.getDate();
+
+				user.setFirstName(f);
+				user.setLastName(n);
+				user.setJob(j);
+				
+
+				user.setBirthPlace(p);
+				user.setGender(g);
+
+				if (UserDelegate.doUpdateUser(user))
+					JOptionPane.showMessageDialog(null, "updated");
+				else
+					JOptionPane.showMessageDialog(null, "erreur");
 			}
+			
+			
 		});
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				User user = new User();
-				user.setFirstName(firstname.getText());
-				user.setLastName(lastname.getText());
-				user.setJob(job.getName());
-				user.setEmail(email.getName());
-				user.setBirthPlace(birthPlace.getText());
-				user.setGender(gender.getText());
 				
-				if(UserDelegate.doUpdateUser(user))
-				{JOptionPane.showMessageDialog(null, "ok");
-				firstname.setText("");
-				lastname.setText("");
-				job.setText("");
 				
-				birthPlace.setText("");
-				email.setText("");
-				gender.setText("");
-				us=UserDelegate.doFindAllUsers();
-				
-				}
-				else
-				{}
 				
 				
 				
@@ -320,6 +332,79 @@ public class ManageUser {
 		});
 		btnUpdate.setBounds(748, 333, 89, 23);
 		frame.getContentPane().add(btnUpdate);
+		
+		JButton btnPdf = new JButton("pdf");
+		btnPdf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Document document = new Document();
+		        try{
+		        	
+		        	
+		        	User us = new User();
+					int a = table.getSelectedRow();
+	             
+					int x = Integer.parseInt(donnes[a][0]);
+					
+					
+				
+		        	String n =donnes[a][2];
+					String f = donnes[a][1];
+					String j = donnes[a][5];
+					String p = donnes[a][4];
+					String g = donnes[a][6];
+					//Date d = dato.getDate();
+		        	
+		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\Egov.pdf"));
+		            document.open();
+		            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
+		            Paragraph p1 = new Paragraph(n);
+		            Paragraph p2 = new Paragraph(f);
+		            Paragraph p3 = new Paragraph(j);
+		            Paragraph p4 = new Paragraph(p);
+		            Paragraph p5 = new Paragraph(g);
+		          
+		            
+		            p1.setAlignment(Element.ALIGN_CENTER);
+		            p2.setAlignment(Element.ALIGN_CENTER);
+		            p3.setAlignment(Element.ALIGN_CENTER);
+		            p4.setAlignment(Element.ALIGN_CENTER);
+		            p5.setAlignment(Element.ALIGN_CENTER);
+		 
+		            document.add(p1);
+		            
+		            //add blank line
+		    	    document.add( Chunk.NEWLINE );
+		            document.add(p2);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p3);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p4);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p5);
+		            document.add( Chunk.NEWLINE );
+		           
+		            document.close();
+		        }
+		        catch(Exception n){
+		            System.out.println(n);
+		        }
+		        document.close();
+		    
+			}
+		});
+		btnPdf.setBounds(541, 257, 89, 23);
+		frame.getContentPane().add(btnPdf);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			
+					
+			}
+		});
+		comboBox.setBounds(98, 32, 28, 20);
+		frame.getContentPane().add(comboBox);
 		
 		JButton btnDownload = new JButton("Download");
 	}	

@@ -104,5 +104,14 @@ public class BankAccountManage extends JFrame {
 		});
 		btnDelete.setBounds(313, 281, 89, 23);
 		contentPane.add(btnDelete);
+		
+		JButton btnPdf = new JButton("pdf");
+		btnPdf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnPdf.setBounds(425, 281, 89, 23);
+		contentPane.add(btnPdf);
 	}
 }

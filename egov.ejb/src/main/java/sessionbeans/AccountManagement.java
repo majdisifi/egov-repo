@@ -53,11 +53,7 @@ public class AccountManagement implements IAccountManagementRemote{
 		
 	}
 
-	@Override
-	public Boolean removeCarById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public List<Account> findAll() {

@@ -20,6 +20,7 @@ import java.awt.event.MouseEvent;
 import java.util.Date;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
 public class RegiserBaby extends JFrame {
 
@@ -79,7 +80,7 @@ public class RegiserBaby extends JFrame {
 		
 		birthPlace = new JTextField();
 		birthPlace.setColumns(10);
-		birthPlace.setBounds(262, 267, 86, 20);
+		birthPlace.setBounds(262, 253, 86, 20);
 		contentPane.add(birthPlace);
 		
 		gender = new JTextField();

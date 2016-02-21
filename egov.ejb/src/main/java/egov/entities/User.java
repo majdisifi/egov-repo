@@ -6,7 +6,9 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +49,7 @@ public class User implements Serializable {
 	private List<Establishment> establishment;
 	@OneToMany(mappedBy = "user")
 	private List<Work> work;
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Account> accounts;
 	
 	@OneToMany(mappedBy = "user")

@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RepaintManager;
 
 import delegate.UserDelegate;
 import egov.entities.User;
@@ -18,14 +19,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.demo.BirthdayEvaluator;
+
 import javax.swing.ImageIcon;
 
-public class Register {
+public class ManageUser {
 
 	private JFrame frame;
 	private JTextField job;
@@ -38,6 +42,8 @@ public class Register {
 	private JTextField gender;
 	String[][] donnes;
 	List<User> us;
+	private JTable table_1;
+	
 
 	/**
 	 * Launch the application.
@@ -47,7 +53,7 @@ public class Register {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Register window = new Register();
+					ManageUser window = new ManageUser();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +65,7 @@ public class Register {
 	/**
 	 * Create the application.
 	 */
-	public Register() {
+	public ManageUser() {
 		initialize();
 	}
 
@@ -175,11 +181,31 @@ public class Register {
 		frame.getContentPane().add(lblBirthPlace);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				User user=new User();
+				user=us.get(table.getSelectedRow());
+				firstname.setText(user.getFirstName());
+				lastname.setText(user.getLastName());
+				job.setText(user.getJob());
+				dato.setDate(user.getBirthDate());
+				birthPlace.setText(user.getBirthPlace());
+				email.setText(user.getEmail());
+				gender.setText(user.getGender());
+				
+				
+				
+			}
+		});
 		scrollPane_1.setBounds(306, 77, 534, 160);
 		frame.getContentPane().add(scrollPane_1);
 
 		table = new JTable();
 		scrollPane_1.setViewportView(table);
+		
+		table_1 = new JTable();
+		scrollPane_1.setColumnHeaderView(table_1);
 
 		gender = new JTextField();
 		gender.setBounds(168, 350, 86, 20);
@@ -243,7 +269,8 @@ public class Register {
 				System.out.println(x);
 
 				if (UserDelegate.removeUserById(x))
-					JOptionPane.showMessageDialog(null, "Added");
+					JOptionPane.showMessageDialog(null, "Deleted");
+				
 				else
 					JOptionPane.showMessageDialog(null, "erreur");
 				;
@@ -254,21 +281,48 @@ public class Register {
 		frame.getContentPane().add(btnSupprimer);
 		
 		JButton btnUpdate = new JButton("update");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+			}
+		});
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				User us = new User();
-				int a = table.getSelectedRow();
-
-				int x = Integer.parseInt(donnes[a][0]);
-				;
-				if (UserDelegate.doDeleteUser(UserDelegate.doFindUserById(x)))
-					JOptionPane.showMessageDialog(null, "Added");
+				
+				User user = new User();
+				user.setFirstName(firstname.getText());
+				user.setLastName(lastname.getText());
+				user.setJob(job.getName());
+				user.setEmail(email.getName());
+				user.setBirthPlace(birthPlace.getText());
+				user.setGender(gender.getText());
+				
+				if(UserDelegate.doUpdateUser(user))
+				{JOptionPane.showMessageDialog(null, "ok");
+				firstname.setText("");
+				lastname.setText("");
+				job.setText("");
+				
+				birthPlace.setText("");
+				email.setText("");
+				gender.setText("");
+				us=UserDelegate.doFindAllUsers();
+				
+				}
 				else
-					JOptionPane.showMessageDialog(null, "erreur");
-				;
+				{}
+				
+				
+				
+				
 			}
 		});
 		btnUpdate.setBounds(748, 333, 89, 23);
 		frame.getContentPane().add(btnUpdate);
-	}
+		
+		JButton btnDownload = new JButton("Download");
+	}	
 }
+
+		

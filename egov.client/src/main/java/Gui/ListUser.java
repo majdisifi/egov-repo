@@ -44,10 +44,11 @@ public class ListUser extends JFrame {
 	private JButton btnActualiser;
 	private JTable table;
 	private String[][] donnes;
-	private JButton btnDesactiver;
 	private JButton btnActiver;
 	private JTextField birthPlace;
 	JDateChooser dato = new JDateChooser();
+	private JTable table_1;
+	private JTable table_2;
 
 	/**
 	 * Launch the application.
@@ -82,11 +83,17 @@ public class ListUser extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		scrollPane.setBounds(242, 60, 534, 160);
+		scrollPane.setBounds(230, 56, 534, 160);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
 		scrollPane.setColumnHeaderView(table);
+		
+		table_1 = new JTable();
+		scrollPane.setViewportView(table_1);
+		
+		table_2 = new JTable();
+		scrollPane.setColumnHeaderView(table_2);
 
 		job = new JTextField();
 		job.setColumns(10);
@@ -126,6 +133,7 @@ public class ListUser extends JFrame {
 		
 
 		btnUpdate = new JButton("update");
+		
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -160,7 +168,7 @@ public class ListUser extends JFrame {
 					JOptionPane.showMessageDialog(null, "erreur");
 			}
 		});
-		btnUpdate.setBounds(414, 301, 89, 23);
+		btnUpdate.setBounds(516, 288, 89, 23);
 		contentPane.add(btnUpdate);
 
 		btnDelete = new JButton("delete");
@@ -172,19 +180,20 @@ public class ListUser extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
+				User us = new User();
 				int a = table.getSelectedRow();
 
 				int x = Integer.parseInt(donnes[a][0]);
-
-				if (UserDelegate.removeUserById(x))
-					JOptionPane.showMessageDialog(null, "deleted");
+				;
+				if (UserDelegate.doDeleteUser(UserDelegate.doFindUserById(x)))
+					JOptionPane.showMessageDialog(null, "Deleted");
 				else
-					JOptionPane.showMessageDialog(null, "erreur");
+					JOptionPane.showMessageDialog(null, "Delete Error");
 				;
 
 			}
 		});
-		btnDelete.setBounds(578, 301, 89, 23);
+		btnDelete.setBounds(125, 92, 89, 23);
 		contentPane.add(btnDelete);
 
 		btnActualiser = new JButton("actualiser");
@@ -219,12 +228,8 @@ public class ListUser extends JFrame {
 
 			}
 		});
-		btnActualiser.setBounds(230, 301, 89, 23);
+		btnActualiser.setBounds(332, 288, 89, 23);
 		contentPane.add(btnActualiser);
-
-		btnDesactiver = new JButton("Desactiver");
-		btnDesactiver.setBounds(109, 92, 89, 23);
-		contentPane.add(btnDesactiver);
 
 		btnActiver = new JButton("Activer");
 		btnActiver.setBounds(10, 92, 89, 23);

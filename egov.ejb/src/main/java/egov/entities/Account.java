@@ -3,6 +3,7 @@ package egov.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Account implements Serializable {
 	private int num;
 
 	private float ammount;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 
 	private User user;
 
@@ -46,9 +47,9 @@ public class Account implements Serializable {
 		this.ammount = ammount;
 	}
 
-	public Account(int num, float ammount, int idUser) {
+	public Account(float ammount) {
 		super();
-		this.num = num;
+		
 		this.ammount = ammount;
 
 	}

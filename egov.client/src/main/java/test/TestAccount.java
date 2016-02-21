@@ -119,7 +119,7 @@ public class TestAccount {
 				Account account = new Account();
 				account.setAmmount(4530);
 				
-				User user = gi.findUserById(1);
+				User user = gi.findUserById(4);
 				List<Account> ac = new ArrayList<>();
 				account.setUser(user);
 				ac.add(account);

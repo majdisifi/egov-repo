@@ -301,14 +301,35 @@ public class ManageUser {
 				String j = job.getText();
 				String p = birthPlace.getText();
 				String g = gender.getText();
+				String em=email.getText();
 				Date d = dato.getDate();
 
+					if (f.equals(""))
+						user.setFirstName(donnes[a][1]);
+					else
+						
 				user.setFirstName(f);
-				user.setLastName(n);
-				user.setJob(j);
-				
+					
 
-				user.setBirthPlace(p);
+					if (n.equals(""))
+						user.setFirstName(donnes[a][2]);
+					else	
+				user.setLastName(n);
+					
+					if (j.equals(""))
+						user.setJob(donnes[a][5]);
+					else	
+				user.setJob(j);
+					
+				user.setBirthDate(d);
+				if (em.equals(""))
+					user.setEmail(donnes[a][7]);
+				else	
+				user.setEmail(em);
+				user.setBirthPlace(donnes[a][4]);
+				if (g.equals(""))
+					user.setGender(donnes[a][6]);
+				else	
 				user.setGender(g);
 
 				if (UserDelegate.doUpdateUser(user))
@@ -352,23 +373,30 @@ public class ManageUser {
 					String j = donnes[a][5];
 					String p = donnes[a][4];
 					String g = donnes[a][6];
-					//Date d = dato.getDate();
+					String d = String.valueOf(dato.getDate());
 		        	
-		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\Egov.pdf"));
+		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\Egov124.pdf"));
 		            document.open();
+		           
 		            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
-		            Paragraph p1 = new Paragraph(n);
-		            Paragraph p2 = new Paragraph(f);
-		            Paragraph p3 = new Paragraph(j);
-		            Paragraph p4 = new Paragraph(p);
-		            Paragraph p5 = new Paragraph(g);
-		          
 		            
+		            Paragraph p1 = new Paragraph("Birth Certificate ");
+		            Paragraph p2 = new Paragraph("First Name :" +n);
+		            Paragraph p3 = new Paragraph("Last Name :" +f);
+		            Paragraph p4 = new Paragraph("Job :" +j);
+		            Paragraph p5 = new Paragraph("Birth Date:" +d);
+		            Paragraph p6 = new Paragraph("Birth Place:" +p);
+		            Paragraph p7 = new Paragraph("Gender:" +g);
+		          
 		            p1.setAlignment(Element.ALIGN_CENTER);
 		            p2.setAlignment(Element.ALIGN_CENTER);
 		            p3.setAlignment(Element.ALIGN_CENTER);
 		            p4.setAlignment(Element.ALIGN_CENTER);
 		            p5.setAlignment(Element.ALIGN_CENTER);
+		            p6.setAlignment(Element.ALIGN_CENTER);
+		            p7.setAlignment(Element.ALIGN_CENTER);
+		        
+		            
 		 
 		            document.add(p1);
 		            
@@ -382,6 +410,12 @@ public class ManageUser {
 		            document.add( Chunk.NEWLINE );
 		            document.add(p5);
 		            document.add( Chunk.NEWLINE );
+		            document.add(p6);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p7);
+		            document.add( Chunk.NEWLINE );
+		         
+		           
 		           
 		            document.close();
 		        }

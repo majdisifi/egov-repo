@@ -39,7 +39,14 @@ public class User implements Serializable {
 	private String pwd;
 	private String status;
 	private String gender;
+	private String nationality;
 	
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
 	@ManyToOne
 	private User mere;
 	@ManyToOne

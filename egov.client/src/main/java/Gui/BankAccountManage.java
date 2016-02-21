@@ -7,6 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import delegate.AccountDelegate;
 import delegate.UserDelegate;
 import egov.entities.Account;
@@ -15,10 +22,12 @@ import egov.entities.User;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.JLabel;
 
 public class BankAccountManage extends JFrame {
 
@@ -55,7 +64,7 @@ public class BankAccountManage extends JFrame {
 		contentPane.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(30, 29, 534, 160);
+		scrollPane.setBounds(31, 93, 534, 160);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -64,7 +73,7 @@ public class BankAccountManage extends JFrame {
 		table_1 = new JTable();
 		scrollPane.setViewportView(table_1);
 
-		JButton btnUpdate = new JButton("actualiser");
+		JButton btnUpdate = new JButton("actualize");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -87,7 +96,7 @@ public class BankAccountManage extends JFrame {
 			}
 
 		});
-		btnUpdate.setBounds(181, 281, 89, 23);
+		btnUpdate.setBounds(153, 281, 89, 23);
 		contentPane.add(btnUpdate);
 
 		JButton btnDelete = new JButton("delete");
@@ -102,16 +111,80 @@ public class BankAccountManage extends JFrame {
 				
 			}
 		});
-		btnDelete.setBounds(313, 281, 89, 23);
+		btnDelete.setBounds(286, 281, 89, 23);
 		contentPane.add(btnDelete);
 		
 		JButton btnPdf = new JButton("pdf");
 		btnPdf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Document document = new Document();
+		        try{
+		        	
+		        	
+		        	User us = new User();
+					int a = table.getSelectedRow();
+	             
+					int x = Integer.parseInt(donnes[a][0]);
+					
+					
 				
+		        	String fn =donnes[a][2];
+					String ln = donnes[a][1];
+					String num=donnes[a][0];
+					String am=donnes[a][4];
+				
+					
+		        	
+		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\Count.pdf"));
+		            document.open();
+		           
+		            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
+		            
+		            Paragraph p1 = new Paragraph("First Name "+fn);
+		            Paragraph p2 = new Paragraph("Last Name :" +ln);
+		            Paragraph p3 = new Paragraph("Account Number :" +num);
+		            Paragraph p4 = new Paragraph("Ammount  :" +am);
+		         
+		          
+		          
+		            p1.setAlignment(Element.ALIGN_CENTER);
+		            p2.setAlignment(Element.ALIGN_CENTER);
+		            p3.setAlignment(Element.ALIGN_CENTER);
+		            p4.setAlignment(Element.ALIGN_CENTER);
+		            
+		       
+		        
+		            
+		 
+		            document.add(p1);
+		            
+		            //add blank line
+		    	    document.add( Chunk.NEWLINE );
+		            document.add(p2);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p3);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p4);
+		         
+		       
+		           
+		           
+		            document.close();
+		        }
+		        catch(Exception n){
+		            System.out.println(n);
+		        }
+		        document.close();
+		    
 			}
+				
+			
 		});
-		btnPdf.setBounds(425, 281, 89, 23);
+		btnPdf.setBounds(412, 281, 89, 23);
 		contentPane.add(btnPdf);
+		
+		JLabel lblUsersAccount = new JLabel("User's Account");
+		lblUsersAccount.setBounds(249, 23, 89, 39);
+		contentPane.add(lblUsersAccount);
 	}
 }

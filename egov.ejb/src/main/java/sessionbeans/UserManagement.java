@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import egov.entities.Car;
 import egov.entities.User;
 
 @Stateless
@@ -71,6 +72,7 @@ public class UserManagement implements IUserManagementRemote {
 	}
 
 	@Override
+
 	public User authentificate(String login, String pwd) {
 		User user= null;
 		Query query=Us.createQuery("Select u from User u where u.login=:login and u.pwd=:pwd");
@@ -82,6 +84,21 @@ public class UserManagement implements IUserManagementRemote {
 			 user=null;
 		}
 		return user;
+	}
+	public List<Car> findCarByIdUser(int id) {
+		User user = null;
+		user = Us.find(User.class, id);
+		List<Car> cars = new ArrayList<>();
+		Query query = Us.createQuery("select c from car c where c.idUser=:id");
+		return query.getResultList();
+
+	}
+
+	@Override
+	public String findpwd(String email) {
+		Query query=Us.createQuery("SELECT pwd FROM User u where email =:email");
+		query.setParameter("email", email);
+		return (String) query.getSingleResult();
 	}
 
 }

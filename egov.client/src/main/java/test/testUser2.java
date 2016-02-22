@@ -8,6 +8,7 @@ import javax.naming.NamingException;
 
 import org.junit.Test;
 
+import egov.entities.Car;
 import egov.entities.User;
 
 import sessionbeans.IUserManagementRemote;
@@ -25,7 +26,7 @@ public class testUser2 {
 					.lookup("egov.ejb/UserManagement!sessionbeans.IUserManagementRemote");
 
 			User user = new User();
-			user.setFirstName("			ZIZ !");
+			user.setFirstName("  ZIZ !");
 			user.setLastName("Abdelaziz !");
 			user.setJob("Ingenieur ");
 			
@@ -96,4 +97,5 @@ public class testUser2 {
 		}
 
 	}
+
 }

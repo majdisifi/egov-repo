@@ -6,16 +6,26 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+	    name="type"
+	    
+	)
+@DiscriminatorValue(value="user")
 
 public class User implements Serializable {
 	@Id
@@ -28,6 +38,16 @@ public class User implements Serializable {
 	private Date deathDate;
 	private Blob photo;
 	private Blob fingerPrint;
+	private String birthPlace;
+	private String login;
+	private String email;
+	private String pwd;
+	private String status;
+	@ManyToOne
+	private User mere;
+	@ManyToOne
+	private User pere;
+	private String gender;
 
 	
 	 @OneToMany(mappedBy = "user1")
@@ -86,6 +106,21 @@ public class User implements Serializable {
 	}
 	public void setDeathDate(Date deathDate) {
 		this.deathDate = deathDate;
+		
+	}
+	
+	
+	public User getMere() {
+		return mere;
+	}
+	public void setMere(User mere) {
+		this.mere = mere;
+	}
+	public User getPere() {
+		return pere;
+	}
+	public void setPere(User pere) {
+		this.pere = pere;
 	}
 	public Blob getPhoto() {
 		return photo;
@@ -133,11 +168,10 @@ public class User implements Serializable {
 	
 	
 
-	
-	
 	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
-			Blob fingerPrint, List<Establishment> establishment, List<Work> work, List<Account> accounts,
-			List<Car> cars, List<Bills_fines> bills) {
+			Blob fingerPrint, String birthPlace, String login, String email, String pwd, String status,
+			List<Establishment> establishment, List<Work> work, List<Account> accounts, List<Car> cars,
+			List<Bills_fines> bills, List<Kase> kase) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -146,12 +180,55 @@ public class User implements Serializable {
 		this.deathDate = deathDate;
 		this.photo = photo;
 		this.fingerPrint = fingerPrint;
+		this.birthPlace = birthPlace;
+		this.login = login;
+		this.email = email;
+		this.pwd = pwd;
+		this.status = status;
 		this.establishment = establishment;
 		this.work = work;
 		this.accounts = accounts;
 		this.cars = cars;
 		this.bills = bills;
+		this.kase = kase;
+	}
+	public String getBirthPlace() {
+		return birthPlace;
+	}
+	public void setBirthPlace(String birthPlace) {
+		this.birthPlace = birthPlace;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	public String getStatus() {
+		return status;
+	}
 	
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public User() {
 		super();

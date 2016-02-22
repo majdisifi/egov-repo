@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class UserSpace extends JFrame {
 
@@ -48,12 +49,13 @@ public class UserSpace extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnGet = new JButton("Birth Certificate");
+		btnGet.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\target\\classes\\icons\\magnifier.png"));
 		btnGet.setFont(new Font("Times New Roman", Font.BOLD, 11));
 		btnGet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGet.setBounds(21, 117, 131, 23);
+		btnGet.setBounds(21, 117, 147, 23);
 		contentPane.add(btnGet);
 		
 		JButton btnDeathCertificate = new JButton("Death Certificate");

@@ -19,6 +19,7 @@ import javax.mail.MessagingException;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class ResetPwd extends JFrame {
 
@@ -59,15 +60,17 @@ public class ResetPwd extends JFrame {
 		
 		JLabel lblEmail = new JLabel("Email :");
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		lblEmail.setBounds(66, 110, 69, 14);
+		lblEmail.setBounds(66, 128, 69, 14);
 		contentPane.add(lblEmail);
 		
 		email = new JTextField();
-		email.setBounds(152, 109, 174, 20);
+		email.setBounds(152, 127, 174, 20);
 		contentPane.add(email);
 		email.setColumns(10);
 		
 		JButton btnSend = new JButton("Send");
+		btnSend.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		btnSend.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\Mail.gif"));
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 String email_user= email.getText();
@@ -84,10 +87,12 @@ public class ResetPwd extends JFrame {
 				}
 			}
 		});
-		btnSend.setBounds(155, 168, 89, 23);
+		btnSend.setBounds(160, 184, 105, 32);
 		contentPane.add(btnSend);
 		
 		JButton btnRetour = new JButton("retour");
+		btnRetour.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		btnRetour.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\Previous.gif"));
 		btnRetour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -95,7 +100,7 @@ public class ResetPwd extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnRetour.setBounds(66, 168, 89, 23);
+		btnRetour.setBounds(50, 184, 105, 32);
 		contentPane.add(btnRetour);
 	}
 }

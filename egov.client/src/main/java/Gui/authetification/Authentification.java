@@ -24,6 +24,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class Authentification extends JFrame {
 
@@ -52,39 +55,46 @@ public class Authentification extends JFrame {
 	 */
 	public Authentification() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 573, 370);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Authentification");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lblNewLabel.setBounds(129, 22, 185, 25);
+		lblNewLabel.setBounds(148, 23, 185, 25);
 		contentPane.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(48, 81, 355, 170);
+		panel.setBounds(59, 81, 395, 193);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Login :");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(25, 27, 60, 24);
+		lblNewLabel_1.setBounds(78, 27, 60, 24);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblPwd = new JLabel("Pwd :");
 		lblPwd.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		lblPwd.setBounds(25, 66, 60, 17);
+		lblPwd.setBounds(78, 66, 60, 17);
 		panel.add(lblPwd);
 		
 		login = new JTextField();
-		login.setBounds(108, 31, 152, 20);
+		login.setBounds(161, 31, 152, 20);
 		panel.add(login);
 		login.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Sign in");
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\OK.gif"));
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -112,23 +122,35 @@ public class Authentification extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(108, 97, 89, 24);
+		btnNewButton.setBounds(187, 138, 112, 34);
 		panel.add(btnNewButton);
 		
 		pwd = new JPasswordField();
-		pwd.setBounds(108, 66, 152, 20);
+		pwd.setBounds(161, 66, 152, 20);
 		panel.add(pwd);
 		
-		JButton btnForgotPassword = new JButton("Forgot password");
-		btnForgotPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnForgotPassword.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\Close.gif"));
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnCancel.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		btnCancel.setBounds(49, 139, 128, 33);
+		panel.add(btnCancel);
+		
+		JLabel lblForgetPassword = new JLabel("Forget password ?");
+		lblForgetPassword.setForeground(Color.BLUE);
+		lblForgetPassword.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
 				
 				new ResetPwd().setVisible(true);
 				setVisible(false);
 			}
 		});
-		btnForgotPassword.setBounds(182, 136, 152, 23);
-		panel.add(btnForgotPassword);
+		lblForgetPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		lblForgetPassword.setBounds(106, 94, 128, 31);
+		panel.add(lblForgetPassword);
 	}
 }

@@ -53,6 +53,7 @@ public class User implements Serializable {
 	private String status;
 	private String gender;
 	private String nationality;
+	private int numCin;
 	
 	public String getNationality() {
 		return nationality;
@@ -251,6 +252,12 @@ public class User implements Serializable {
 	}
 	public User() {
 		super();
+	}
+	public int getNumCin() {
+		return numCin;
+	}
+	public void setNumCin(int numCin) {
+		this.numCin = numCin;
 	}
 
 

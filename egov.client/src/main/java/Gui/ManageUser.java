@@ -33,6 +33,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.demo.BirthdayEvaluator;
 
+import Gui.admin.AdminSpace;
+
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 
@@ -86,6 +88,7 @@ public class ManageUser {
 		frame.getContentPane().setLayout(null);
 
 		JLabel label = new JLabel("Birth Date");
+		label.setFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, 11));
 		label.setBounds(65, 198, 48, 14);
 		frame.getContentPane().add(label);
 		JDateChooser death = new JDateChooser();
@@ -96,10 +99,12 @@ public class ManageUser {
 		frame.getContentPane().add(job);
 
 		JLabel label_1 = new JLabel("Job");
+		label_1.setFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, 11));
 		label_1.setBounds(63, 157, 29, 14);
 		frame.getContentPane().add(label_1);
 
 		JLabel label_2 = new JLabel("Last Name");
+		label_2.setFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, 11));
 		label_2.setBounds(63, 108, 50, 14);
 		frame.getContentPane().add(label_2);
 
@@ -114,15 +119,18 @@ public class ManageUser {
 		frame.getContentPane().add(firstname);
 
 		JLabel label_3 = new JLabel("First Name");
+		label_3.setFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, 11));
 		label_3.setBounds(63, 64, 51, 14);
 		frame.getContentPane().add(label_3);
 
 		JLabel label_4 = new JLabel("Managing User Account");
+		label_4.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 20));
 		
 		label_4.setBounds(248, 11, 260, 23);
 		frame.getContentPane().add(label_4);
 
 		JButton button = new JButton("Add");
+		button.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 15));
 
 		button.addMouseListener(new MouseAdapter() {
 			@Override
@@ -213,11 +221,13 @@ public class ManageUser {
 		email.setBounds(168, 333, 86, 20);
 		frame.getContentPane().add(email);
 
-		JLabel lblEmal = new JLabel("E-mal");
+		JLabel lblEmal = new JLabel("E-mail");
+		lblEmal.setFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, 11));
 		lblEmal.setBounds(65, 337, 46, 14);
 		frame.getContentPane().add(lblEmal);
 
 		JLabel lblBirthPlace = new JLabel("Birth Place");
+		lblBirthPlace.setFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, 11));
 		lblBirthPlace.setBounds(65, 292, 58, 17);
 		frame.getContentPane().add(lblBirthPlace);
 
@@ -239,7 +249,7 @@ public class ManageUser {
 				
 			}
 		});
-		scrollPane_1.setBounds(306, 77, 534, 160);
+		scrollPane_1.setBounds(306, 77, 577, 160);
 		frame.getContentPane().add(scrollPane_1);
 
 		table = new JTable();
@@ -254,11 +264,13 @@ public class ManageUser {
 		gender.setColumns(10);
 
 		JLabel lblGender = new JLabel("Gender");
+		lblGender.setFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, 11));
 		lblGender.setBounds(65, 367, 46, 14);
 		frame.getContentPane().add(lblGender);
 
 	
 		JButton btnNewButton = new JButton("actualize");
+		btnNewButton.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 15));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -269,6 +281,7 @@ public class ManageUser {
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnSupprimer = new JButton("delete");
+		btnSupprimer.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 15));
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -326,6 +339,7 @@ public class ManageUser {
 		frame.getContentPane().add(btnSupprimer);
 		
 		JButton btnUpdate = new JButton("update");
+		btnUpdate.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 15));
 		btnUpdate.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -379,6 +393,9 @@ public class ManageUser {
 					JOptionPane.showMessageDialog(null, "updated");
 				else
 					JOptionPane.showMessageDialog(null, "erreur");
+				
+				/////////////
+				
 				try {
 
 					List<User> users = new ArrayList<User>();
@@ -427,6 +444,7 @@ public class ManageUser {
 		frame.getContentPane().add(btnUpdate);
 		
 		JButton btnPdf = new JButton("PDF");
+		btnPdf.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 15));
 		btnPdf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Document document = new Document();
@@ -447,7 +465,7 @@ public class ManageUser {
 					String g = donnes[a][6];
 					String d = donnes[a][3];
 		        	
-		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\PDF-"+donnes[a][2]+".pdf"));
+		        	PdfWriter.getInstance(document, new FileOutputStream("C:\\PDF-"+donnes[a][2]+".pdf"));
 		            document.open();
 		           
 		            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
@@ -498,7 +516,7 @@ public class ManageUser {
 		    
 			}
 		});
-		btnPdf.setBounds(690, 273, 116, 23);
+		btnPdf.setBounds(767, 250, 116, 23);
 		frame.getContentPane().add(btnPdf);
 		
 		JComboBox comboBox = new JComboBox();
@@ -517,6 +535,7 @@ public class ManageUser {
 		frame.getContentPane().add(comboBox);
 		
 		JLabel lblDeathDate = new JLabel("Death Date");
+		lblDeathDate.setFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, 11));
 		lblDeathDate.setBounds(52, 250, 61, 14);
 		frame.getContentPane().add(lblDeathDate);
 		
@@ -525,6 +544,7 @@ public class ManageUser {
 		frame.getContentPane().add(death);
 		
 		JButton btnNewButton_1 = new JButton("Death Certificate");
+		btnNewButton_1.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 15));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Document document = new Document();
@@ -547,7 +567,7 @@ public class ManageUser {
 					String d1 = donnes[a][8];
 
 		        	
-		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\DeathCertifcate-"+donnes[a][2]+".pdf"));
+		        	PdfWriter.getInstance(document, new FileOutputStream("C:\\DeathCertifcate-"+donnes[a][2]+".pdf"));
 		            document.open();
 		           
 		            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
@@ -601,7 +621,7 @@ public class ManageUser {
 			
 			}
 		});
-		btnNewButton_1.setBounds(690, 332, 116, 20);
+		btnNewButton_1.setBounds(714, 289, 169, 20);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnDownload = new JButton("Download");
@@ -630,6 +650,19 @@ public class ManageUser {
 
 			table.setModel(new javax.swing.table.DefaultTableModel(donnes,
 					new String[] { "id","First name", "last name", "birth date", "birth place", "job", "Gender", "E-mail","Death Date" }));
+			
+			JButton btnCancel = new JButton("Cancel");
+			btnCancel.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					new AdminSpace().setVisible(true);
+					
+			
+				}
+			});
+			btnCancel.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 15));
+			btnCancel.setBounds(794, 363, 89, 23);
+			frame.getContentPane().add(btnCancel);
 
 		} catch (Exception e1) {
 			e1.printStackTrace();

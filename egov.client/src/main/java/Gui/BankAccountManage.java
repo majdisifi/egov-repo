@@ -28,6 +28,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class BankAccountManage extends JFrame {
 
@@ -35,6 +36,7 @@ public class BankAccountManage extends JFrame {
 	private JTable table;
 	String[][] donnes;
 	private JTable table_1;
+	private JTable table_2;
 
 	/**
 	 * Launch the application.
@@ -72,32 +74,9 @@ public class BankAccountManage extends JFrame {
 
 		table_1 = new JTable();
 		scrollPane.setViewportView(table_1);
-
-		JButton btnUpdate = new JButton("actualize");
-		btnUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				List<Account> accounts = new ArrayList<Account>();
-
-				accounts = AccountDelegate.doFindAccounts();
-				System.out.println("done");
-				donnes = new String[accounts.size()][8];
-				for (int i = 0; i < accounts.size(); i++) {
-
-					donnes[i][0] = accounts.get(i).getUser().getFirstName();
-					donnes[i][1] = accounts.get(i).getUser().getLastName();
-					donnes[i][2] = String.valueOf(accounts.get(i).getNum());
-					donnes[i][3] = String.valueOf(accounts.get(i).getAmmount());
-
-				}
-
-				table_1.setModel(new javax.swing.table.DefaultTableModel(donnes,
-						new String[] { "First Name", "Last Name", "Account Number", "Ammount" }));
-			}
-
-		});
-		btnUpdate.setBounds(153, 281, 89, 23);
-		contentPane.add(btnUpdate);
+		
+		table_2 = new JTable();
+		scrollPane.setColumnHeaderView(table_2);
 
 		JButton btnDelete = new JButton("delete");
 		btnDelete.addActionListener(new ActionListener() {
@@ -111,7 +90,7 @@ public class BankAccountManage extends JFrame {
 				
 			}
 		});
-		btnDelete.setBounds(286, 281, 89, 23);
+		btnDelete.setBounds(70, 281, 89, 23);
 		contentPane.add(btnDelete);
 		
 		JButton btnPdf = new JButton("pdf");
@@ -135,7 +114,7 @@ public class BankAccountManage extends JFrame {
 				
 					
 		        	
-		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\Count.pdf"));
+		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\AccountStatement-"+donnes[a][1]+".pdf"));
 		            document.open();
 		           
 		            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
@@ -180,11 +159,40 @@ public class BankAccountManage extends JFrame {
 				
 			
 		});
-		btnPdf.setBounds(412, 281, 89, 23);
+		btnPdf.setBounds(431, 281, 89, 23);
 		contentPane.add(btnPdf);
 		
 		JLabel lblUsersAccount = new JLabel("User's Account");
 		lblUsersAccount.setBounds(249, 23, 89, 39);
 		contentPane.add(lblUsersAccount);
+		
+
+		List<Account> accounts = new ArrayList<Account>();
+
+		accounts = AccountDelegate.doFindAccounts();
+		System.out.println("done");
+		donnes = new String[accounts.size()][8];
+		for (int i = 0; i < accounts.size(); i++) {
+
+			donnes[i][0] = accounts.get(i).getUser().getFirstName();
+			donnes[i][1] = accounts.get(i).getUser().getLastName();
+			donnes[i][2] = String.valueOf(accounts.get(i).getNum());
+			donnes[i][3] = String.valueOf(accounts.get(i).getAmmount());
+
+		}
+
+		table_1.setModel(new javax.swing.table.DefaultTableModel(donnes,
+				new String[] { "First Name", "Last Name", "Account Number", "Ammount" }));
+		
+		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAdd.setBounds(249, 281, 89, 23);
+		contentPane.add(btnAdd);
 	}
-}
+		
+	}
+	
+	

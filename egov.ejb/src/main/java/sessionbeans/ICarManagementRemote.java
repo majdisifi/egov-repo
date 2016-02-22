@@ -12,7 +12,7 @@ public interface ICarManagementRemote {
 	Boolean update(Car c);
 	void flush();
 	Boolean remove(Car c);
-	List<User> findAll();
+	List<Car> findAll();
 	Car findCarByNumIm(int numImmatriculation);
 
 }

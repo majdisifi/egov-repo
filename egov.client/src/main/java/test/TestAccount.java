@@ -117,9 +117,9 @@ public class TestAccount {
 
 				// employe account , labo user
 				Account account = new Account();
-				account.setAmmount(4530);
+				account.setAmmount(24000);
 				
-				User user = gi.findUserById(4);
+				User user = gi.findUserById(2);
 				List<Account> ac = new ArrayList<>();
 				account.setUser(user);
 				ac.add(account);

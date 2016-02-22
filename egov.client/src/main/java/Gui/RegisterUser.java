@@ -22,6 +22,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 import javax.swing.JMenuBar;
+import javax.swing.JComboBox;
 
 public class RegisterUser extends JFrame {
 
@@ -40,6 +41,8 @@ public class RegisterUser extends JFrame {
 	private JTextField email;
 	private JLabel lblMail;
 	JDateChooser dato = new JDateChooser();
+	private JLabel lblCreatingAccount;
+	private JComboBox comboBox;
 	/**
 	 * Launch the application.
 	 */
@@ -69,31 +72,31 @@ public class RegisterUser extends JFrame {
 		
 		gender = new JTextField();
 		gender.setColumns(10);
-		gender.setBounds(292, 274, 86, 20);
+		gender.setBounds(330, 300, 86, 20);
 		contentPane.add(gender);
 		
 		birthPlace = new JTextField();
 		birthPlace.setColumns(10);
-		birthPlace.setBounds(292, 198, 86, 20);
+		birthPlace.setBounds(330, 231, 86, 20);
 		contentPane.add(birthPlace);
 		
 		job = new JTextField();
 		job.setColumns(10);
-		job.setBounds(292, 106, 86, 20);
+		job.setBounds(330, 144, 86, 20);
 		contentPane.add(job);
 		JDateChooser dato = new JDateChooser();	
 		
 		lastName = new JTextField();
 		lastName.setColumns(10);
-		lastName.setBounds(292, 54, 86, 20);
+		lastName.setBounds(330, 99, 86, 20);
 		contentPane.add(lastName);
 		
 		firstName = new JTextField();
 		firstName.setColumns(10);
-		firstName.setBounds(292, 11, 86, 20);
+		firstName.setBounds(330, 52, 86, 20);
 		contentPane.add(firstName);
 		
-		JButton button = new JButton("New button");
+		JButton button = new JButton("Submit");
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -121,6 +124,7 @@ public class RegisterUser extends JFrame {
 				// user.setBirthPlace(np);
 				// user.setBirthPlace(nm);
 
+				
 				UserDelegate.CreateUser(user);
 				JOptionPane.showMessageDialog(null, "Thank you for your Registration , you should Wait verification of your account");
 				ListUser frame = new ListUser();
@@ -130,46 +134,68 @@ public class RegisterUser extends JFrame {
 		});
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
+				
 			}
 		});
-		button.setBounds(289, 316, 89, 23);
+		button.setBounds(292, 331, 89, 23);
 		contentPane.add(button);
 		
 
-		dato.setBounds(292, 160, 87, 20);
+		dato.setBounds(330, 189, 87, 20);
 		contentPane.add(dato);
 		
 		label = new JLabel("First Name");
-		label.setBounds(212, 18, 51, 14);
+		label.setBounds(212, 55, 51, 14);
 		contentPane.add(label);
 		
 		label_1 = new JLabel("Last Name");
-		label_1.setBounds(213, 61, 50, 14);
+		label_1.setBounds(213, 102, 50, 14);
 		contentPane.add(label_1);
 		
 		label_2 = new JLabel("Job");
-		label_2.setBounds(223, 113, 29, 14);
+		label_2.setBounds(234, 147, 29, 14);
 		contentPane.add(label_2);
 		
 		label_3 = new JLabel("Birth Date");
-		label_3.setBounds(213, 160, 48, 14);
+		label_3.setBounds(215, 195, 48, 14);
 		contentPane.add(label_3);
 		
 		label_4 = new JLabel("Birth Place");
-		label_4.setBounds(205, 200, 58, 17);
+		label_4.setBounds(212, 233, 58, 17);
 		contentPane.add(label_4);
 		
 		label_5 = new JLabel("gender");
-		label_5.setBounds(212, 280, 46, 14);
+		label_5.setBounds(217, 303, 46, 14);
 		contentPane.add(label_5);
 		
 		email = new JTextField();
-		email.setBounds(292, 229, 86, 20);
+		email.setBounds(330, 269, 86, 20);
 		contentPane.add(email);
 		email.setColumns(10);
 		
 		lblMail = new JLabel("Mail");
-		lblMail.setBounds(212, 232, 46, 14);
+		lblMail.setBounds(227, 272, 46, 14);
 		contentPane.add(lblMail);
+		
+		lblCreatingAccount = new JLabel("Creating Account");
+		lblCreatingAccount.setBounds(275, 11, 126, 30);
+		contentPane.add(lblCreatingAccount);
+		
+		comboBox = new JComboBox();
+		comboBox.addItem("Male");
+		comboBox.addItem("Female");
+
+		comboBox.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+				
+				
+			}
+		});
+		comboBox.setBounds(57, 31, 70, 20);
+		contentPane.add(comboBox);
 	}
 }

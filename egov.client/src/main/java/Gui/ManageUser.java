@@ -86,40 +86,40 @@ public class ManageUser {
 		frame.getContentPane().setLayout(null);
 
 		JLabel label = new JLabel("Birth Date");
-		label.setBounds(63, 223, 48, 14);
+		label.setBounds(65, 198, 48, 14);
 		frame.getContentPane().add(label);
-
+		JDateChooser death = new JDateChooser();
 		JDateChooser dato = new JDateChooser();
 		job = new JTextField();
 		job.setColumns(10);
-		job.setBounds(168, 175, 86, 20);
+		job.setBounds(168, 154, 86, 20);
 		frame.getContentPane().add(job);
 
 		JLabel label_1 = new JLabel("Job");
-		label_1.setBounds(63, 178, 29, 14);
+		label_1.setBounds(63, 157, 29, 14);
 		frame.getContentPane().add(label_1);
 
 		JLabel label_2 = new JLabel("Last Name");
-		label_2.setBounds(63, 136, 50, 14);
+		label_2.setBounds(63, 108, 50, 14);
 		frame.getContentPane().add(label_2);
 
 		lastname = new JTextField();
 		lastname.setColumns(10);
-		lastname.setBounds(168, 133, 86, 20);
+		lastname.setBounds(168, 105, 86, 20);
 		frame.getContentPane().add(lastname);
 
 		firstname = new JTextField();
 		firstname.setColumns(10);
-		firstname.setBounds(168, 97, 86, 20);
+		firstname.setBounds(168, 61, 86, 20);
 		frame.getContentPane().add(firstname);
 
 		JLabel label_3 = new JLabel("First Name");
-		label_3.setBounds(63, 100, 51, 14);
+		label_3.setBounds(63, 64, 51, 14);
 		frame.getContentPane().add(label_3);
 
 		JLabel label_4 = new JLabel("Managing User Account");
 		
-		label_4.setBounds(283, 11, 260, 23);
+		label_4.setBounds(248, 11, 260, 23);
 		frame.getContentPane().add(label_4);
 
 		JButton button = new JButton("Add");
@@ -139,6 +139,7 @@ public class ManageUser {
 				// String nm=mere.getText();
 
 				Date d = dato.getDate();
+				
 
 				User user = new User();
 				user.setFirstName(f);
@@ -153,6 +154,39 @@ public class ManageUser {
 
 				UserDelegate.CreateUser(user);
 				JOptionPane.showMessageDialog(null, "Added");
+				
+				
+				
+				//// 
+				try {
+
+					List<User> users = new ArrayList<User>();
+
+					users = UserDelegate.doFindAllUsers();
+					System.out.println("done");
+					donnes = new String[users.size()][9];
+					for (int i = 0; i < users.size(); i++) {
+						
+						
+						donnes[i][0] =String.valueOf(users.get(i).getIdUser());
+						donnes[i][1] = users.get(i).getFirstName();
+						donnes[i][2] = users.get(i).getLastName();
+						donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
+						donnes[i][4] = users.get(i).getBirthPlace();
+						donnes[i][5] = users.get(i).getJob();
+						donnes[i][6] = users.get(i).getGender();
+						donnes[i][7] = users.get(i).getEmail();
+						donnes[i][8] = String.valueOf(users.get(i).getDeathDate());
+						
+
+					}
+
+					table.setModel(new javax.swing.table.DefaultTableModel(donnes,
+							new String[] { "id","First name", "last name", "birth date", "birth place", "job", "Gender", "E-mail","Death Date" }));
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 
 			}
 		});
@@ -163,28 +197,28 @@ public class ManageUser {
 
 			}
 		});
-		button.setBounds(351, 333, 65, 23);
+		button.setBounds(443, 248, 65, 23);
 		frame.getContentPane().add(button);
 
-		dato.setBounds(167, 217, 87, 20);
+		dato.setBounds(167, 198, 87, 20);
 		frame.getContentPane().add(dato);
 
 		birthPlace = new JTextField();
 		birthPlace.setColumns(10);
-		birthPlace.setBounds(168, 258, 86, 20);
+		birthPlace.setBounds(168, 290, 86, 20);
 		frame.getContentPane().add(birthPlace);
 
 		email = new JTextField();
 		email.setColumns(10);
-		email.setBounds(168, 299, 86, 20);
+		email.setBounds(168, 333, 86, 20);
 		frame.getContentPane().add(email);
 
 		JLabel lblEmal = new JLabel("E-mal");
-		lblEmal.setBounds(63, 302, 46, 14);
+		lblEmal.setBounds(65, 337, 46, 14);
 		frame.getContentPane().add(lblEmal);
 
 		JLabel lblBirthPlace = new JLabel("Birth Place");
-		lblBirthPlace.setBounds(63, 260, 58, 17);
+		lblBirthPlace.setBounds(65, 292, 58, 17);
 		frame.getContentPane().add(lblBirthPlace);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -215,49 +249,23 @@ public class ManageUser {
 		scrollPane_1.setColumnHeaderView(table_1);
 
 		gender = new JTextField();
-		gender.setBounds(168, 350, 86, 20);
+		gender.setBounds(168, 364, 86, 20);
 		frame.getContentPane().add(gender);
 		gender.setColumns(10);
 
 		JLabel lblGender = new JLabel("Gender");
-		lblGender.setBounds(63, 353, 46, 14);
+		lblGender.setBounds(65, 367, 46, 14);
 		frame.getContentPane().add(lblGender);
 
 	
 		JButton btnNewButton = new JButton("actualize");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-
-					List<User> users = new ArrayList<User>();
-
-					users = UserDelegate.doFindAllUsers();
-					System.out.println("done");
-					donnes = new String[users.size()][8];
-					for (int i = 0; i < users.size(); i++) {
-						
-						
-						donnes[i][0] =String.valueOf(users.get(i).getIdUser());
-						donnes[i][1] = users.get(i).getFirstName();
-						donnes[i][2] = users.get(i).getLastName();
-						donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
-						donnes[i][4] = users.get(i).getBirthPlace();
-						donnes[i][5] = users.get(i).getJob();
-						donnes[i][6] = users.get(i).getGender();
-						donnes[i][7] = users.get(i).getEmail();
-
-					}
-
-					table.setModel(new javax.swing.table.DefaultTableModel(donnes,
-							new String[] { "id","First name", "last name", "birth date", "birth place", "job", "Gender", "E-mail" }));
-
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				
 
 			}
 		});
-		btnNewButton.setBounds(471, 333, 89, 23);
+		btnNewButton.setBounds(306, 332, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnSupprimer = new JButton("delete");
@@ -280,11 +288,41 @@ public class ManageUser {
 				
 				else
 					JOptionPane.showMessageDialog(null, "erreur");
+				/////////// 
+				try {
+
+					List<User> users = new ArrayList<User>();
+
+					users = UserDelegate.doFindAllUsers();
+					System.out.println("done");
+					donnes = new String[users.size()][9];
+					for (int i = 0; i < users.size(); i++) {
+						
+						
+						donnes[i][0] =String.valueOf(users.get(i).getIdUser());
+						donnes[i][1] = users.get(i).getFirstName();
+						donnes[i][2] = users.get(i).getLastName();
+						donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
+						donnes[i][4] = users.get(i).getBirthPlace();
+						donnes[i][5] = users.get(i).getJob();
+						donnes[i][6] = users.get(i).getGender();
+						donnes[i][7] = users.get(i).getEmail();
+						donnes[i][8] = String.valueOf(users.get(i).getDeathDate());
+						
+
+					}
+
+					table.setModel(new javax.swing.table.DefaultTableModel(donnes,
+							new String[] { "id","First name", "last name", "birth date", "birth place", "job", "Gender", "E-mail","Death Date" }));
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				;
 			}
 
 		});
-		btnSupprimer.setBounds(610, 333, 89, 23);
+		btnSupprimer.setBounds(443, 361, 89, 23);
 		frame.getContentPane().add(btnSupprimer);
 		
 		JButton btnUpdate = new JButton("update");
@@ -303,6 +341,7 @@ public class ManageUser {
 				String g = gender.getText();
 				String em=email.getText();
 				Date d = dato.getDate();
+				Date d1=death.getDate();
 
 					if (f.equals(""))
 						user.setFirstName(donnes[a][1]);
@@ -331,11 +370,44 @@ public class ManageUser {
 					user.setGender(donnes[a][6]);
 				else	
 				user.setGender(g);
+				
+					
+				user.setDeathDate(d1);
+
 
 				if (UserDelegate.doUpdateUser(user))
 					JOptionPane.showMessageDialog(null, "updated");
 				else
 					JOptionPane.showMessageDialog(null, "erreur");
+				try {
+
+					List<User> users = new ArrayList<User>();
+
+					users = UserDelegate.doFindAllUsers();
+					System.out.println("done");
+					donnes = new String[users.size()][9];
+					for (int i = 0; i < users.size(); i++) {
+						
+						
+						donnes[i][0] =String.valueOf(users.get(i).getIdUser());
+						donnes[i][1] = users.get(i).getFirstName();
+						donnes[i][2] = users.get(i).getLastName();
+						donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
+						donnes[i][4] = users.get(i).getBirthPlace();
+						donnes[i][5] = users.get(i).getJob();
+						donnes[i][6] = users.get(i).getGender();
+						donnes[i][7] = users.get(i).getEmail();
+						donnes[i][8] = String.valueOf(users.get(i).getDeathDate());
+						
+
+					}
+
+					table.setModel(new javax.swing.table.DefaultTableModel(donnes,
+							new String[] { "id","First name", "last name", "birth date", "birth place", "job", "Gender", "E-mail","Death Date" }));
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 			
 			
@@ -351,10 +423,10 @@ public class ManageUser {
 				
 			}
 		});
-		btnUpdate.setBounds(748, 333, 89, 23);
+		btnUpdate.setBounds(443, 305, 89, 23);
 		frame.getContentPane().add(btnUpdate);
 		
-		JButton btnPdf = new JButton("pdf");
+		JButton btnPdf = new JButton("PDF");
 		btnPdf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Document document = new Document();
@@ -373,14 +445,14 @@ public class ManageUser {
 					String j = donnes[a][5];
 					String p = donnes[a][4];
 					String g = donnes[a][6];
-					String d = String.valueOf(dato.getDate());
+					String d = donnes[a][3];
 		        	
-		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\Egov124.pdf"));
+		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\PDF-"+donnes[a][2]+".pdf"));
 		            document.open();
 		           
 		            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
 		            
-		            Paragraph p1 = new Paragraph("Birth Certificate ");
+		            Paragraph p1 = new Paragraph("User Information ");
 		            Paragraph p2 = new Paragraph("First Name :" +n);
 		            Paragraph p3 = new Paragraph("Last Name :" +f);
 		            Paragraph p4 = new Paragraph("Job :" +j);
@@ -426,22 +498,144 @@ public class ManageUser {
 		    
 			}
 		});
-		btnPdf.setBounds(541, 257, 89, 23);
+		btnPdf.setBounds(690, 273, 116, 23);
 		frame.getContentPane().add(btnPdf);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("Male");
+		comboBox.addItem("Female");
+
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				
 			
 					
 			}
 		});
-		comboBox.setBounds(98, 32, 28, 20);
+		comboBox.setBounds(66, 25, 70, 20);
 		frame.getContentPane().add(comboBox);
 		
+		JLabel lblDeathDate = new JLabel("Death Date");
+		lblDeathDate.setBounds(52, 250, 61, 14);
+		frame.getContentPane().add(lblDeathDate);
+		
+		
+		death.setBounds(167, 244, 87, 20);
+		frame.getContentPane().add(death);
+		
+		JButton btnNewButton_1 = new JButton("Death Certificate");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Document document = new Document();
+		        try{
+		        	
+		        	
+		        	User us = new User();
+					int a = table.getSelectedRow();
+	             
+					int x = Integer.parseInt(donnes[a][0]);
+					
+					
+				
+		        	String n =donnes[a][2];
+					String f = donnes[a][1];
+					String j = donnes[a][5];
+					String p = donnes[a][4];
+					String g = donnes[a][6];
+					String d = donnes[a][3];
+					String d1 = donnes[a][8];
+
+		        	
+		        	PdfWriter.getInstance(document, new FileOutputStream("D:\\DeathCertifcate-"+donnes[a][2]+".pdf"));
+		            document.open();
+		           
+		            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
+		            
+		            Paragraph p1 = new Paragraph("Death Certificate ");
+		            Paragraph p2 = new Paragraph("First Name :" +n);
+		            Paragraph p3 = new Paragraph("Last Name :" +f);
+		            Paragraph p4 = new Paragraph("Job :" +j);
+		            Paragraph p5 = new Paragraph("Birth Date:" +d);
+		            Paragraph p6 = new Paragraph("Birth Place:" +p);
+		            Paragraph p7 = new Paragraph("Gender:" +g);
+		            Paragraph p8 = new Paragraph("Death Date:" +d1);
+		          
+		            p1.setAlignment(Element.ALIGN_CENTER);
+		            p2.setAlignment(Element.ALIGN_CENTER);
+		            p3.setAlignment(Element.ALIGN_CENTER);
+		            p4.setAlignment(Element.ALIGN_CENTER);
+		            p5.setAlignment(Element.ALIGN_CENTER);
+		            p6.setAlignment(Element.ALIGN_CENTER);
+		            p7.setAlignment(Element.ALIGN_CENTER);
+		            p8.setAlignment(Element.ALIGN_CENTER);
+		            
+		 
+		            document.add(p1);
+		            
+		            //add blank line
+		    	    document.add( Chunk.NEWLINE );
+		            document.add(p2);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p3);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p4);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p5);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p6);
+		            document.add( Chunk.NEWLINE );
+		            document.add(p7);
+		            document.add( Chunk.NEWLINE );
+		         
+		            document.add(p8);
+		            document.add( Chunk.NEWLINE );
+		           
+		            document.close();
+		        }
+		        catch(Exception n){
+		            System.out.println(n);
+		        }
+		        document.close();
+		    
+			
+			}
+		});
+		btnNewButton_1.setBounds(690, 332, 116, 20);
+		frame.getContentPane().add(btnNewButton_1);
+		
 		JButton btnDownload = new JButton("Download");
+		try {
+
+			List<User> users = new ArrayList<User>();
+
+			users = UserDelegate.doFindAllUsers();
+			System.out.println("done");
+			donnes = new String[users.size()][9];
+			for (int i = 0; i < users.size(); i++) {
+				
+				
+				donnes[i][0] =String.valueOf(users.get(i).getIdUser());
+				donnes[i][1] = users.get(i).getFirstName();
+				donnes[i][2] = users.get(i).getLastName();
+				donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
+				donnes[i][4] = users.get(i).getBirthPlace();
+				donnes[i][5] = users.get(i).getJob();
+				donnes[i][6] = users.get(i).getGender();
+				donnes[i][7] = users.get(i).getEmail();
+				donnes[i][8] = String.valueOf(users.get(i).getDeathDate());
+				
+
+			}
+
+			table.setModel(new javax.swing.table.DefaultTableModel(donnes,
+					new String[] { "id","First name", "last name", "birth date", "birth place", "job", "Gender", "E-mail","Death Date" }));
+
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 	}	
+	
 }
 
 		

@@ -36,6 +36,10 @@ public class AccountDelegate {
 		return getProxy().findAll();
 		
 	}
+	public static boolean SendMoney(int num1 , int num2 , float ammount){
+		return getProxy().SendMoney(num1, num2, ammount);
+		
+	}
 	
 }
 

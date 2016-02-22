@@ -17,6 +17,8 @@ public interface IAccountManagementRemote {
 	Boolean removeAccount(Account c);
 	
 	List<Account> findAll();
+
 	Account findAccountByNum(int num);
+	Boolean SendMoney(int num1 , int num2 , float ammount);
 
 }

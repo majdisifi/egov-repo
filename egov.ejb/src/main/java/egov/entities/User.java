@@ -47,9 +47,9 @@ public class User implements Serializable {
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
-	@ManyToOne
+	
 	private User mere;
-	@ManyToOne
+
 	private User pere;
 	
 	 @OneToMany(mappedBy = "user1")

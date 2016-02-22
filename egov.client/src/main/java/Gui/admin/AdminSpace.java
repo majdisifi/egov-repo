@@ -23,7 +23,6 @@ import javax.swing.JTextField;
 public class AdminSpace extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -55,6 +54,7 @@ public class AdminSpace extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnSignOut = new JButton("Sign out");
+		btnSignOut.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\Previous.gif"));
 		btnSignOut.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnSignOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -63,7 +63,7 @@ public class AdminSpace extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnSignOut.setBounds(595, 304, 89, 23);
+		btnSignOut.setBounds(571, 294, 113, 33);
 		contentPane.add(btnSignOut);
 		
 		JLabel lblAdminSpace = new JLabel("Admin Space");
@@ -72,6 +72,7 @@ public class AdminSpace extends JFrame {
 		contentPane.add(lblAdminSpace);
 		
 		JButton btnManageCars = new JButton("Manage Cars");
+		btnManageCars.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnManageCars.setIcon(null);
 		btnManageCars.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -85,6 +86,7 @@ public class AdminSpace extends JFrame {
 		contentPane.add(btnManageCars);
 		
 		JButton btnManageAccount = new JButton("Manage account");
+		btnManageAccount.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnManageAccount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -95,6 +97,7 @@ public class AdminSpace extends JFrame {
 		contentPane.add(btnManageAccount);
 		
 		JButton btnManagerCin = new JButton("Manage Cin");
+		btnManagerCin.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnManagerCin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -106,6 +109,7 @@ public class AdminSpace extends JFrame {
 		contentPane.add(btnManagerCin);
 		
 		JButton btnManager = new JButton("Manager ");
+		btnManager.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnManager.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -113,15 +117,5 @@ public class AdminSpace extends JFrame {
 		});
 		btnManager.setBounds(467, 157, 102, 23);
 		contentPane.add(btnManager);
-		
-		JLabel lblNewLabel = new JLabel("welcome ");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		lblNewLabel.setBounds(37, 11, 67, 14);
-		contentPane.add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setBounds(110, 9, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
 	}
 }

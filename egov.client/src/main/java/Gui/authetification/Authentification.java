@@ -104,10 +104,12 @@ public class Authentification extends JFrame {
 					
 					if(user instanceof Admin)
 					{
+						JOptionPane.showMessageDialog(null, "Welcome Admin");
 						new AdminSpace().setVisible(true);
 					}
 					else 
 					{
+						JOptionPane.showMessageDialog(null, "Welcome Sir/Mme "+user.getFirstName());
 						new UserSpace().setVisible(true);
 					}
 					

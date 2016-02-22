@@ -113,12 +113,6 @@ public class UserManagement implements IUserManagementRemote {
 			return false;
 		}	
 	}
-	
-	public String findname(String pwd){
-		Query query=Us.createQuery("SELECT firstName FROM User u where pwd =:pwd");
-		query.setParameter("pwd", pwd);
-		return (String) query.getSingleResult();
-		
-	}
+
 
 }

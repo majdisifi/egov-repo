@@ -28,7 +28,7 @@ public class TestAccount {
 		try {
 		
 			Account account = new Account();
-			account.setAmmount(855);
+			account.setAmmount(4000);
 			
 			
 
@@ -62,7 +62,7 @@ public class TestAccount {
 				IAccountManagementRemote ge = (IAccountManagementRemote) context1
 						.lookup("egov.ejb/AccountManagement!sessionbeans.IAccountManagementRemote");
 
-				Account account  = ge.findAccountByNum(1);
+				Account account  = ge.findAccountByNum(10);
 				 ge.removeAccount(account);
 					
 				
@@ -117,9 +117,9 @@ public class TestAccount {
 
 				// employe account , labo user
 				Account account = new Account();
-				account.setAmmount(24000);
+				account.setAmmount(1422);
 				
-				User user = gi.findUserById(2);
+				User user = gi.findUserById(9);
 				List<Account> ac = new ArrayList<>();
 				account.setUser(user);
 				ac.add(account);

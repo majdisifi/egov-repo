@@ -6,9 +6,14 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
+
+import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +21,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -28,6 +35,7 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue(value="user")
 
 public class User implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int idUser;
@@ -43,18 +51,27 @@ public class User implements Serializable {
 	private String email;
 	private String pwd;
 	private String status;
+	private String gender;
+	private String nationality;
+	
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
 	@ManyToOne
 	private User mere;
 	@ManyToOne
 	private User pere;
-	private String gender;
+
 
 	
 	 @OneToMany(mappedBy = "user1")
 	private List<Establishment> establishment;
 	@OneToMany(mappedBy = "user")
 	private List<Work> work;
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Account> accounts;
 	
 	@OneToMany(mappedBy = "user")
@@ -227,6 +244,8 @@ public class User implements Serializable {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+
 	public void setStatus(String status) {
 		this.status = status;
 	}

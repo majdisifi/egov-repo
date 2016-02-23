@@ -10,7 +10,7 @@ import javax.naming.NamingException;
 public class ServiceLocator {
 	private static ServiceLocator instance;
 	private Map<String, Object> cache;
-	Context context;
+	private Context context;
  private ServiceLocator() {
 	 cache=new HashMap<String, Object>();
 	try {

@@ -72,13 +72,35 @@ public class UserManagement implements IUserManagementRemote {
 	}
 
 	@Override
+
+	public User authentificate(String login, String pwd) {
+		User user= null;
+		Query query=Us.createQuery("Select u from User u where u.login=:login and u.pwd=:pwd");
+		query.setParameter("login", login).setParameter("pwd", pwd);
+		try {
+			user=(User) query.getSingleResult();
+			
+		} catch (Exception e) {
+			 user=null;
+		}
+		return user;
+	}
 	public List<Car> findCarByIdUser(int id) {
 		User user = null;
 		user = Us.find(User.class, id);
 		List<Car> cars = new ArrayList<>();
 		Query query = Us.createQuery("select c from car c where c.idUser=:id");
 		return query.getResultList();
+
 	}
+
+	@Override
+	public String findpwd(String email) {
+		Query query=Us.createQuery("SELECT pwd FROM User u where email =:email");
+		query.setParameter("email", email);
+		return (String) query.getSingleResult();
+	}
+
 
 	@Override
 	public Boolean removeUserById(int id) {
@@ -89,10 +111,8 @@ public class UserManagement implements IUserManagementRemote {
 			return true;
 		} catch (Exception e) {
 			return false;
-		}
-
-		
-		
+		}	
 	}
+
 
 }

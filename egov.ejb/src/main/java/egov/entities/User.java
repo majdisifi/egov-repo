@@ -6,12 +6,19 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
+
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
+
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -20,6 +27,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+	    name="type"
+	    
+	)
+@DiscriminatorValue(value="user")
 
 public class User implements Serializable {
 
@@ -40,6 +53,7 @@ public class User implements Serializable {
 	private String status;
 	private String gender;
 	private String nationality;
+	private int numCin;
 	
 	public String getNationality() {
 		return nationality;
@@ -50,8 +64,10 @@ public class User implements Serializable {
 	
 	private String fatherName;
 
+
 	private String motherName;
-	
+
+
 	 @OneToMany(mappedBy = "user1")
 	private List<Establishment> establishment;
 	@OneToMany(mappedBy = "user")
@@ -170,6 +186,7 @@ public class User implements Serializable {
 	
 	
 	
+
 	public User(String firstName, String lastName, Date birthDate, String job, Date deathDate, Blob photo,
 			Blob fingerPrint, String birthPlace, String login, String email, String pwd, String status,
 			List<Establishment> establishment, List<Work> work, List<Account> accounts, List<Car> cars,
@@ -222,19 +239,30 @@ public class User implements Serializable {
 		return status;
 	}
 	
+	
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
 	public User() {
 		super();
 	}
+	public int getNumCin() {
+		return numCin;
+	}
+	public void setNumCin(int numCin) {
+		this.numCin = numCin;
+	}
 
+
+	
 	
 	
 

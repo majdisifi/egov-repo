@@ -245,14 +245,8 @@ public class ManageUser {
 		scrollPane_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				User user = new User();
-				user = us.get(table.getSelectedRow());
-				firstname.setText(user.getFirstName());
-				lastname.setText(user.getLastName());
-				job.setText(user.getJob());
-				dato.setDate(user.getBirthDate());
-				birthPlace.setText(user.getBirthPlace());
-				email.setText(user.getEmail());
+				
+		
 
 			}
 		});

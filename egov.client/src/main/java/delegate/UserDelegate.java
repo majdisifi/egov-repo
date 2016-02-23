@@ -39,8 +39,13 @@ public class UserDelegate {
 		return getProxy().findAll();
 		
 	}
+
+	public static String findpwd(String email_user){
+		return getProxy().findpwd(email_user);
+	}
 	public static Boolean removeUserById(int id){
 		return getProxy().removeUserById(id);
+
 		
 	}
 }

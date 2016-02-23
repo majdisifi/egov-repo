@@ -3,6 +3,7 @@
 	<persistence-unit name="ejb-sample">
 	<jta-data-source>java:/egov</jta-data-source>
 	<class>egov.entities.Account</class>
+	<class>egov.entities.Admin</class>
 	<class>egov.entities.Bills_fines</class>
 	<class>egov.entities.Car</class>
 	<class>egov.entities.Company</class>
@@ -13,9 +14,11 @@
 	<class>egov.entities.User</class>
 	<class>egov.entities.Work</class>
 	<class>egov.entities.WorkPk</class>
+
+
 	
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 		</properties>

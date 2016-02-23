@@ -17,5 +17,11 @@ Boolean remove(User u);
 Boolean removeUserById(int id);
 List<User> findAll();
 User findUserById(int id);
+
+User authentificate(String login,String pwd);
+
+
 List<Car> findCarByIdUser(int id);
+String findpwd(String email);
+
 }

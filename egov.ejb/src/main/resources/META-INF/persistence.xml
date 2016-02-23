@@ -9,7 +9,6 @@
 	<class>egov.entities.Company</class>
 	<class>egov.entities.Establishment</class>
 	<class>egov.entities.EstablishmentPk</class>
-	<class>egov.entities.Kase</class>
 	<class>egov.entities.University</class>
 	<class>egov.entities.User</class>
 	<class>egov.entities.Work</class>

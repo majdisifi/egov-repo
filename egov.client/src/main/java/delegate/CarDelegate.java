@@ -18,6 +18,9 @@ public class CarDelegate {
 	public static boolean addCar(Car c){
 		return getProxy().addCar(c);
 	}
+	public static void affecterCarUser(Car c , User u){
+		getProxy().affecterCarUser(c, u);
+	}
 	public static boolean update(Car c){
 		return getProxy().update(c);
 	}
@@ -31,4 +34,12 @@ public class CarDelegate {
 	public static  Car findCarByNumIm(int numImmatriculation){
 		return getProxy().findCarByNumIm(numImmatriculation);
 	}
+	public static List<Car> findAllCarByIdUser(User u){
+		return getProxy().findAllCarByIdUser(u);
+	}
+	
+	public static Boolean  removeCarByNum(int numImmatriculation){
+		return getProxy().removeCarByNum(numImmatriculation);
+	}
+	
 }

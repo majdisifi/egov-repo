@@ -48,7 +48,7 @@ public class Company implements Serializable{
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-	public int getId() {
+	public int idCompany() {
 		return idCompany;
 	}
 	public void setId(int idCompany) {

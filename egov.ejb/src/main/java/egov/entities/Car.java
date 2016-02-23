@@ -2,6 +2,7 @@ package egov.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +13,10 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="findCarByUser",query="select c from Car c where c.user=:var")
+	@NamedQuery(name="findCaroByUser",query="select c from Car c where c.user.idUser=:var")
 })
 public class Car implements Serializable {
+	
 	@Id
 	private int numImmatriculation;
 	private String color;
@@ -22,9 +24,8 @@ public class Car implements Serializable {
 	private String category;
 	private String constructor;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private User user;
-
 	public int getImmatriculation() {
 		return numImmatriculation;
 	}
@@ -52,11 +53,19 @@ public class Car implements Serializable {
 	public int getNumImmatriculation() {
 		return numImmatriculation;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Car [numImmatriculation=" + numImmatriculation + ", color=" + color + ", type=" + type + ", category="
+				+ category + ", constructor=" + constructor + ", user=" + user + "]";
+	}
 
 	public void setNumImmatriculation(int numImmatriculation) {
 		this.numImmatriculation = numImmatriculation;
 	}
 
+	@ManyToOne
 	public User getUser() {
 		return user;
 	}

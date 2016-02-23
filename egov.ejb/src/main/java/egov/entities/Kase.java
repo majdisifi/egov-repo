@@ -8,10 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Kase implements Serializable{
-	
+public class Kase implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idCase;
@@ -19,43 +19,49 @@ public class Kase implements Serializable{
 	private String judgment;
 	private Date dateCase;
 	@ManyToOne
-	private User user;
+	private User user;  
+
 	public int getIdCase() {
 		return idCase;
 	}
+
 	public void setIdCase(int idCase) {
 		this.idCase = idCase;
 	}
+
 	public String getNameCase() {
 		return nameCase;
 	}
+
 	public void setNameCase(String nameCase) {
 		this.nameCase = nameCase;
 	}
+
 	public String getJudgment() {
 		return judgment;
 	}
+
 	public void setJudgment(String judgment) {
 		this.judgment = judgment;
 	}
+
 	public Date getDateCase() {
 		return dateCase;
 	}
+
 	public void setDateCase(Date dateCase) {
 		this.dateCase = dateCase;
 	}
-	public Kase(int idCase, String nameCase, String judgment, Date dateCase) {
-		super();
-		this.idCase = idCase;
-		this.nameCase = nameCase;
-		this.judgment = judgment;
-		this.dateCase = dateCase;
+
+	public User getUser() {
+		return user;
 	}
-	public Kase() {
-		super();
+
+	public void setUser(User user) {
+		this.user	= user;
 	}
-	
-	
+
 	
 
+	
 }

@@ -106,7 +106,7 @@ public class SendMoney extends JFrame {
 				
 				
 				int num2=Integer.parseInt(numAc.getText());
-				int num1=5;
+				int num1=12;
 				if (AccountDelegate.SendMoney(num1, num2, am))
 					JOptionPane.showMessageDialog(null, "Money has been sent");
 				else

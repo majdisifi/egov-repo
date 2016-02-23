@@ -62,12 +62,12 @@ public class User implements Serializable {
 		this.nationality = nationality;
 	}
 	
-	private User mere;
-
-	private User pere;
+	private String fatherName;
 
 
-	
+	private String motherName;
+
+
 	 @OneToMany(mappedBy = "user1")
 	private List<Establishment> establishment;
 	@OneToMany(mappedBy = "user")
@@ -75,7 +75,7 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Account> accounts;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Car> cars;
 	@OneToMany(mappedBy = "user")
 	private List<Bills_fines> bills;
@@ -128,17 +128,18 @@ public class User implements Serializable {
 	}
 	
 	
-	public User getMere() {
-		return mere;
+
+	public String getFatherName() {
+		return fatherName;
 	}
-	public void setMere(User mere) {
-		this.mere = mere;
+	public void setFatherName(String fatherName) {
+		this.fatherName = fatherName;
 	}
-	public User getPere() {
-		return pere;
+	public String getMotherName() {
+		return motherName;
 	}
-	public void setPere(User pere) {
-		this.pere = pere;
+	public void setMotherName(String motherName) {
+		this.motherName = motherName;
 	}
 	public Blob getPhoto() {
 		return photo;

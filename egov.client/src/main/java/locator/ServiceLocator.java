@@ -6,41 +6,79 @@ import java.util.Map;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.validation.constraints.Null;
 
 public class ServiceLocator {
-	private static ServiceLocator instance;
-	private Map<String, Object> cache;
+	private Map<String, Object> cacheProxy;
 	private Context context;
- private ServiceLocator() {
-	 cache=new HashMap<String, Object>();
-	try {
-		context =new InitialContext();
-	} catch (NamingException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
- public synchronized Object getProxy(String jndi){
-	 if(cache.get(jndi)!=null)
-		 return cache.get(jndi);
-	 else{
-		 Object object = null;
+	private static ServiceLocator serviceLocator;
+	
+	public ServiceLocator() {
 		try {
-			object = context.lookup(jndi);
-			 cache.put(jndi, object);
+			context = new InitialContext();
+			cacheProxy = new HashMap<String, Object>();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		 return object;
-	 }
-	 
- }
-public static ServiceLocator getInstance() {
-	if(instance==null)
-		instance=new ServiceLocator();
-	return instance;
-}
+	}
+
+	public Map<String, Object> getCacheProxy() {
+		return cacheProxy;
+	}
+
+	public void setCacheProxy(Map<String, Object> cacheProxy) {
+		this.cacheProxy = cacheProxy;
+	}
+
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
+
+	public static ServiceLocator getServiceLocator() {
+		return serviceLocator;
+	}
+
+	public static void setServiceLocator(ServiceLocator serviceLocator) {
+		ServiceLocator.serviceLocator = serviceLocator;
+	}
+	
+	public static ServiceLocator getInstance(){ // permet de retourner une seule instance de servicelocator
+		
+		if (serviceLocator==null) // instance unique
+			serviceLocator=new ServiceLocator();
+		return serviceLocator;
+			
+	}
+	public Object getProxy(String jndi){ // kan l'objet 3anna mennou fel cache s
+		
+		Object proxy=null;
+		proxy=cacheProxy.get(jndi);
+		if (proxy==null)
+		{
+			try {
+				proxy=context.lookup(jndi);
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			cacheProxy.put(jndi, proxy);
+		}
+		return proxy;
+		
+		
+		
+			
+	}
 
 }
+
+
+
+
+

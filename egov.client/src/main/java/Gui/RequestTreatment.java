@@ -7,6 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import Gui.admin.AdminSpace;
 import delegate.UserDelegate;
 import egov.entities.User;
@@ -14,13 +20,14 @@ import egov.entities.User;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.Font;
+import com.itextpdf.text.Font;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -68,12 +75,12 @@ public class RequestTreatment extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblRequestTreatment = new JLabel("Request treatment ");
-		lblRequestTreatment.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		
 		lblRequestTreatment.setBounds(223, 11, 208, 42);
 		contentPane.add(lblRequestTreatment);
 		
 		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\target\\classes\\icons\\add.png"));
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\24x24\\Apply.png"));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -140,12 +147,12 @@ public class RequestTreatment extends JFrame {
 				
 			
 		});
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 15));
+	
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(606, 319, 89, 23);
+		btnNewButton.setBounds(606, 319, 89, 34);
 		contentPane.add(btnNewButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -188,7 +195,7 @@ public class RequestTreatment extends JFrame {
 					new String[] { "Id","First name", "Last name", "Birth date", "Birth place", "Job", "Gender", "E-mail","Death Date","Cin" }));
 			
 			JLabel lblNumCin = new JLabel("Num Cin :");
-			lblNumCin.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+
 			lblNumCin.setBounds(70, 267, 83, 14);
 			contentPane.add(lblNumCin);
 			
@@ -198,7 +205,7 @@ public class RequestTreatment extends JFrame {
 			numCin.setColumns(10);
 			
 			JButton btnCancel = new JButton("Cancel");
-			btnCancel.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\target\\classes\\icons\\arrow_left.png"));
+			btnCancel.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\24x24\\Previous.png"));
 			btnCancel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
@@ -206,9 +213,82 @@ public class RequestTreatment extends JFrame {
 					setVisible(false);
 				}
 			});
-			btnCancel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-			btnCancel.setBounds(472, 320, 117, 23);
+			
+			btnCancel.setBounds(472, 320, 117, 33);
 			contentPane.add(btnCancel);
+			
+			JButton btnPrintCin = new JButton("Print  Cin");
+			btnPrintCin.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Document document = new Document();
+					try {
+
+						User us = new User();
+						int a = table.getSelectedRow();
+
+						int x = Integer.parseInt(donnes[a][0]);
+
+						String n = donnes[a][2];
+						String f = donnes[a][1];
+						String j = donnes[a][5];
+						String p = donnes[a][4];
+						String g = donnes[a][6];
+						String d = donnes[a][3];
+						String d1 = donnes[a][8];
+
+						PdfWriter.getInstance(document,
+								new FileOutputStream("C:\\Users\\HP\\git\\Cin-" + donnes[a][2] + ".pdf"));
+						document.open();
+
+						Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
+
+						Paragraph p1 = new Paragraph("Death Certificate ");
+						Paragraph p2 = new Paragraph("First Name :" + n);
+						Paragraph p3 = new Paragraph("Last Name :" + f);
+						Paragraph p4 = new Paragraph("Job :" + j);
+						Paragraph p5 = new Paragraph("Birth Date:" + d);
+						Paragraph p6 = new Paragraph("Birth Place:" + p);
+						Paragraph p7 = new Paragraph("Gender:" + g);
+						Paragraph p8 = new Paragraph("Death Date:" + d1);
+
+						p1.setAlignment(Element.ALIGN_CENTER);
+						p2.setAlignment(Element.ALIGN_CENTER);
+						p3.setAlignment(Element.ALIGN_CENTER);
+						p4.setAlignment(Element.ALIGN_CENTER);
+						p5.setAlignment(Element.ALIGN_CENTER);
+						p6.setAlignment(Element.ALIGN_CENTER);
+						p7.setAlignment(Element.ALIGN_CENTER);
+						p8.setAlignment(Element.ALIGN_CENTER);
+
+						document.add(p1);
+
+						// add blank line
+						document.add(Chunk.NEWLINE);
+						document.add(p2);
+						document.add(Chunk.NEWLINE);
+						document.add(p3);
+						document.add(Chunk.NEWLINE);
+						document.add(p4);
+						document.add(Chunk.NEWLINE);
+						document.add(p5);
+						document.add(Chunk.NEWLINE);
+						document.add(p6);
+						document.add(Chunk.NEWLINE);
+						document.add(p7);
+						document.add(Chunk.NEWLINE);
+
+						document.add(p8);
+						document.add(Chunk.NEWLINE);
+
+						document.close();
+					} catch (Exception n) {
+						System.out.println(n);
+					}
+					document.close();
+				}
+			});
+			btnPrintCin.setBounds(639, 247, 89, 23);
+			contentPane.add(btnPrintCin);
 
 		} catch (Exception e1) {
 			e1.printStackTrace();

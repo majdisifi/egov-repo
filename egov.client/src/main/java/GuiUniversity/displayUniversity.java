@@ -8,6 +8,9 @@ import egov.entities.University;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Gui.admin.AdminSpace;
+
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -79,6 +82,13 @@ private JTextField textField_2;
 		contentPane.add(lblGestionDesUniversits);
 		
 		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				new AdminSpace().setVisible(true);
+				setVisible(false);
+			}
+		});
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\mariem\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\Back.gif"));
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton.setBounds(289, 213, 118, 23);

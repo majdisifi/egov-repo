@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Gui.admin.AdminSpace;
 import delegate.CarDelegate;
 import delegate.UserDelegate;
 import egov.entities.Car;
@@ -26,6 +27,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class ManageCar extends JFrame {
 
@@ -49,6 +52,7 @@ public class ManageCar extends JFrame {
 	private JLabel lblConstuctor;
 	private JLabel lblCategory;
 	private JLabel lblType;
+	private JButton btnCancel;
 
 	/**
 	 * Launch the application.
@@ -468,6 +472,19 @@ public class ManageCar extends JFrame {
 		lblType = new JLabel("Type");
 		lblType.setBounds(102, 235, 46, 14);
 		contentPane.add(lblType);
+		
+		btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				new AdminSpace().setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnCancel.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\24x24\\Previous.png"));
+		btnCancel.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		btnCancel.setBounds(372, 390, 117, 33);
+		contentPane.add(btnCancel);
 
 	}
 

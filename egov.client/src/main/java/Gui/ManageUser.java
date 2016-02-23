@@ -465,7 +465,7 @@ public class ManageUser {
 					String g = donnes[a][6];
 					String d = donnes[a][3];
 
-					PdfWriter.getInstance(document, new FileOutputStream("D:\\PDF-" + donnes[a][2] + ".pdf"));
+					PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\HP\\git\\PDF-" + donnes[a][2] + ".pdf"));
 					document.open();
 
 					Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
@@ -559,7 +559,7 @@ public class ManageUser {
 					String d1 = donnes[a][8];
 
 					PdfWriter.getInstance(document,
-							new FileOutputStream("D:\\DeathCertifcate-" + donnes[a][2] + ".pdf"));
+							new FileOutputStream("C:\\Users\\HP\\git\\DeathCertifcate-" + donnes[a][2] + ".pdf"));
 					document.open();
 
 					Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);

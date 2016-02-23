@@ -81,21 +81,6 @@ public class SendMoney extends JFrame {
 		table_1 = new JTable();
 		scrollPane.setViewportView(table_1);
 		
-		JButton btnNewButton = new JButton("Actualize");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				
-			}
-		});
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(98, 337, 89, 23);
-		contentPane.add(btnNewButton);
-		
 		btnSend = new JButton("Send");
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -106,31 +91,18 @@ public class SendMoney extends JFrame {
 				
 				
 				int num2=Integer.parseInt(numAc.getText());
-				int num1=12;
+				int num1=21;
 				if (AccountDelegate.SendMoney(num1, num2, am))
 					JOptionPane.showMessageDialog(null, "Money has been sent");
 				else
 					JOptionPane.showMessageDialog(null, "erreur");
 				
-				//int num1=Integer.parseInt(donnes[a][2]);
-				//System.out.println(num1);
 				
-				
-				/*
-				float am=Float.parseFloat(ammount.getText());
-			
-				int num2=5;
-				if (AccountDelegate.SendMoney(num1, num2, am))
-					JOptionPane.showMessageDialog(null, "Money has been sent");
-				else
-					JOptionPane.showMessageDialog(null, "erreur");
-			
-			*/
 			}
 				
 			
 		});
-		btnSend.setBounds(279, 337, 89, 23);
+		btnSend.setBounds(216, 352, 89, 23);
 		contentPane.add(btnSend);
 		
 		ammount = new JTextField();

@@ -130,50 +130,92 @@ public class ManageUser {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
+
 				String n = lastname.getText();
 				String f = firstname.getText();
-				String j = job.getText();
 
 				String p = birthPlace.getText();
-				String em = email.getText();
-				
-				String t=nationality.getText();
-				
-				String fa=father.getText();
-				String ma=mother.getText();
-				// String np=pere.getText();
-				// String nm=mere.getText();
-
+				String t = nationality.getText();
+				String m = mother.getText();
+				String fa = father.getText();
+				String em=email.getText();
 				Date d = dato.getDate();
+				String d1 = String.valueOf(d);
+
 				User user = new User();
-				
-	int index=comboBox.getSelectedIndex();
-				
-	if (index==0) 
-		JOptionPane.showMessageDialog(null, "You Should Select your gender");
-	else {
+				int index = comboBox.getSelectedIndex();
+				if (index == 0)
+					JOptionPane.showMessageDialog(null, "You Should Select your gender");
+				else {
 
-				if (index==1) 
-				{user.setGender("Male");}
-				if (index==2){user.setGender("Female");}
-				
+					if (index == 1) {
+						user.setGender("Male");
+					}
+					if (index == 2) {
+						user.setGender("Female");
+					}
+					
+					
+							
+						if (m.equals("")) 
+							
+							JOptionPane.showMessageDialog(null, "You Should Write a valid Email ");
+							else
+							{
+							user.setEmail(em);
+						
+					
+						
+					 
 
-				
-				user.setFirstName(f);
-				user.setLastName(n);
-				user.setJob(j);
-				user.setBirthDate(d);
-				user.setEmail(em);
-				user.setBirthPlace(p);
-				user.setFatherName(fa);
-				user.setMotherName(ma);
-				
-				// user.setBirthPlace(np);
-				// user.setBirthPlace(nm);
-				user.setNationality(t);
+					if (n.equals("")) {
+						JOptionPane.showMessageDialog(null, "You Should Write Your Last Name ");
+					} else {
+						user.setLastName(f);
 
-				UserDelegate.CreateUser(user);
-				JOptionPane.showMessageDialog(null, "Added");
+						if (f.equals("")) {
+							JOptionPane.showMessageDialog(null, "You Should Write Your First Name ");
+						} else {
+							user.setFirstName(f);
+
+							if (p.equals("")) {
+								JOptionPane.showMessageDialog(null, "You Should Write Your Birth Place ");
+							} else {
+								user.setBirthPlace(p);
+
+								if (fa.equals("")) {
+									JOptionPane.showMessageDialog(null, "You Should Write Your Father's Name");
+								} else {
+									user.setFatherName(fa);
+
+									if (t.equals("")) {
+										JOptionPane.showMessageDialog(null, "You Should Write Your Nationality");
+									} else {
+										user.setNationality(t);
+
+										if (m.equals("")) {
+											JOptionPane.showMessageDialog(null, "You Should Write Your Mother's Name");
+										} else {
+											user.setMotherName(m);
+
+											if (d == null) {
+												JOptionPane.showMessageDialog(null,
+														"You Should Select Your Birth Date");
+											} else {
+												user.setBirthDate(d);
+
+												UserDelegate.CreateUser(user);
+												JOptionPane.showMessageDialog(null, "Added");
+
+											}
+										}
+									}
+								}
+							}
+						}}
+					}
+				}
+			
 
 				////
 				try {
@@ -206,7 +248,7 @@ public class ManageUser {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-	}
+	
 
 			}
 		});
@@ -217,7 +259,7 @@ public class ManageUser {
 
 			}
 		});
-		button.setBounds(478, 305, 65, 23);
+		button.setBounds(469, 305, 65, 23);
 		frame.getContentPane().add(button);
 
 		dato.setBounds(168, 168, 87, 20);
@@ -258,15 +300,6 @@ public class ManageUser {
 
 		table_1 = new JTable();
 		scrollPane_1.setColumnHeaderView(table_1);
-
-		JButton btnNewButton = new JButton("actualize");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-		btnNewButton.setBounds(306, 359, 89, 23);
-		frame.getContentPane().add(btnNewButton);
 
 		JButton btnSupprimer = new JButton("delete");
 		btnSupprimer.addActionListener(new ActionListener() {
@@ -352,7 +385,7 @@ public class ManageUser {
 
 					user.setFatherName(fa);
 				if (ma.equals(""))
-					user.setMotherName(donnes[a][12]);
+					user.setMotherName(donnes[a][10]);
 				else
 
 					user.setMotherName(ma);
@@ -388,7 +421,7 @@ public class ManageUser {
 					user.setNationality(t);
 				user.setDeathDate(d1);
 				
-				int index=comboBox.getSelectedIndex();
+			int index=comboBox.getSelectedIndex();
 				
 				
 					if (index==1) {user.setGender("Male");}
@@ -397,14 +430,21 @@ public class ManageUser {
 				}
 				else {user.setGender(donnes[a][6]);}
 					
-				
+			
 				
 				
 
 				if (UserDelegate.doUpdateUser(user))
 					JOptionPane.showMessageDialog(null, "updated");
 				else
+					
 					JOptionPane.showMessageDialog(null, "erreur");
+				
+				
+				
+				
+				
+				
 				try {
 
 					List<User> users = new ArrayList<User>();
@@ -447,7 +487,7 @@ public class ManageUser {
 		btnUpdate.setBounds(454, 359, 89, 23);
 		frame.getContentPane().add(btnUpdate);
 
-		JButton btnPdf = new JButton("PDF");
+		JButton btnPdf = new JButton("Birth Certificate");
 		btnPdf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Document document = new Document();
@@ -465,12 +505,12 @@ public class ManageUser {
 					String g = donnes[a][6];
 					String d = donnes[a][3];
 
-					PdfWriter.getInstance(document, new FileOutputStream("D:\\PDF-" + donnes[a][2] + ".pdf"));
+					PdfWriter.getInstance(document, new FileOutputStream("D:\\Birth-Certificate-" + donnes[a][2] + ".pdf"));
 					document.open();
 
 					Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
 
-					Paragraph p1 = new Paragraph("User Information ");
+					Paragraph p1 = new Paragraph("Birth Certificate");
 					Paragraph p2 = new Paragraph("First Name :" + n);
 					Paragraph p3 = new Paragraph("Last Name :" + f);
 					Paragraph p4 = new Paragraph("Job :" + j);
@@ -610,7 +650,7 @@ public class ManageUser {
 
 			}
 		});
-		btnNewButton_1.setBounds(663, 362, 116, 20);
+		btnNewButton_1.setBounds(663, 377, 116, 20);
 		frame.getContentPane().add(btnNewButton_1);
 
 		JButton btnDownload = new JButton("Download");

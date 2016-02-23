@@ -23,6 +23,7 @@ public class Account implements Serializable {
 
 	private User user;
 
+	@ManyToOne
 	public User getUser() {
 		return user;
 	}

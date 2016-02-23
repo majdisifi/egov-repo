@@ -113,9 +113,10 @@ public class RegiserBaby extends JFrame {
 
 				String p = birthPlace.getText();
 				String t = nationality.getText();
-				String m=mother.getText();
-				String fa=father.getText();
+				String m = mother.getText();
+				String fa = father.getText();
 				Date d = dato.getDate();
+				String d1 = String.valueOf(d);
 
 				User user = new User();
 				int index = comboBox.getSelectedIndex();
@@ -130,19 +131,55 @@ public class RegiserBaby extends JFrame {
 						user.setGender("Female");
 					}
 
-					user.setFirstName(f);
-					user.setLastName(n);
+					if (n.equals("")) {
+						JOptionPane.showMessageDialog(null, "You Should Write Your Last Name ");
+					} else {
+						user.setLastName(f);
 
-					user.setDeathDate(d);
+						if (f.equals("")) {
+							JOptionPane.showMessageDialog(null, "You Should Write Your First Name ");
+						} else {
+							user.setFirstName(f);
 
-					user.setBirthPlace(p);
-					user.setFatherName(fa);
-					user.setMotherName(m);
+							if (p.equals("")) {
+								JOptionPane.showMessageDialog(null, "You Should Write Your Birth Place ");
+							} else {
+								user.setBirthPlace(p);
 
-					UserDelegate.CreateUser(user);
-					JOptionPane.showMessageDialog(null, "Added");
+								if (fa.equals("")) {
+									JOptionPane.showMessageDialog(null, "You Should Write Your Father's Name");
+								} else {
+									user.setFatherName(fa);
+
+									if (t.equals("")) {
+										JOptionPane.showMessageDialog(null, "You Should Write Your Nationality");
+									} else {
+										user.setNationality(t);
+
+										if (m.equals("")) {
+											JOptionPane.showMessageDialog(null, "You Should Write Your Mother's Name");
+										} else {
+											user.setMotherName(m);
+
+											if (d == null) {
+												JOptionPane.showMessageDialog(null,
+														"You Should Select Your Birth Date");
+											} else {
+												user.setBirthDate(d);
+
+												UserDelegate.CreateUser(user);
+												JOptionPane.showMessageDialog(null, "Added");
+
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
+
 		});
 		btnNewButton.setBounds(233, 506, 89, 23);
 		contentPane.add(btnNewButton);

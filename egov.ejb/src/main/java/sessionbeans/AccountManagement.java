@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import egov.entities.Account;
 import egov.entities.Car;
+import egov.entities.User;
 
 @Stateless
 public class AccountManagement implements IAccountManagementRemote{
@@ -98,6 +99,21 @@ public class AccountManagement implements IAccountManagementRemote{
 	}
 
 	
+	public void affecterAccountUser(Account a , User u)
+	{
+		a=em.find(Account.class, a.getNum());
+		u=em.find(User.class, u.getIdUser());
+		List<Account> accounts=new ArrayList<>();
+		accounts=u.getAccounts();
+		
+		
+		a.setUser(u);
+		em.merge(a);
+		accounts.add(a);
+		u.setAccounts(accounts);
+		em.merge(u);
+		
+	}
 	
 
 }

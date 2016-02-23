@@ -3,6 +3,7 @@ package delegate;
 import java.util.List;
 
 import egov.entities.Account;
+import egov.entities.User;
 import locator.ServiceLocator;
 import sessionbeans.IAccountManagementRemote;;
 
@@ -39,6 +40,9 @@ public class AccountDelegate {
 	public static boolean SendMoney(int num1 , int num2 , float ammount){
 		return getProxy().SendMoney(num1, num2, ammount);
 		
+	}
+	public static void affecterAccountUser(Account a , User u){
+		getProxy().affecterAccountUser(a, u);
 	}
 	
 }

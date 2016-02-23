@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import egov.entities.Account;
+import egov.entities.User;
 
 
 
@@ -20,5 +21,6 @@ public interface IAccountManagementRemote {
 
 	Account findAccountByNum(int num);
 	Boolean SendMoney(int num1 , int num2 , float ammount);
+	 void affecterAccountUser(Account a , User u);
 
 }

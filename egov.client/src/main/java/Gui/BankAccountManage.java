@@ -196,30 +196,36 @@ public class BankAccountManage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-			/*	String num = Integer.parseInt(numAccount.getText());
-				String ammou = color.getText();
-				String typ= type.getText();
-				String cons=constructor.getText();
-				String cat=category.getText();
+				
+				int a = table.getSelectedRow();
+	             
+				int x = Integer.parseInt(donnes[a][2]);
+				
+				
+				
+				float am=Float.parseFloat(ammount.getText());
+				int num2=Integer.parseInt(numAccount.getText());
 				
 				
 			
 				
 
-				Car car = new Car();
-					car.setImmatriculation(Integer.parseInt(im));
-					car.setColor(col);
-					car.setType(typ);
-					car.setConstructor(cons);
-					car.setCategory(cat);
-					CarDelegate.addCar(car);
-					
-					User user=UserDelegate.doFindUserById(1);
-				CarDelegate.affecterCarUser(car, user);
-			
-				JOptionPane.showMessageDialog(null, "Car Added");
+				Account account = new Account();
+				account.setNum(num2);
+				account.setAmmount(am);
 				
-				*/
+				AccountDelegate.CreateUser(account);
+				
+					
+					
+					User user=UserDelegate.doFindUserById(x);
+				AccountDelegate.affecterAccountUser(account,user);
+			
+				JOptionPane.showMessageDialog(null, "Account Added To that User");
+				
+		
+		
+	
 				
 				
 			}

@@ -32,7 +32,6 @@ public class testUser2 {
 			user.setJob("baya3 chrab ");
 			user.setGender("Male");
 			User u=ge.findUserById(1);
-			user.setPere(user);
 			
 			
 			if (ge.addUser(user)) {

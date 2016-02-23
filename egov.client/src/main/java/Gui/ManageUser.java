@@ -259,7 +259,7 @@ public class ManageUser {
 
 			}
 		});
-		button.setBounds(469, 305, 65, 23);
+		button.setBounds(403, 361, 65, 23);
 		frame.getContentPane().add(button);
 
 		dato.setBounds(168, 168, 87, 20);
@@ -356,7 +356,7 @@ public class ManageUser {
 			}
 
 		});
-		btnSupprimer.setBounds(454, 415, 89, 23);
+		btnSupprimer.setBounds(648, 361, 89, 23);
 		frame.getContentPane().add(btnSupprimer);
 
 		JButton btnUpdate = new JButton("update");
@@ -484,7 +484,7 @@ public class ManageUser {
 
 			}
 		});
-		btnUpdate.setBounds(454, 359, 89, 23);
+		btnUpdate.setBounds(510, 361, 89, 23);
 		frame.getContentPane().add(btnUpdate);
 
 		JButton btnPdf = new JButton("Birth Certificate");
@@ -504,6 +504,9 @@ public class ManageUser {
 					String p = donnes[a][4];
 					String g = donnes[a][6];
 					String d = donnes[a][3];
+					String xo= donnes[a][9];
+					String y= donnes[a][10];
+					String z= donnes[a][11];
 
 					PdfWriter.getInstance(document, new FileOutputStream("D:\\Birth-Certificate-" + donnes[a][2] + ".pdf"));
 					document.open();
@@ -513,18 +516,26 @@ public class ManageUser {
 					Paragraph p1 = new Paragraph("Birth Certificate");
 					Paragraph p2 = new Paragraph("First Name :" + n);
 					Paragraph p3 = new Paragraph("Last Name :" + f);
-					Paragraph p4 = new Paragraph("Job :" + j);
-					Paragraph p5 = new Paragraph("Birth Date:" + d);
-					Paragraph p6 = new Paragraph("Birth Place:" + p);
-					Paragraph p7 = new Paragraph("Gender:" + g);
+					
+					Paragraph p5 = new Paragraph("Birth Date :" + d);
+					Paragraph p6 = new Paragraph("Birth Place :" + p);
+					Paragraph p7 = new Paragraph("Gender :" + g);
+					Paragraph p8 = new Paragraph("Nationality :" + xo);
+					Paragraph p9 = new Paragraph("Mother Name :" + y);
+					Paragraph p10 = new Paragraph("Father Name:" + z);
 
 					p1.setAlignment(Element.ALIGN_CENTER);
 					p2.setAlignment(Element.ALIGN_CENTER);
 					p3.setAlignment(Element.ALIGN_CENTER);
-					p4.setAlignment(Element.ALIGN_CENTER);
 					p5.setAlignment(Element.ALIGN_CENTER);
 					p6.setAlignment(Element.ALIGN_CENTER);
 					p7.setAlignment(Element.ALIGN_CENTER);
+					p8.setAlignment(Element.ALIGN_CENTER);
+
+					p9.setAlignment(Element.ALIGN_CENTER);
+
+					p10.setAlignment(Element.ALIGN_CENTER);
+
 
 					document.add(p1);
 
@@ -533,14 +544,19 @@ public class ManageUser {
 					document.add(p2);
 					document.add(Chunk.NEWLINE);
 					document.add(p3);
-					document.add(Chunk.NEWLINE);
-					document.add(p4);
+				
 					document.add(Chunk.NEWLINE);
 					document.add(p5);
 					document.add(Chunk.NEWLINE);
 					document.add(p6);
 					document.add(Chunk.NEWLINE);
 					document.add(p7);
+					document.add(Chunk.NEWLINE);
+					document.add(p8);
+					document.add(Chunk.NEWLINE);
+					document.add(p9);
+					document.add(Chunk.NEWLINE);
+					document.add(p10);
 					document.add(Chunk.NEWLINE);
 
 					document.close();
@@ -551,7 +567,7 @@ public class ManageUser {
 
 			}
 		});
-		btnPdf.setBounds(663, 305, 116, 23);
+		btnPdf.setBounds(621, 439, 116, 23);
 		frame.getContentPane().add(btnPdf);
 
 	
@@ -592,14 +608,17 @@ public class ManageUser {
 
 					String n = donnes[a][2];
 					String f = donnes[a][1];
-					String j = donnes[a][5];
+				
 					String p = donnes[a][4];
 					String g = donnes[a][6];
 					String d = donnes[a][3];
 					String d1 = donnes[a][8];
+					String xo= donnes[a][9];
+					String y= donnes[a][10];
+					String z= donnes[a][11];
 
 					PdfWriter.getInstance(document,
-							new FileOutputStream("D:\\DeathCertifcate-" + donnes[a][2] + ".pdf"));
+							new FileOutputStream("D:\\Death-Certifcate-" + donnes[a][2] + ".pdf"));
 					document.open();
 
 					Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
@@ -607,20 +626,25 @@ public class ManageUser {
 					Paragraph p1 = new Paragraph("Death Certificate ");
 					Paragraph p2 = new Paragraph("First Name :" + n);
 					Paragraph p3 = new Paragraph("Last Name :" + f);
-					Paragraph p4 = new Paragraph("Job :" + j);
+					
 					Paragraph p5 = new Paragraph("Birth Date:" + d);
 					Paragraph p6 = new Paragraph("Birth Place:" + p);
 					Paragraph p7 = new Paragraph("Gender:" + g);
 					Paragraph p8 = new Paragraph("Death Date:" + d1);
+					Paragraph p9 = new Paragraph("Nationality :" + xo);
+					Paragraph p10 = new Paragraph("Mother Name :" + y);
+					Paragraph p11 = new Paragraph("Father Name:" + z);
 
 					p1.setAlignment(Element.ALIGN_CENTER);
 					p2.setAlignment(Element.ALIGN_CENTER);
 					p3.setAlignment(Element.ALIGN_CENTER);
-					p4.setAlignment(Element.ALIGN_CENTER);
-					p5.setAlignment(Element.ALIGN_CENTER);
+						p5.setAlignment(Element.ALIGN_CENTER);
 					p6.setAlignment(Element.ALIGN_CENTER);
 					p7.setAlignment(Element.ALIGN_CENTER);
 					p8.setAlignment(Element.ALIGN_CENTER);
+					p9.setAlignment(Element.ALIGN_CENTER);
+					p10.setAlignment(Element.ALIGN_CENTER);
+					p11.setAlignment(Element.ALIGN_CENTER);
 
 					document.add(p1);
 
@@ -629,8 +653,7 @@ public class ManageUser {
 					document.add(p2);
 					document.add(Chunk.NEWLINE);
 					document.add(p3);
-					document.add(Chunk.NEWLINE);
-					document.add(p4);
+					
 					document.add(Chunk.NEWLINE);
 					document.add(p5);
 					document.add(Chunk.NEWLINE);
@@ -641,6 +664,12 @@ public class ManageUser {
 
 					document.add(p8);
 					document.add(Chunk.NEWLINE);
+					document.add(p9);
+					document.add(Chunk.NEWLINE);
+					document.add(p10);
+					document.add(Chunk.NEWLINE);
+					document.add(p11);
+					document.add(Chunk.NEWLINE);
 
 					document.close();
 				} catch (Exception n) {
@@ -650,7 +679,7 @@ public class ManageUser {
 
 			}
 		});
-		btnNewButton_1.setBounds(663, 377, 116, 20);
+		btnNewButton_1.setBounds(454, 440, 116, 20);
 		frame.getContentPane().add(btnNewButton_1);
 
 		JButton btnDownload = new JButton("Download");

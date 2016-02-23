@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import egov.entities.Car;
+import egov.entities.Kase;
 import egov.entities.User;
 
 @Remote
@@ -23,5 +24,6 @@ User authentificate(String login,String pwd);
 
 List<Car> findCarByIdUser(int id);
 String findpwd(String email);
+List<Kase> CaseByUser(User m);
 
 }

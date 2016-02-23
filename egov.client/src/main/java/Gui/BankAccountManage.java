@@ -15,8 +15,10 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import delegate.AccountDelegate;
+import delegate.CarDelegate;
 import delegate.UserDelegate;
 import egov.entities.Account;
+import egov.entities.Car;
 import egov.entities.User;
 
 import javax.swing.JScrollPane;
@@ -28,7 +30,10 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BankAccountManage extends JFrame {
 
@@ -37,6 +42,8 @@ public class BankAccountManage extends JFrame {
 	String[][] donnes;
 	private JTable table_1;
 	private JTable table_2;
+	private JTextField ammount;
+	private JTextField numAccount;
 
 	/**
 	 * Launch the application.
@@ -59,14 +66,14 @@ public class BankAccountManage extends JFrame {
 	 */
 	public BankAccountManage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 632, 410);
+		setBounds(100, 100, 765, 542);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(31, 93, 534, 160);
+		scrollPane.setBounds(114, 61, 534, 160);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -90,7 +97,7 @@ public class BankAccountManage extends JFrame {
 				
 			}
 		});
-		btnDelete.setBounds(70, 281, 89, 23);
+		btnDelete.setBounds(114, 344, 89, 23);
 		contentPane.add(btnDelete);
 		
 		JButton btnPdf = new JButton("pdf");
@@ -159,11 +166,11 @@ public class BankAccountManage extends JFrame {
 				
 			
 		});
-		btnPdf.setBounds(431, 281, 89, 23);
+		btnPdf.setBounds(523, 344, 89, 23);
 		contentPane.add(btnPdf);
 		
 		JLabel lblUsersAccount = new JLabel("User's Account");
-		lblUsersAccount.setBounds(249, 23, 89, 39);
+		lblUsersAccount.setBounds(352, 11, 89, 39);
 		contentPane.add(lblUsersAccount);
 		
 
@@ -185,14 +192,64 @@ public class BankAccountManage extends JFrame {
 				new String[] { "First Name", "Last Name", "Account Number", "Ammount" }));
 		
 		JButton btnAdd = new JButton("Add");
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnAdd.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			/*	String num = Integer.parseInt(numAccount.getText());
+				String ammou = color.getText();
+				String typ= type.getText();
+				String cons=constructor.getText();
+				String cat=category.getText();
+				
+				
+			
+				
+
+				Car car = new Car();
+					car.setImmatriculation(Integer.parseInt(im));
+					car.setColor(col);
+					car.setType(typ);
+					car.setConstructor(cons);
+					car.setCategory(cat);
+					CarDelegate.addCar(car);
+					
+					User user=UserDelegate.doFindUserById(1);
+				CarDelegate.affecterCarUser(car, user);
+			
+				JOptionPane.showMessageDialog(null, "Car Added");
+				
+				*/
+				
+				
 			}
 		});
-		btnAdd.setBounds(249, 281, 89, 23);
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 	
+			}
+		});
+		btnAdd.setBounds(328, 344, 89, 23);
 		contentPane.add(btnAdd);
-	}
 		
+		ammount = new JTextField();
+		ammount.setBounds(355, 301, 86, 20);
+		contentPane.add(ammount);
+		ammount.setColumns(10);
+		
+		numAccount = new JTextField();
+		numAccount.setBounds(355, 261, 86, 20);
+		contentPane.add(numAccount);
+		numAccount.setColumns(10);
+		
+		JLabel lblNumAccount = new JLabel("Num Account");
+		lblNumAccount.setBounds(201, 263, 106, 17);
+		contentPane.add(lblNumAccount);
+		
+		JLabel lblAmmount = new JLabel("Ammount");
+		lblAmmount.setBounds(201, 303, 72, 17);
+		contentPane.add(lblAmmount);
+	}
 	}
 	
 	

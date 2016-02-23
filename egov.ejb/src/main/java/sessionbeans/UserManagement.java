@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import egov.entities.Car;
+import egov.entities.Kase;
 import egov.entities.User;
 
 @Stateless
@@ -114,5 +115,17 @@ public class UserManagement implements IUserManagementRemote {
 		}	
 	}
 
+
+	@Override
+	public List<Kase> CaseByUser(User m) {
+		
+		String rq="select a from Kase a where a.user.id= :id";
+		
+		
+		
+		Query query=Us.createQuery(rq).setParameter("id", m.getIdUser());
+		return query.getResultList();
+		
+	}
 
 }

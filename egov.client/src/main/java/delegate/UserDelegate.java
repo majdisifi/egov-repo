@@ -3,6 +3,7 @@ package delegate;
 
 import java.util.List;
 
+import egov.entities.Kase;
 import egov.entities.User;
 import locator.ServiceLocator;
 import sessionbeans.IUserManagementRemote;
@@ -48,4 +49,10 @@ public class UserDelegate {
 
 		
 	}
+	
+	public static List <Kase> CaseByUser(User m) {
+
+		return getProxy().CaseByUser(m);
+	}
+
 }

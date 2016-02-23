@@ -21,8 +21,8 @@ public class SendMail {
 
 	Message msg = null ;
     final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
-    final String username = "Anonymousrafraf@gmail.com";
-	final String password = "wejdanmajdi";
+    final String username = "egovegov2016@gmail.com";
+	final String password = "egovegovegov";
 	private String receiver,textemail ;
 	Session session;
 	public SendMail(String receiver,String textemail) {

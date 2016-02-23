@@ -227,22 +227,23 @@ public class ManageUser {
 					donnes = new String[users.size()][12];
 					for (int i = 0; i < users.size(); i++) {
 
-						donnes[i][0] = String.valueOf(users.get(i).getIdUser());
-						donnes[i][1] = users.get(i).getFirstName();
-						donnes[i][2] = users.get(i).getLastName();
-						donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
-						donnes[i][4] = users.get(i).getBirthPlace();
-						donnes[i][5] = users.get(i).getJob();
-						donnes[i][6] = users.get(i).getGender();
-						donnes[i][7] = users.get(i).getEmail();
-						donnes[i][8] = String.valueOf(users.get(i).getDeathDate());
-						donnes[i][9] = users.get(i).getNationality();
-						donnes[i][10] = users.get(i).getMotherName();
-						donnes[i][11] = users.get(i).getFatherName();
+						
+						donnes[i][0] = users.get(i).getFirstName();
+						donnes[i][1] = users.get(i).getLastName();
+						donnes[i][2] = String.valueOf(users.get(i).getBirthDate());
+						donnes[i][3] = users.get(i).getBirthPlace();
+						donnes[i][4] = users.get(i).getJob();
+						donnes[i][5] = users.get(i).getGender();
+						donnes[i][6] = users.get(i).getEmail();
+						donnes[i][7] = String.valueOf(users.get(i).getDeathDate());
+						donnes[i][8] = users.get(i).getNationality();
+						donnes[i][9] = users.get(i).getMotherName();
+						donnes[i][10] = users.get(i).getFatherName();
+						donnes[i][11] = String.valueOf(users.get(i).getIdUser());
 
 					}
 
-					table.setModel(new javax.swing.table.DefaultTableModel(donnes, new String[] { "id", "First name",
+					table.setModel(new javax.swing.table.DefaultTableModel(donnes, new String[] {  "First name",
 							"last name", "birth date", "birth place", "job", "Gender", "E-mail", "Death Date","Nationality","Mother Name" ,"Father Name"}));
 
 				} catch (Exception e1) {
@@ -313,7 +314,7 @@ public class ManageUser {
 				User us = new User();
 				int a = table.getSelectedRow();
 				System.out.println(a);
-				int x = Integer.parseInt(donnes[a][0]);
+				int x = Integer.parseInt(donnes[a][11]);
 				System.out.println(x);
 
 				if (UserDelegate.removeUserById(x))
@@ -331,24 +332,24 @@ public class ManageUser {
 					donnes = new String[users.size()][12];
 					for (int i = 0; i < users.size(); i++) {
 
-						donnes[i][0] = String.valueOf(users.get(i).getIdUser());
-						donnes[i][1] = users.get(i).getFirstName();
-						donnes[i][2] = users.get(i).getLastName();
-						donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
-						donnes[i][4] = users.get(i).getBirthPlace();
-						donnes[i][5] = users.get(i).getJob();
-						donnes[i][6] = users.get(i).getGender();
-						donnes[i][7] = users.get(i).getEmail();
-						donnes[i][8] = String.valueOf(users.get(i).getDeathDate());
-						donnes[i][9] = users.get(i).getNationality();
-						donnes[i][10] = users.get(i).getMotherName();
-						donnes[i][11] = users.get(i).getFatherName();
+						
+						donnes[i][0] = users.get(i).getFirstName();
+						donnes[i][1] = users.get(i).getLastName();
+						donnes[i][2] = String.valueOf(users.get(i).getBirthDate());
+						donnes[i][3] = users.get(i).getBirthPlace();
+						donnes[i][4] = users.get(i).getJob();
+						donnes[i][5] = users.get(i).getGender();
+						donnes[i][6] = users.get(i).getEmail();
+						donnes[i][7] = String.valueOf(users.get(i).getDeathDate());
+						donnes[i][8] = users.get(i).getNationality();
+						donnes[i][9] = users.get(i).getMotherName();
+						donnes[i][10] = users.get(i).getFatherName();
+						donnes[i][11] = String.valueOf(users.get(i).getIdUser());
 
 					}
 
-					table.setModel(new javax.swing.table.DefaultTableModel(donnes, new String[] { "id", "First name",
+					table.setModel(new javax.swing.table.DefaultTableModel(donnes, new String[] {  "First name",
 							"last name", "birth date", "birth place", "job", "Gender", "E-mail", "Death Date","Nationality","Mother Name" ,"Father Name"}));
-
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -365,7 +366,7 @@ public class ManageUser {
 			public void mouseClicked(MouseEvent e) {
 				int a = table.getSelectedRow();
 
-				int x = Integer.parseInt(donnes[a][0]);
+				int x = Integer.parseInt(donnes[a][11]);
 
 				User user = UserDelegate.doFindUserById(x);
 				String n = lastname.getText();
@@ -380,43 +381,43 @@ public class ManageUser {
 				String fa=father.getText();
 				String ma=mother.getText();
 				if (fa.equals(""))
-					user.setFatherName(donnes[a][11]);
+					user.setFatherName(donnes[a][10]);
 				else
 
 					user.setFatherName(fa);
 				if (ma.equals(""))
-					user.setMotherName(donnes[a][10]);
+					user.setMotherName(donnes[a][9]);
 				else
 
 					user.setMotherName(ma);
 				
 				
 				if (f.equals(""))
-					user.setFirstName(donnes[a][1]);
+					user.setFirstName(donnes[a][0]);
 				else
 
 					user.setFirstName(f);
 
 				if (n.equals(""))
-					user.setFirstName(donnes[a][2]);
+					user.setFirstName(donnes[a][1]);
 				else
 					user.setLastName(n);
 
 				if (j.equals(""))
-					user.setJob(donnes[a][5]);
+					user.setJob(donnes[a][4]);
 				else
 					user.setJob(j);
 
 				user.setBirthDate(d);
 				if (em.equals(""))
-					user.setEmail(donnes[a][7]);
+					user.setEmail(donnes[a][6]);
 				else
 					user.setEmail(em);
-				user.setBirthPlace(donnes[a][4]);
+				user.setBirthPlace(donnes[a][3]);
 		
 				
 				if (t.equals(""))
-					user.setNationality(donnes[a][9]);
+					user.setNationality(donnes[a][8]);
 				else
 					user.setNationality(t);
 				user.setDeathDate(d1);
@@ -428,7 +429,7 @@ public class ManageUser {
 				
 				else if  (index==2){user.setGender("Female");
 				}
-				else {user.setGender(donnes[a][6]);}
+				else {user.setGender(donnes[a][5]);}
 					
 			
 				
@@ -454,22 +455,23 @@ public class ManageUser {
 					donnes = new String[users.size()][12];
 					for (int i = 0; i < users.size(); i++) {
 
-						donnes[i][0] = String.valueOf(users.get(i).getIdUser());
-						donnes[i][1] = users.get(i).getFirstName();
-						donnes[i][2] = users.get(i).getLastName();
-						donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
-						donnes[i][4] = users.get(i).getBirthPlace();
-						donnes[i][5] = users.get(i).getJob();
-						donnes[i][6] = users.get(i).getGender();
-						donnes[i][7] = users.get(i).getEmail();
-						donnes[i][8] = String.valueOf(users.get(i).getDeathDate());
-						donnes[i][9] = users.get(i).getNationality();
-						donnes[i][10] = users.get(i).getMotherName();
-						donnes[i][11] = users.get(i).getFatherName();
+						
+						donnes[i][0] = users.get(i).getFirstName();
+						donnes[i][1] = users.get(i).getLastName();
+						donnes[i][2] = String.valueOf(users.get(i).getBirthDate());
+						donnes[i][3] = users.get(i).getBirthPlace();
+						donnes[i][4] = users.get(i).getJob();
+						donnes[i][5] = users.get(i).getGender();
+						donnes[i][6] = users.get(i).getEmail();
+						donnes[i][7] = String.valueOf(users.get(i).getDeathDate());
+						donnes[i][8] = users.get(i).getNationality();
+						donnes[i][9] = users.get(i).getMotherName();
+						donnes[i][10] = users.get(i).getFatherName();
+						donnes[i][11] = String.valueOf(users.get(i).getIdUser());
 
 					}
 
-					table.setModel(new javax.swing.table.DefaultTableModel(donnes, new String[] { "id", "First name",
+					table.setModel(new javax.swing.table.DefaultTableModel(donnes, new String[] {  "First name",
 							"last name", "birth date", "birth place", "job", "Gender", "E-mail", "Death Date","Nationality","Mother Name" ,"Father Name"}));
 
 				} catch (Exception e1) {
@@ -496,19 +498,21 @@ public class ManageUser {
 					User us = new User();
 					int a = table.getSelectedRow();
 
-					int x = Integer.parseInt(donnes[a][0]);
+					int x = Integer.parseInt(donnes[a][11]);
 
-					String n = donnes[a][2];
+					String n = donnes[a][0];
 					String f = donnes[a][1];
-					String j = donnes[a][5];
-					String p = donnes[a][4];
-					String g = donnes[a][6];
-					String d = donnes[a][3];
-					String xo= donnes[a][9];
-					String y= donnes[a][10];
-					String z= donnes[a][11];
+					
+					String p = donnes[a][3];
+					String g = donnes[a][5];
+					String d = donnes[a][2];
+					String xo= donnes[a][8];
+					String y= donnes[a][9];
+					String z= donnes[a][10];
 
-					PdfWriter.getInstance(document, new FileOutputStream("D:\\Birth-Certificate-" + donnes[a][2] + ".pdf"));
+
+					PdfWriter.getInstance(document, new FileOutputStream("D:\\Birth-Certificate-" + donnes[a][0] + ".pdf"));
+
 					document.open();
 
 					Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
@@ -604,21 +608,23 @@ public class ManageUser {
 					User us = new User();
 					int a = table.getSelectedRow();
 
-					int x = Integer.parseInt(donnes[a][0]);
+					int x = Integer.parseInt(donnes[a][11]);
 
-					String n = donnes[a][2];
+					String n = donnes[a][0];
 					String f = donnes[a][1];
-				
-					String p = donnes[a][4];
-					String g = donnes[a][6];
-					String d = donnes[a][3];
-					String d1 = donnes[a][8];
-					String xo= donnes[a][9];
-					String y= donnes[a][10];
-					String z= donnes[a][11];
+					
+					String p = donnes[a][3];
+					String g = donnes[a][5];
+					String d = donnes[a][2];
+					String xo= donnes[a][8];
+					String y= donnes[a][9];
+					String z= donnes[a][10];
+					String d1=donnes[a][7];
 
 					PdfWriter.getInstance(document,
-							new FileOutputStream("D:\\Death-Certifcate-" + donnes[a][2] + ".pdf"));
+
+							new FileOutputStream("D:\\Death-Certifcate-" + donnes[a][0] + ".pdf"));
+
 					document.open();
 
 					Font font = new Font(Font.FontFamily.TIMES_ROMAN, 48, Font.ITALIC | Font.BOLD | Font.BOLD);
@@ -692,22 +698,23 @@ public class ManageUser {
 			donnes = new String[users.size()][12];
 			for (int i = 0; i < users.size(); i++) {
 
-				donnes[i][0] = String.valueOf(users.get(i).getIdUser());
-				donnes[i][1] = users.get(i).getFirstName();
-				donnes[i][2] = users.get(i).getLastName();
-				donnes[i][3] = String.valueOf(users.get(i).getBirthDate());
-				donnes[i][4] = users.get(i).getBirthPlace();
-				donnes[i][5] = users.get(i).getJob();
-				donnes[i][6] = users.get(i).getGender();
-				donnes[i][7] = users.get(i).getEmail();
-				donnes[i][8] = String.valueOf(users.get(i).getDeathDate());
-				donnes[i][9] = users.get(i).getNationality();
-				donnes[i][10] = users.get(i).getMotherName();
-				donnes[i][11] = users.get(i).getFatherName();
+				
+				donnes[i][0] = users.get(i).getFirstName();
+				donnes[i][1] = users.get(i).getLastName();
+				donnes[i][2] = String.valueOf(users.get(i).getBirthDate());
+				donnes[i][3] = users.get(i).getBirthPlace();
+				donnes[i][4] = users.get(i).getJob();
+				donnes[i][5] = users.get(i).getGender();
+				donnes[i][6] = users.get(i).getEmail();
+				donnes[i][7] = String.valueOf(users.get(i).getDeathDate());
+				donnes[i][8] = users.get(i).getNationality();
+				donnes[i][9] = users.get(i).getMotherName();
+				donnes[i][10] = users.get(i).getFatherName();
+				donnes[i][11] = String.valueOf(users.get(i).getIdUser());
 
 			}
 
-			table.setModel(new javax.swing.table.DefaultTableModel(donnes, new String[] { "id", "First name",
+			table.setModel(new javax.swing.table.DefaultTableModel(donnes, new String[] {  "First name",
 					"last name", "birth date", "birth place", "job", "Gender", "E-mail", "Death Date","Nationality","Mother Name" ,"Father Name"}));
 
 		} catch (Exception e1) {

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Gui.admin.AdminSpace;
 import delegate.CompanyDelegate;
 import egov.entities.Company;
 
@@ -145,8 +146,11 @@ public class AjoutComp extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				new AdminSpace().setVisible(true);
+				setVisible(false);
+				
 				GreyCard2 a=new GreyCard2();
-				a.setVisible(true);
+				
 				
 				a.addWindowListener(new WindowAdapter() {
 					public void windowClosing(WindowEvent e){

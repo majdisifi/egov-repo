@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 
+import Gui.admin.AdminSpace;
 import delegate.CompanyDelegate;
 import delegate.KaseDelegate;
 import delegate.UserDelegate;
@@ -166,6 +167,8 @@ public class AjoutOFCase extends JFrame {
 		btnRetour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
+				new AdminSpace().setVisible(true);
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnRetour);

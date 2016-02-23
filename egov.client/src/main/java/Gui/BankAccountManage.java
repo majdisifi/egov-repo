@@ -14,6 +14,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import Gui.admin.AdminSpace;
 import delegate.AccountDelegate;
 import delegate.CarDelegate;
 import delegate.UserDelegate;
@@ -34,6 +35,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class BankAccountManage extends JFrame {
 
@@ -255,6 +257,19 @@ public class BankAccountManage extends JFrame {
 		JLabel lblAmmount = new JLabel("Ammount");
 		lblAmmount.setBounds(201, 303, 72, 17);
 		contentPane.add(lblAmmount);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				new AdminSpace().setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnCancel.setIcon(new ImageIcon("C:\\Users\\HP\\git\\egov-repo\\egov.client\\src\\main\\java\\images\\24x24\\Previous.png"));
+		btnCancel.setFont(new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 15));
+		btnCancel.setBounds(28, 454, 133, 39);
+		contentPane.add(btnCancel);
 	}
 	}
 	

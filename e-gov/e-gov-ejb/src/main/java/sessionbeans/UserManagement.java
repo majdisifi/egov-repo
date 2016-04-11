@@ -13,7 +13,7 @@ import egov.entities.Kase;
 import egov.entities.User;
 
 @Stateless
-public class UserManagement implements IUserManagementRemote {
+public class UserManagement implements IUserManagementRemote,IUserMangementLocal {
 	@PersistenceContext
 	EntityManager Us;
 

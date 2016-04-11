@@ -8,10 +8,14 @@
 <body>
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="num" />
-			<h:inputText value="#{userManagementBean.user.firstName}" />
-		
-			<h:commandButton action="#{userManagementBean.doAddUser()}" value="zid" />
+			
+
+		<h:outputText value="First Name" />
+			<h:inputText value="#{userManagementBean.userSelected.firstName}" />
+			
+			<h:commandButton action="#{userManagementBean.doAddUser()}"
+				value="Add" />
+				
 		</h:panelGrid>
 	</h:form>
 </body>

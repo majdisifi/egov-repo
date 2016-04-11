@@ -7,8 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import egov.entities.Account;
-import egov.entities.Car;
+
 import egov.entities.User;
 import sessionbeans.IUserMangementLocal;
 

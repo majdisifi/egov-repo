@@ -8,14 +8,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import egov.entities.University;
+import egov.entities.Establishment;;
 
 @Stateless
-public class UniversityManagement implements UniversityManagementRemote, UniversityManagementLocal {
+public class InscriptionManagement implements InscriptionManagementRemote, InscriptionManagementLocal {
 	@PersistenceContext
 	EntityManager Us;
 
-	public Boolean addUniversity(University u) {
+	public Boolean addInscription(Establishment u) {
 
 		try {
 			Us.persist(u);
@@ -30,7 +30,7 @@ public class UniversityManagement implements UniversityManagementRemote, Univers
 		Us.flush();
 	}
 
-	public Boolean update(University u) {
+	public Boolean update(Establishment u) {
 
 		try {
 			Us.merge(u);
@@ -41,7 +41,7 @@ public class UniversityManagement implements UniversityManagementRemote, Univers
 
 	}
 
-	public Boolean remove(University u) {
+	public Boolean remove(Establishment u) {
 		try {
 			Us.remove(Us.merge(u));
 			return true;
@@ -51,16 +51,16 @@ public class UniversityManagement implements UniversityManagementRemote, Univers
 
 	}
 
-	public void removeUniversity(University u) {
+	public void removeInscription(Establishment u) {
 		Us.remove(Us.merge(u));
 
 	}
 
 	@Override
-	public University findUniversityById(int idUniversity) {
-		University univ = null;
+	public Establishment findInscriptionById(int idEstablishment) {
+		Establishment univ = null;
 		try {
-			univ = Us.find(University.class, idUniversity);
+			univ = Us.find(Establishment.class, idEstablishment);
 
 		} catch (Exception e) {
 
@@ -69,17 +69,17 @@ public class UniversityManagement implements UniversityManagementRemote, Univers
 	}
 
 	@Override
-	public List<University> findAll() {
-		List<University> univs = new ArrayList<>();
-		Query query = Us.createQuery("select u from University u");
+	public List<Establishment> findAll() {
+		List<Establishment> iunivs = new ArrayList<>();
+		Query query = Us.createQuery("select u from Establishment u");
 		return query.getResultList();
 	}
 
 	@Override
-	public Boolean removeUniversityById(int idUniversity) {
-		University univ = new University();
+	public Boolean removeInscriptionById(int idEstablishment) {
+		Establishment univ = new Establishment();
 		try {
-			univ = Us.find(University.class, idUniversity);
+			univ = Us.find(Establishment.class, idEstablishment);
 			Us.remove(Us.merge(univ));
 			return true;
 		} catch (Exception e) {

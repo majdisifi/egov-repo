@@ -9,9 +9,17 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			
-
 		<h:outputText value="First Name" />
-			<h:inputText value="#{userManagementBean.userSelected.firstName}" />
+			<h:inputText value="#{userManagementBean.user.fatherName}" />
+			<h:outputText value="Last Name" />
+			<h:inputText value="#{userManagementBean.user.lastName}" />
+			<h:outputText value="Birth Place" />
+			<h:inputText value="#{userManagementBean.userSelected.birthPlace}" />
+	
+			<h:outputText value="Mother name" />
+			<h:inputText value="#{userManagementBean.user.motherName}" />
+			<h:outputText value="Father Name" />
+			<h:inputText value="#{userManagementBean.user.fatherName}" />
 			
 			<h:commandButton action="#{userManagementBean.doAddUser()}"
 				value="Add" />

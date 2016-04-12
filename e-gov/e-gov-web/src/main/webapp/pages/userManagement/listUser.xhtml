@@ -67,12 +67,13 @@
 			<h:inputText value="#{userManagementBean.userSelected.motherName}" />
 			<h:outputText value="Father Name" />
 			<h:inputText value="#{userManagementBean.userSelected.fatherName}" />
-		
-		
-			<h:commandButton action="#{userManagementBean.doUpdateUser()}" value="update" />
-		
 
-<h:commandButton action="#{userManagementBean.doAddUser()}" value="Add" />
+
+			<h:commandButton action="#{userManagementBean.doUpdateUser()}"
+				value="update" />
+
+
+			
 	</h:panelGrid>
 	</h:form>
 </body>

@@ -1,4 +1,4 @@
-package sessionbeans;
+package egov.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import egov.entities.Account;
+import egov.services.interfaces.IAccountManagementLocal;
+import egov.services.interfaces.IAccountManagementRemote;
 
 @Stateless
 public class AccountManagement implements IAccountManagementRemote, IAccountManagementLocal {

@@ -1,4 +1,4 @@
-package sessionbeans;
+package egov.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import egov.entities.University;
+import egov.services.interfaces.UniversityManagementLocal;
+import egov.services.interfaces.UniversityManagementRemote;
 
 @Stateless
 public class UniversityManagement implements UniversityManagementRemote, UniversityManagementLocal {

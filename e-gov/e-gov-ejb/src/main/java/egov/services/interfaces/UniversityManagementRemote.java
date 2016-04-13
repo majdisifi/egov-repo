@@ -1,13 +1,13 @@
-package sessionbeans;
+package egov.services.interfaces;
 
 import java.util.List;
 
-import javax.ejb.Local;
+import javax.ejb.Remote;
 
 import egov.entities.University;
 
-@Local
-public interface UniversityManagementLocal {
+@Remote
+public interface UniversityManagementRemote {
 
 	Boolean addUniversity(University u);
 

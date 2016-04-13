@@ -1,14 +1,13 @@
-package sessionbeans;
-
+package egov.services.interfaces;
 import java.util.List;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
 import egov.entities.Car;
 import egov.entities.User;
 
-@Remote
-public interface ICarManagementRemote {
+@Local
+public interface ICarManagementLocal {
 	Boolean addCar(Car c);
 
 	Boolean update(Car c);
@@ -26,5 +25,4 @@ public interface ICarManagementRemote {
 	Boolean removeCarByNum(int numImmatriculation);
 
 	void affecterCarUser(Car c, User u);
-
 }

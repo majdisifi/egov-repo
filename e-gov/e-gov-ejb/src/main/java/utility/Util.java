@@ -7,7 +7,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
 import egov.entities.University;
-import sessionbeans.UniversityManagementLocal;
+import egov.services.interfaces.UniversityManagementLocal;
 
 /**
  * Session Bean implementation class Util

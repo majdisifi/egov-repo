@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import egov.entities.University;
-import sessionbeans.UniversityManagementLocal;
+import egov.services.interfaces.UniversityManagementLocal;
 
 @ManagedBean
 @ViewScoped

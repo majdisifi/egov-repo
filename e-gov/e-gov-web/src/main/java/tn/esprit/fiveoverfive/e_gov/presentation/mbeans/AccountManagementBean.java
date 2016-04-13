@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import egov.entities.Account;
-import sessionbeans.IAccountManagementLocal;
+import egov.services.interfaces.IAccountManagementLocal;
 
 @ManagedBean
 @SessionScoped

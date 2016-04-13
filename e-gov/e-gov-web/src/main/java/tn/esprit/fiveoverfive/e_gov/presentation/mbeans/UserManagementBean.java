@@ -7,24 +7,18 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-
 import egov.entities.User;
-import sessionbeans.IUserMangementLocal;
+import egov.services.interfaces.IUserMangementLocal;
 
 @ManagedBean
 @ViewScoped
 public class UserManagementBean {
 	@EJB
 	private IUserMangementLocal iUserMangementLocal;
-	
+
 	private List<User> users = new ArrayList<>();
 	private User user = new User();
 	private User userSelected = new User();
-	
-	
-
-
-	
 
 	public User getUser() {
 		return user;
@@ -42,16 +36,15 @@ public class UserManagementBean {
 		this.userSelected = userSelected;
 	}
 
-	
-
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+
 	public String doAddUser() {
 		iUserMangementLocal.addUser(user);
 		return "/pages/userManagement/listUser?faces-redirect=true";
 	}
-	
+
 	public String doDeleteUser(User userSelected) {
 		iUserMangementLocal.remove(userSelected);
 		return "/pages/userManagement/listUser?faces-redirect=true";
@@ -66,7 +59,7 @@ public class UserManagementBean {
 		userSelected = u;
 	}
 
-	public List<User> getUsers1(){
+	public List<User> getUsers1() {
 		users = iUserMangementLocal.findAll();
 		return users;
 	}
@@ -74,6 +67,5 @@ public class UserManagementBean {
 	public void setCars(List<User> users) {
 		this.users = users;
 	}
-	
 
 }

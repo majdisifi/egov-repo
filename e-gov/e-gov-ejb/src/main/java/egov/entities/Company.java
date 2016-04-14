@@ -60,12 +60,20 @@ public class Company implements Serializable {
 		this.adress = adress;
 	}
 
-	public int idCompany() {
+	public int getIdCompany() {
 		return idCompany;
 	}
 
-	public void setId(int idCompany) {
+	public void setIdCompany(int idCompany) {
 		this.idCompany = idCompany;
+	}
+
+	public List<CompanyOffer> getCompanyOffers() {
+		return companyOffers;
+	}
+
+	public void setCompanyOffers(List<CompanyOffer> companyOffers) {
+		this.companyOffers = companyOffers;
 	}
 
 	public List<Work> getWork() {

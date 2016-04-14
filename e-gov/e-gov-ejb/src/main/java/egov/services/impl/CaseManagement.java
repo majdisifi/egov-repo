@@ -1,6 +1,5 @@
-package sessionbeans;
+package egov.services.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,14 +8,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import egov.entities.Kase;
-import egov.entities.User;
+import egov.services.interfaces.ICaseManagementRemote;
 
 @Stateless
-public class CaseManagement implements ICaseManagementRemote{
+public class CaseManagement implements ICaseManagementRemote {
 
 	@PersistenceContext
 	EntityManager Ca;
-	
+
 	public Boolean addCase(Kase c) {
 		try {
 			Ca.persist(c);
@@ -26,7 +25,6 @@ public class CaseManagement implements ICaseManagementRemote{
 		}
 	}
 
-	
 	public Boolean update(Kase c) {
 		try {
 			Ca.merge(c);
@@ -36,13 +34,11 @@ public class CaseManagement implements ICaseManagementRemote{
 		}
 	}
 
-	
 	public void flush() {
 		Ca.flush();
-		
+
 	}
 
-	
 	public Boolean remove(Kase c) {
 		try {
 			Ca.remove(Ca.merge(c));
@@ -54,7 +50,7 @@ public class CaseManagement implements ICaseManagementRemote{
 
 	@Override
 	public List<Kase> findAll() {
-		//List<Kase> cases = new ArrayList<>();
+		// List<Kase> cases = new ArrayList<>();
 		String tx = "select c from Kase c";
 		Query query = Ca.createQuery(tx);
 		return query.getResultList();
@@ -71,10 +67,5 @@ public class CaseManagement implements ICaseManagementRemote{
 		}
 		return cases;
 	}
-
-	
-
-	
-	
 
 }

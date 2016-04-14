@@ -1,4 +1,4 @@
-package sessionbeans;
+package egov.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import egov.entities.University;
-
+import egov.services.interfaces.UniversityManagementLocal;
+import egov.services.interfaces.UniversityManagementRemote;
 
 @Stateless
-public class UniversityManagement implements UniversityManagementRemote {
+public class UniversityManagement implements UniversityManagementRemote, UniversityManagementLocal {
 	@PersistenceContext
 	EntityManager Us;
 
@@ -24,7 +25,7 @@ public class UniversityManagement implements UniversityManagementRemote {
 		} catch (Exception e) {
 			return false;
 		}
-		
+
 	}
 
 	public void flush() {
@@ -51,13 +52,14 @@ public class UniversityManagement implements UniversityManagementRemote {
 		}
 
 	}
+
 	public void removeUniversity(University u) {
-		 Us.remove(Us.merge(u));
-		
+		Us.remove(Us.merge(u));
+
 	}
 
 	@Override
-	public University  findUniversityById(int idUniversity) {
+	public University findUniversityById(int idUniversity) {
 		University univ = null;
 		try {
 			univ = Us.find(University.class, idUniversity);
@@ -67,7 +69,6 @@ public class UniversityManagement implements UniversityManagementRemote {
 		}
 		return univ;
 	}
-	
 
 	@Override
 	public List<University> findAll() {
@@ -75,10 +76,10 @@ public class UniversityManagement implements UniversityManagementRemote {
 		Query query = Us.createQuery("select u from University u");
 		return query.getResultList();
 	}
-	
+
 	@Override
 	public Boolean removeUniversityById(int idUniversity) {
-		University univ=new University();
+		University univ = new University();
 		try {
 			univ = Us.find(University.class, idUniversity);
 			Us.remove(Us.merge(univ));
@@ -87,8 +88,6 @@ public class UniversityManagement implements UniversityManagementRemote {
 			return false;
 		}
 
-		
-		
 	}
 
 }

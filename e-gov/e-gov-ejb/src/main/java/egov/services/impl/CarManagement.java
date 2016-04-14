@@ -1,4 +1,4 @@
- package sessionbeans;
+ package egov.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,8 @@ import javax.persistence.TypedQuery;
 
 import egov.entities.Car;
 import egov.entities.User;
+import egov.services.interfaces.ICarManagementLocal;
+import egov.services.interfaces.ICarManagementRemote;
 
 
 

@@ -1,5 +1,4 @@
-package sessionbeans;
-
+package egov.services.interfaces;
 import java.util.List;
 
 import javax.ejb.Local;

@@ -7,12 +7,12 @@
 <h:head></h:head>
 <body>
 	<h:form>
-
-		<h:outputText value="amount" />
-		<h:inputText value="#{accountManagementBean.account.ammount}" />
-		<h:commandButton action="#{accountManagementBean.doAddAccount()}"
-			value="add" />
-
+		<h:panelGrid columns="2">
+			<h:outputText value="num" />
+			<h:inputText value="#{userManagementBean.user.firstName}" />
+		
+			<h:commandButton action="#{userManagementBean.doAddUser()}" value="zid" />
+		</h:panelGrid>
 	</h:form>
 </body>
 </html>

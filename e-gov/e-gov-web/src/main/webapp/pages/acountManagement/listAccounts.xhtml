@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h:form>
+		<h:dataTable value="#{accountManagementBean.accounts}" var="c"
+			border="2">
+			<h:column id="c1">
+				<f:facet name="header">
+					<h:outputText value="Account number"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{c.num}" />
+			</h:column>
+			<h:column id="c2">
+				<f:facet name="header">
+					<h:outputText value="Account amount"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{c.ammount}" />
+			</h:column>
+			<h:column id="c3">
+				<f:facet name="header">
+					<h:outputText value="#"></h:outputText>
+				</f:facet>
+				<h:commandButton
+					action="#{accountManagementBean.doDeleteAccount(c)}" value="delete" />
+			</h:column>
+			<h:column id="c4">
+				<f:facet name="header">
+					<h:outputText value="#"></h:outputText>
+				</f:facet>
+				<h:commandButton
+					action="#{accountManagementBean.doSelectAccount(c)}" value="select" />
+			</h:column>
+			<h:column>
+			<h:commandButton action="#{accountManagementBean.doDeleteAccount(c)}" value="d" />
+			</h:column>
+		</h:dataTable>
+		
+		#{accountManagementBean.accountSelected.ammount}
+		<h:panelGrid columns="2">
+
+			<h:outputText value="Account number" />
+			<h:inputText value="#{accountManagementBean.accountSelected.num}" />
+			<h:outputText value="ammount" />
+			<h:inputText value="#{accountManagementBean.accountSelected.ammount}" />
+			<h:commandButton action="#{accountManagementBean.doUpdateAccount()}"
+				value="update" />
+		</h:panelGrid>
+
+	</h:form>
+</body>
+</html>

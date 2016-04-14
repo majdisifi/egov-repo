@@ -6,13 +6,18 @@
 
 <h:head></h:head>
 <body>
-	<h:form>
+	<h:dataTable value="#{companyOfferBean.companyOffers}" var="o"
+		border="2">
+		<h:column>
+			<f:facet name="header">description</f:facet>
+			<h:outputText value="#{o.description}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">#</f:facet>
+			<h:commandButton action="update" value="apply" />
+		</h:column>
+	</h:dataTable>
 
-		<h:outputText value="amount" />
-		<h:inputText value="#{accountManagementBean.account.ammount}" />
-		<h:commandButton action="#{accountManagementBean.doAddAccount()}"
-			value="add" />
 
-	</h:form>
 </body>
 </html>

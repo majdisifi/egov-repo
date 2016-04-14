@@ -7,11 +7,16 @@
 <h:head></h:head>
 <body>
 	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="login" />
+			<h:inputText value="#{userManagementBean.user.login}" />
+			<h:outputText value="password" />
+			<h:inputSecret value="#{userManagementBean.user.pwd}" />
+			<h:commandButton action="#{userManagementBean.doLogin()}"
+				value="login" />
+		</h:panelGrid>
 
-		<h:outputText value="amount" />
-		<h:inputText value="#{accountManagementBean.account.ammount}" />
-		<h:commandButton action="#{accountManagementBean.doAddAccount()}"
-			value="add" />
+
 
 	</h:form>
 </body>

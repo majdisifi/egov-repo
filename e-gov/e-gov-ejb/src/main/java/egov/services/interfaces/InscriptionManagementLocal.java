@@ -1,10 +1,13 @@
-package sessionbeans;
+package egov.services.interfaces;
 
 import java.util.List;
 
-import egov.entities.Establishment;;
+import javax.ejb.Local;
 
-public interface InscriptionManagementRemote {
+import egov.entities.Establishment;
+
+@Local
+public interface InscriptionManagementLocal {
 
 	Boolean addInscription(Establishment u);
 

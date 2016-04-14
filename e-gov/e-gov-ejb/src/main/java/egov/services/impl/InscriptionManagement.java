@@ -1,4 +1,4 @@
-package sessionbeans;
+package egov.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import egov.entities.Establishment;;
+import egov.entities.Establishment;
+import egov.services.interfaces.InscriptionManagementLocal;
+import egov.services.interfaces.InscriptionManagementRemote;;
 
 @Stateless
 public class InscriptionManagement implements InscriptionManagementRemote, InscriptionManagementLocal {

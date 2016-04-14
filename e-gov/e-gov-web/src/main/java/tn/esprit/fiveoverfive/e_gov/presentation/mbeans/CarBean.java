@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import egov.entities.Car;
-import sessionbeans.ICarManagementLocal;
+import egov.services.interfaces.ICarManagementLocal;
 
 @ManagedBean
 @ViewScoped

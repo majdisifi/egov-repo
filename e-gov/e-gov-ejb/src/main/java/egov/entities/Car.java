@@ -17,15 +17,21 @@ import javax.persistence.NamedQuery;
 })
 public class Car implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private int numImmatriculation;
 	private String color;
 	private String type;
 	private String category;
-	private String constructor;
+	
 
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private User user;
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	private User constructor;
 	public int getImmatriculation() {
 		return numImmatriculation;
 	}
@@ -58,7 +64,7 @@ public class Car implements Serializable {
 	@Override
 	public String toString() {
 		return "Car [numImmatriculation=" + numImmatriculation + ", color=" + color + ", type=" + type + ", category="
-				+ category + ", constructor=" + constructor + ", user=" + user + "]";
+				+ category + ", user=" + user + "]";
 	}
 
 	public void setNumImmatriculation(int numImmatriculation) {
@@ -73,6 +79,16 @@ public class Car implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+
+	@ManyToOne
+	public User getConstructor() {
+		return constructor;
+	}
+
+	public void setConstructor(User constructor) {
+		this.constructor = constructor;
+	}
 
 	public String getCategory() {
 		return category;
@@ -82,21 +98,13 @@ public class Car implements Serializable {
 		this.category = category;
 	}
 
-	public String getConstructor() {
-		return constructor;
-	}
-
-	public void setConstructor(String constructor) {
-		this.constructor = constructor;
-	}
-
+	
 	public Car(int numImmatriculation, String color, String type, String category, String constructor, User user) {
 		super();
 		this.numImmatriculation = numImmatriculation;
 		this.color = color;
 		this.type = type;
 		this.category = category;
-		this.constructor = constructor;
 		this.user = user;
 	}
 

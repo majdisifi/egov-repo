@@ -1,4 +1,4 @@
-package sessionbeans;
+package egov.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,11 @@ import javax.persistence.Query;
 import egov.entities.Car;
 import egov.entities.Kase;
 import egov.entities.User;
+import egov.services.interfaces.IUserManagementRemote;
+import egov.services.interfaces.IUserMangementLocal;
 
 @Stateless
-public class UserManagement implements IUserManagementRemote {
+public class UserManagement implements IUserManagementRemote, IUserMangementLocal {
 	@PersistenceContext
 	EntityManager Us;
 
@@ -25,7 +27,7 @@ public class UserManagement implements IUserManagementRemote {
 		} catch (Exception e) {
 			return false;
 		}
-		
+
 	}
 
 	public void flush() {
@@ -75,17 +77,18 @@ public class UserManagement implements IUserManagementRemote {
 	@Override
 
 	public User authentificate(String login, String pwd) {
-		User user= null;
-		Query query=Us.createQuery("Select u from User u where u.login=:login and u.pwd=:pwd");
+		User user = null;
+		Query query = Us.createQuery("Select u from User u where u.login=:login and u.pwd=:pwd");
 		query.setParameter("login", login).setParameter("pwd", pwd);
 		try {
-			user=(User) query.getSingleResult();
-			
+			user = (User) query.getSingleResult();
+
 		} catch (Exception e) {
-			 user=null;
+			user = null;
 		}
 		return user;
 	}
+
 	public List<Car> findCarByIdUser(int id) {
 		User user = null;
 		user = Us.find(User.class, id);
@@ -97,35 +100,31 @@ public class UserManagement implements IUserManagementRemote {
 
 	@Override
 	public String findpwd(String email) {
-		Query query=Us.createQuery("SELECT pwd FROM User u where email =:email");
+		Query query = Us.createQuery("SELECT pwd FROM User u where email =:email");
 		query.setParameter("email", email);
 		return (String) query.getSingleResult();
 	}
 
-
 	@Override
 	public Boolean removeUserById(int id) {
-		User user=new User();
+		User user = new User();
 		try {
 			user = Us.find(User.class, id);
 			Us.remove(Us.merge(user));
 			return true;
 		} catch (Exception e) {
 			return false;
-		}	
+		}
 	}
-
 
 	@Override
 	public List<Kase> CaseByUser(User m) {
-		
-		String rq="select a from Kase a where a.user.id= :id";
-		
-		
-		
-		Query query=Us.createQuery(rq).setParameter("id", m.getIdUser());
+
+		String rq = "select a from Kase a where a.user.id= :id";
+
+		Query query = Us.createQuery(rq).setParameter("id", m.getIdUser());
 		return query.getResultList();
-		
+
 	}
 
 }

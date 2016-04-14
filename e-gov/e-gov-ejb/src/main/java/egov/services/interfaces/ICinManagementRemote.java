@@ -1,5 +1,4 @@
-package sessionbeans;
-
+package egov.services.interfaces;
 import javax.ejb.Remote;
 
 import egov.entities.User;

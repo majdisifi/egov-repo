@@ -8,7 +8,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import egov.entities.University;
+<<<<<<< HEAD
 import sessionbeans.UniversityManagementLocal;
+=======
+import egov.services.interfaces.UniversityManagementLocal;
+>>>>>>> branch 'master' of ssh://git@github.com/Sakly-Aziz/egov-repo.git
 
 @ManagedBean
 @ViewScoped

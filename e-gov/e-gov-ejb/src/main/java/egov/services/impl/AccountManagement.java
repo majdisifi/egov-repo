@@ -1,4 +1,4 @@
-package sessionbeans;
+package egov.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import egov.entities.Account;
+import egov.services.interfaces.IAccountManagementLocal;
+import egov.services.interfaces.IAccountManagementRemote;
 
 @Stateless
 public class AccountManagement implements IAccountManagementRemote, IAccountManagementLocal {
@@ -44,19 +46,15 @@ public class AccountManagement implements IAccountManagementRemote, IAccountMana
 
 	@Override
 	public Boolean removeAccount(Account a) {
-		try {
-			em.remove(a);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+		em.remove(em.merge(a));
+		return true;
 
 	}
 
 	@Override
 	public List<Account> findAll() {
 		List<Account> accounts = new ArrayList<>();
-		Query query = em.createQuery("select a from Account a");
+		Query query = em.createQuery("select a from Account a ");
 		return query.getResultList();
 	}
 

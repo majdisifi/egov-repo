@@ -56,6 +56,8 @@ public class User implements Serializable {
 	private String fatherName;
 
 	private String motherName;
+	@OneToMany(mappedBy = "user")
+	private List<JobRequest> jobRequests;
 
 	@OneToMany(mappedBy = "user1")
 	private List<Establishment> establishment;

@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Account implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private int num;
 
 	private float ammount;

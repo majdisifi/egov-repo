@@ -6,6 +6,7 @@
 
 <h:head></h:head>
 <body>
+<h1>Account Information</h1>
 	<h:form>
 		<h:dataTable value="#{accountManagementBean.accounts}" var="c"
 			border="2">
@@ -35,18 +36,18 @@
 				<h:commandButton
 					action="#{accountManagementBean.doSelectAccount(c)}" value="select" />
 			</h:column>
-			<h:column>
-			<h:commandButton action="#{accountManagementBean.doDeleteAccount(c)}" value="d" />
-			</h:column>
+			
 		</h:dataTable>
 		
-		#{accountManagementBean.accountSelected.ammount}
+	
 		<h:panelGrid columns="2">
 
 			<h:outputText value="Account number" />
 			<h:inputText value="#{accountManagementBean.accountSelected.num}" />
 			<h:outputText value="ammount" />
 			<h:inputText value="#{accountManagementBean.accountSelected.ammount}" />
+			<h:commandButton
+					action="#{accountManagementBean.doPdf(c)}" value="PDF" />
 			<h:commandButton action="#{accountManagementBean.doUpdateAccount()}"
 				value="update" />
 		</h:panelGrid>

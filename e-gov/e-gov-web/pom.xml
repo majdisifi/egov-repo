@@ -20,6 +20,12 @@
 			<artifactId>javaee-api</artifactId>
 		</dependency>
 		<dependency>
+	<groupId>com.itextpdf</groupId>
+	<artifactId>itextpdf</artifactId>
+	<version>5.5.8</version>
+</dependency>
+		
+		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 		</dependency>

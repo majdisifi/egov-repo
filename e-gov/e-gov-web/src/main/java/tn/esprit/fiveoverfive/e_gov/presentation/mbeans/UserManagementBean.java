@@ -7,7 +7,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import egov.entities.Citizen;
 import egov.entities.User;
 import egov.services.interfaces.IUserMangementLocal;
 
@@ -20,19 +19,6 @@ public class UserManagementBean {
 	private List<User> users = new ArrayList<>();
 	private User user = new User();
 	private User userSelected = new User();
-
-	public String doLogin() {
-		String navigateTo = "";
-		User userLoggedIn = iUserMangementLocal.authentificate(user.getLogin(), user.getPwd());
-		if (userLoggedIn != null) {
-			if (userLoggedIn instanceof Citizen) {
-				navigateTo = "/pages/jobRequestManagement/createJobRequest";
-				user = userLoggedIn;
-			}
-		}
-
-		return navigateTo;
-	}
 
 	public User getUser() {
 		return user;
@@ -82,5 +68,4 @@ public class UserManagementBean {
 		this.users = users;
 	}
 
-	
 }

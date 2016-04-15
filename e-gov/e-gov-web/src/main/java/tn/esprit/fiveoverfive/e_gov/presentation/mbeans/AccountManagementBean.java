@@ -79,7 +79,9 @@ public class AccountManagementBean {
 	}
 	
 	public void doPdf(Account account){
+		
 	Document document = new Document();
+	document.newPage();
 	try {
 
 		

@@ -73,6 +73,10 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user")
 	private List<Kase> kase;
 
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Detail> detail;
+
 	public List<Kase> getKase() {
 		return kase;
 	}

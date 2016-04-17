@@ -11,8 +11,12 @@
 		<class>egov.entities.Citizen</class>
 		<class>egov.entities.Company</class>
 		<class>egov.entities.CompanyOffer</class>
+		<class>egov.entities.Constructor</class>
+		<class>egov.entities.Detail</class>
+		<class>egov.entities.DetailPk</class>
 		<class>egov.entities.Establishment</class>
 		<class>egov.entities.EstablishmentPk</class>
+		<class>egov.entities.Intervention</class>
 		<class>egov.entities.JobRequest</class>
 		<class>egov.entities.Kase</class>
 		<class>egov.entities.University</class>
@@ -20,8 +24,9 @@
 		<class>egov.entities.Work</class>
 		<class>egov.entities.WorkPk</class>
 
+
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 		</properties>
 	</persistence-unit>
 </persistence>

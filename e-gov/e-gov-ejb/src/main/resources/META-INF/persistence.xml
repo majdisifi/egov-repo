@@ -24,7 +24,6 @@
 		<class>egov.entities.Work</class>
 		<class>egov.entities.WorkPk</class>
 
-
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 		</properties>

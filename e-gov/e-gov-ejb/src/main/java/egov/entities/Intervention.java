@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,6 +18,15 @@ public class Intervention implements Serializable {
 	@OneToMany(mappedBy = "intervention", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Detail> detail;
 
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	private Hopital hopital;
+	
+	public Hopital getHopital() {
+		return hopital;
+	}
+	public void setHopital(Hopital hopital) {
+		this.hopital = hopital;
+	}
 	public int getIdI() {
 		return idI;
 	}

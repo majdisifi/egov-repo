@@ -7,7 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
    <h:head>
     
-    <title><ui:insert name="title"> Sign in</ui:insert></title>
+    <title><ui:insert name="title">Contact Us</ui:insert></title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" ></meta>
 		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 
@@ -30,15 +30,15 @@
             <span>
             <input name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80" value="Search our ste:" type="text" />
             </span>
-
+            <input name="button_search" src="images/search_btn.gif" class="button_search" type="image" />
           </h:form>
         </div>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Support</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="http://localhost:18080/e-gov-web/pages/userManagement/listUser.jsf">Home</a></li>
+          <li><a href="http://localhost:18080/e-gov-web/support.jsf">Support</a></li>
+          <li><a href="http://localhost:18080/e-gov-web/about.jsf">About Us</a></li>
+          <li><a href="http://localhost:18080/e-gov-web/blog.jsf">Blog</a></li>
+          <li class="active"><a href="http://localhost:18080/e-gov-web/contact.jsf">Contact Us</a></li>
         </ul>
         <div class="clr"></div>
       </div>
@@ -51,33 +51,36 @@
       <div class="clr"></div>
       <div class="mainbar">
         <div class="article">
-         
+          <h2><span>Contact</span></h2>
           <div class="clr"></div>
-        
+          <p>You can find more of my free template designs at my website. For premium commercial designs, you can check out DreamTemplate.com.</p>
         </div>
-        <div align="center">
         <div class="article">
-          <h2><span>Sign in to </span> Egov</h2>
+          <h2><span>Send us</span> mail</h2>
           <div class="clr"></div>
-          
-        	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="login" />
-			<h:inputText value="#{authentification.login}" />
-			<h:outputText value="password" />
-			<h:inputSecret value="#{authentification.password}" />
-			<h:commandButton action="#{authentification.doLogin()}"
-				value="Sign in" />
-		</h:panelGrid>
-		
-	
+          <h:form  action="#" method="post" id="sendemail">
 
-	</h:form>
-	
-		<a href="http://localhost:18080/e-gov-web/contact.jsf">Forgot Password ?</a>
-	
-	<p>Don't have an account yet?<a href="http://localhost:18080/e-gov-web/contact.jsf">Create an account.</a> </p></div>
-	
+            <h:panelGrid columns="2">
+           
+                <h:outputText value="Name"  for="name"></h:outputText>
+                <h:inputText value="#{mailBean.name}" id="name" name="name" class="text" ></h:inputText>
+                
+             
+                <h:outputText value="Email" for="email"></h:outputText>
+                <h:inputText value="#{mailBean.mailAddress}" id="email" name="email" class="text" ></h:inputText>
+                
+             
+                <h:outputText value="Subject" for="Subject"></h:outputText>
+                <h:inputText value="#{mailBean.subject}" id="website" name="website" class="text" ></h:inputText>
+              
+                <h:outputText  value="Your Message" for="message"></h:outputText>
+                <h:inputTextarea value="#{mailBean.msg}"  id="message" name="message" rows="8" cols="50"></h:inputTextarea>
+             
+                <h:commandButton action="#{mailBean.sendMail()}" value="Send" />
+                <div class="clr"></div>
+             
+            </h:panelGrid>
+          </h:form>
         </div>
       </div>
       <div class="sidebar">
@@ -93,7 +96,24 @@
             <li><a href="#">Web Templates</a></li>
           </ul>
         </div>
-        
+        <div class="gadget">
+          <h2 class="star"><span>Sponsors</span></h2>
+          <div class="clr"></div>
+          <ul class="ex_menu">
+            <li><a href="#">Lorem ipsum dolor</a><br />
+              Donec libero. Suspendisse bibendum</li>
+            <li><a href="#">Donec mattis</a><br />
+              Phasellus suscipit, leo a pharetra</li>
+            <li><a href="#">Dui pede condimentum</a><br />
+              Tellus eleifend magna eget</li>
+            <li><a href="#">Condimentum lorem</a><br />
+              Curabitur vel urna in tristique</li>
+            <li><a href="#">Fringilla velit magna</a><br />
+              Cras id urna orbi tincidunt orci ac</li>
+            <li><a href="#">Suspendisse bibendum</a><br />
+              purus nec placerat bibendum</li>
+          </ul>
+        </div>
       </div>
       <div class="clr"></div>
     </div>

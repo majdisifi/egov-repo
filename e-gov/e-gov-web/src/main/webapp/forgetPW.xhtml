@@ -6,19 +6,17 @@
 
 <h:head></h:head>
 <body>
-
-
-
-
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="id Intervention" />
-			<h:inputText value="#{interventionManagementBean.intervention.idI}" />
-			<h:outputText value="name" />
-			<h:inputText value="#{interventionManagementBean.intervention.name}" />
-		
-			<h:commandButton action="#{interventionManagementBean.doAddIntervention()}" value="Send" />
+			<h:outputText value="Email" />
+			<h:inputText value="#{authentification.email}" />
+			
+			<h:commandButton action="#{authentification.doLogin()}"
+				value="Connect" />
 		</h:panelGrid>
+
+
+
 	</h:form>
-</body>
+	</body>
 </html>

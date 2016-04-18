@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
+import egov.entities.Admin;
 import egov.entities.Citizen;
 import egov.entities.University;
 import egov.services.interfaces.IUserMangementLocal;
@@ -39,11 +40,20 @@ public class Util {
 		Citizen citizen = new Citizen();
 		citizen.setLogin("c");
 		citizen.setPwd("c");
+		citizen.setFirstName("Aziz");
+		
+		Admin admin1 = new Admin();
+		admin1.setLogin("admin");
+		admin1.setPwd("admin");
+		admin1.setFirstName("Majdi");
+		
+		
 
 		universityManagementLocal.addUniversity(university);
 		universityManagementLocal.addUniversity(university2);
 
 		iUserMangementLocal.addUser(citizen);
+		iUserMangementLocal.addUser(admin1);
 
 	}
 

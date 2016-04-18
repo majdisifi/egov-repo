@@ -7,13 +7,18 @@
 <h:head></h:head>
 <body>
 	<h:form>
+	<h1>Account information</h1>
 		<h:panelGrid columns="2">
 			<h:outputText value="num Account" />
 			<h:inputText value="#{accountManagementBean.account.num}" />
 			<h:outputText value="ammount" />
 			<h:inputText value="#{accountManagementBean.account.ammount}" />
+				<h:outputText value="Name of Bank" />
+			<h:inputText value="#{accountManagementBean.account.name}" />
 			
-			<h:commandButton action="#{accountManagementBean.doAddAccount()}" value="zid" />
+			
+			
+			<h:commandButton action="#{accountManagementBean.doAddAccount()}" value="add" />
 		</h:panelGrid>
 	</h:form>
 </body>

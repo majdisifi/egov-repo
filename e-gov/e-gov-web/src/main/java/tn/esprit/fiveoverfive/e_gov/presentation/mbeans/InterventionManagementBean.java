@@ -1,6 +1,9 @@
 package tn.esprit.fiveoverfive.e_gov.presentation.mbeans;
 
 import java.util.ArrayList;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -20,6 +23,8 @@ public class InterventionManagementBean {
 	private List<Intervention> interventions = new ArrayList<>();
 	private Intervention intervention = new Intervention();
 	private Intervention interventionSelected = new Intervention();
+	
+
 	
 	public void setInterventions(List<Intervention> interventions) {
 		this.interventions = interventions;

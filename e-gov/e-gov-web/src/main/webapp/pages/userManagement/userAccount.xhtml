@@ -86,6 +86,14 @@
 				<h:commandButton action="#{userManagementBean.doSelectUser(c)}"
 					value="select" />
 			</h:column>
+			
+				<h:column id="c345">
+				<f:facet name="header">
+					<h:outputText value="#"></h:outputText>
+				</f:facet>
+				<h:commandButton action="#{userManagementBean.doAffecterAcountToUser(c,u)}"
+					value="Attribute Bank Account" />
+			</h:column>
 		</h:dataTable>
 		<h:panelGrid columns="2">
 			<h:outputText value="First Name" />

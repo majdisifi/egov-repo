@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -18,15 +19,21 @@ import com.itextpdf.text.pdf.PdfWriter;
 import egov.entities.Account;
 import egov.entities.User;
 import egov.services.interfaces.IAccountManagementLocal;
+import egov.services.interfaces.IUserMangementLocal;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class AccountManagementBean {
 	@EJB
 	private IAccountManagementLocal iAccountMangementLocal;
+	private IUserMangementLocal iUserMangementLocal;
 
 	private List<Account> accounts = new ArrayList<>();
+	private float money;
 	private Account account = new Account();
+	private Account account2 = new Account();
+	
+	private User user=new User();
 	private Account accountSelected = new Account();
 
 	public List<Account> getAccounts() {
@@ -73,10 +80,53 @@ public class AccountManagementBean {
 		return "/pages/acountManagement/listAccounts?faces-redirect=true";
 	}
 
-	public String doSendMoney(Account accountSelected , Account account) {
-		iAccountMangementLocal.SendMoney(accountSelected.getNum(),account.getNum(), accountSelected.getAmmount());
+	public String doSendMoney() {
+		iAccountMangementLocal.SendMoney(account.getNum(),account2.getNum(), money);
 		return "/pages/acountManagement/listAccounts?faces-redirect=true";
 	}
+	
+	public List<Account> doFindAccountByUser(User u){
+		accounts=iAccountMangementLocal.findAllCarByIdUser(u);
+		return accounts;
+	}
+	public Account doFindAccountByNum(int num){
+		account=iAccountMangementLocal.findAccountByNum(num);
+		return account;
+	}
+
+	public Account getAccount2() {
+		return account2;
+	}
+
+	public void setAccount2(Account account2) {
+		this.account2 = account2;
+	}
+
+	public float getMoney() {
+		return money;
+	}
+
+	public void setMoney(float money) {
+		this.money = money;
+	}
+	
+
+public User dofindUserById (int id){
+	user=iUserMangementLocal.findUserById(id);
+	return user;
+	
+}
+
+public IUserMangementLocal getiUserMangementLocal() {
+	return iUserMangementLocal;
+}
+
+public void setiUserMangementLocal(IUserMangementLocal iUserMangementLocal) {
+	this.iUserMangementLocal = iUserMangementLocal;
+}
+
+	
+	/*
 	
 	public void doPdf(Account account){
 		
@@ -125,5 +175,6 @@ public class AccountManagementBean {
 	
 
 }
+	*/
 	
 }

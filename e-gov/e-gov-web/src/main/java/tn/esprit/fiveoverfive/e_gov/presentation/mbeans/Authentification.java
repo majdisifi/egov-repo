@@ -50,7 +50,7 @@ public class Authentification {
 		} else {
 			FacesMessage message= new FacesMessage("ERROR", "Login ou password incorrect");
 			FacesContext.getCurrentInstance().addMessage(null, message);
-			navigateTo = "/login.jsf";
+			navigateTo = "null  ";
 		}
 		return navigateTo;
 	}

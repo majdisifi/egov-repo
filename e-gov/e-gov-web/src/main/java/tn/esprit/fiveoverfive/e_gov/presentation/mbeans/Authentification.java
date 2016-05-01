@@ -95,6 +95,11 @@ public class Authentification {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String  doLogout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/public/login?faces-redirect=true";
+		
+	}
 	
 
 	
